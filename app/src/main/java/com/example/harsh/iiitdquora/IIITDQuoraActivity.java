@@ -10,4 +10,10 @@ public class IIITDQuoraActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_iiitdquora);
     }
+
+    @Override
+    protected void onStart()
+    {
+        super.onStart();
+    }
 }
