@@ -9,6 +9,7 @@ public class IIITDQuoraActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_iiitdquora);
+        //TODO: A lot of things
     }
 
     @Override
@@ -16,4 +17,6 @@ public class IIITDQuoraActivity extends AppCompatActivity {
     {
         super.onStart();
     }
+
+
 }
