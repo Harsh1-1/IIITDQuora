@@ -6,4 +6,8 @@
     <string name="log_out">Log Out</string>
     <string name="user_profile">User Profile</string>
     <string name="action_search">action_search</string>
+    <string name="user_name">User Name:</string>
+    <string name="email_id">Email ID:</string>
+    <string name="about">About:</string>
+    <string name="mobile">Mobile:</string>
 </resources>

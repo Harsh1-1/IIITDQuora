@@ -21,5 +21,4 @@ public class IIITDQuoraActivity extends AppCompatActivity {
         super.onStart();
     }
 
-
 }
