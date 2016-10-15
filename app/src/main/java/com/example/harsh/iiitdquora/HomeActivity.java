@@ -2,6 +2,7 @@ package com.example.harsh.iiitdquora;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v4.view.*;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -22,7 +23,7 @@ public class HomeActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.home_menu, menu);
 
         MenuItem searchItem = menu.findItem(R.id.action_search);
-        //SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
 
         // Configure the search info and add any event listeners...
 
