@@ -4,14 +4,11 @@
     android:layout_height="match_parent"
     tools:context="com.example.harsh.iiitdquora.UserProfileFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:focusable="false"
         android:focusableInTouchMode="false"
-        android:forceHasOverlappingRendering="false"
         android:id="@+id/UserInformationLayout"
         android:gravity="start">
 
