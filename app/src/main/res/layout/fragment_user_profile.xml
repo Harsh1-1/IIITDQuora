@@ -84,10 +84,19 @@
                 android:text="@string/about"
                 android:id="@+id/AboutMeLabel" />
 
-            <TextView
+            <ScrollView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/AboutMeView" />
+                android:id="@+id/AboutMeScrollView"
+                android:fillViewport="true">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/AboutMeView"
+                    android:editable="false" />
+            </ScrollView>
+
         </TableRow>
 
     </TableLayout>
