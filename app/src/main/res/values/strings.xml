@@ -11,4 +11,5 @@
     <string name="about">About:</string>
     <string name="mobile">Mobile:</string>
     <string name="questionsearch">Question Search</string>
+    <string name="inputusername">ENTER USERNAME</string>
 </resources>

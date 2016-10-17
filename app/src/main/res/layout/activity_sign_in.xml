@@ -24,26 +24,27 @@
             android:id="@+id/input_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ENTER EMAIL ID"
+            android:hint="ENTER EMAIL ID"
             android:textAlignment="viewStart"
             android:textStyle="italic"
-            android:textSize="14sp" />
+            android:textSize="16dp" />
 
         <EditText
             android:id="@+id/input_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ENTER PASSWORD (MAX 16 CHARACTERS)"
+            android:hint="ENTER PASSWORD "
             android:textAlignment="viewStart"
             android:textStyle="italic"
-            android:textSize="14sp" />
+            android:textSize="16dp" />
 
         <Button
             android:text="LOGIN"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/login"
-            android:layout_marginTop="20dp" />
+            android:layout_marginTop="20dp"
+            android:textSize="16dp" />
 
         <LinearLayout
             android:orientation="horizontal"
@@ -54,25 +55,23 @@
             android:weightSum="1">
 
             <TextView
-                android:layout_width="82dp"
-                android:layout_height="wrap_content"
+                android:layout_width="85dp"
+                android:layout_height="37dp"
                 android:id="@+id/register"
                 android:text="New User  Register"
-                android:textSize="16dp"
-                android:layout_marginTop="20dp"
+                android:textSize="12dp"
+                android:layout_marginTop="10dp"
                 android:clickable="true"
-                android:gravity="left|right"
-                android:layout_weight="0.01" />
+                android:gravity="left|right" />
 
             <TextView
-                android:text="Forget Password"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:text="Forget Password ?"
+                android:layout_width="69dp"
+                android:layout_height="44dp"
                 android:id="@+id/forgetPassword"
-                android:layout_weight="0.01"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="200dp"
-                android:textSize="16dp" />
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="160dp"
+                android:textSize="12dp" />
 
         </LinearLayout>
 
