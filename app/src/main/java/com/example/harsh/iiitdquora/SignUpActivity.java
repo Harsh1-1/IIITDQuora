@@ -43,7 +43,7 @@ public class SignUpActivity extends AppCompatActivity {
                 String outContact = registerContact.getText().toString();
                 String outAboutme = registerAboutMe.getText().toString();
                 String outPasswordAgain = registerPasswordagain.getText().toString();
-//              TODO check for both usernamea and password
+//              TODO check whether username exist in database
 
                 if(outPassword.equals(outPasswordAgain) == false)
                 {

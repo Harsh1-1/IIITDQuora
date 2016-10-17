@@ -1,5 +1,6 @@
 package com.example.harsh.iiitdquora;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -44,7 +45,8 @@ public class SignInActivity extends AppCompatActivity {
             @Override
             public void onClick(View view)
             {
-                //TODO
+                final Intent intent = new Intent(getApplicationContext(),SignUpActivity.class);
+                startActivity(intent);
             }
         });
 

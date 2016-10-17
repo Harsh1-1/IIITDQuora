@@ -62,7 +62,8 @@
                 android:textSize="12dp"
                 android:layout_marginTop="10dp"
                 android:clickable="true"
-                android:gravity="left|right" />
+                android:gravity="left|right"
+                android:textColorLink="@android:color/holo_blue_dark" />
 
             <TextView
                 android:text="Forget Password ?"
