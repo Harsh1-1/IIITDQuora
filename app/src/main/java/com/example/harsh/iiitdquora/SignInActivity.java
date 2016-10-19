@@ -26,20 +26,6 @@ public class SignInActivity extends AppCompatActivity {
         RegisterLink = (TextView)findViewById(R.id.register);
 
 
-        LoginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v){
-
-                String outEmail = inputEmail.getText().toString();
-                String outPassword = inputPassword.getText().toString();
-
-                /*
-                * TODO
-                * Boolean check = function_name(outEmail,outPassword);
-                * */
-            }
-        });
-
         RegisterLink.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view)
@@ -48,5 +34,14 @@ public class SignInActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void userLogin(View view)
+    {
+        String outEmail = inputEmail.getText().toString();
+        String outPassword = inputPassword.getText().toString();
+
+        DatabaseBackgroundTask dbt = new DatabaseBackgroundTask(this);
+        dbt.execute("login",outEmail,outPassword);
     }
 }
