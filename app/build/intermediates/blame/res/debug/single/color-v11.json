@@ -1,10 +1,10 @@
 [
     {
-        "merged": "E:\\IIIT_Delhi\\Mobile_Computing\\IIITDQuora\\app\\build\\intermediates\\res\\merged\\debug\\color-v11\\abc_background_cache_hint_selector_material_light.xml",
-        "source": "E:\\IIIT_Delhi\\Mobile_Computing\\IIITDQuora\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\color-v11\\abc_background_cache_hint_selector_material_light.xml"
+        "merged": "E:\\IIIT_Delhi\\Mobile_Computing\\MCProject\\IIITDQuora\\app\\build\\intermediates\\res\\merged\\debug\\color-v11\\abc_background_cache_hint_selector_material_dark.xml",
+        "source": "E:\\IIIT_Delhi\\Mobile_Computing\\MCProject\\IIITDQuora\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\color-v11\\abc_background_cache_hint_selector_material_dark.xml"
     },
     {
-        "merged": "E:\\IIIT_Delhi\\Mobile_Computing\\IIITDQuora\\app\\build\\intermediates\\res\\merged\\debug\\color-v11\\abc_background_cache_hint_selector_material_dark.xml",
-        "source": "E:\\IIIT_Delhi\\Mobile_Computing\\IIITDQuora\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\color-v11\\abc_background_cache_hint_selector_material_dark.xml"
+        "merged": "E:\\IIIT_Delhi\\Mobile_Computing\\MCProject\\IIITDQuora\\app\\build\\intermediates\\res\\merged\\debug\\color-v11\\abc_background_cache_hint_selector_material_light.xml",
+        "source": "E:\\IIIT_Delhi\\Mobile_Computing\\MCProject\\IIITDQuora\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\color-v11\\abc_background_cache_hint_selector_material_light.xml"
     }
 ]

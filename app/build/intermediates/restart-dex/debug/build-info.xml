@@ -4,35 +4,30 @@
     api-level="23"
     density="420dpi"
     format="7"
-    timestamp="8808966254630"
-    token="-9101687748263310144" >
+    timestamp="15049374077876"
+    token="-6759725226544096632" >
 
     <task
         name="javac"
-        duration="275" />
+        duration="4829" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="87" />
+        duration="1179" />
     <task
         name="verifier"
-        duration="7" />
+        duration="191" />
 
     <artifact
-        location="E:\IIIT_Delhi\Mobile_Computing\IIITDQuora\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_8\classes.dex"
-        type="DEX" />
+        location="E:\IIIT_Delhi\Mobile_Computing\MCProject\IIITDQuora\app\build\outputs\apk\app-debug.apk"
+        type="MAIN" />
 
-    <build timestamp="8477156391839" >
+    <build timestamp="15049374077876" >
         <artifact
-            location="E:\IIIT_Delhi\Mobile_Computing\IIITDQuora\app\build\outputs\apk\app-debug.apk"
+            location="E:\IIIT_Delhi\Mobile_Computing\MCProject\IIITDQuora\app\build\outputs\apk\app-debug.apk"
             type="MAIN" />
-    </build>
-    <build timestamp="8808966254630" >
-        <artifact
-            location="E:\IIIT_Delhi\Mobile_Computing\IIITDQuora\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_8\classes.dex"
-            type="DEX" />
     </build>
 
 </instant-run>
