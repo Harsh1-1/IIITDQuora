@@ -27,8 +27,12 @@
             </intent-filter>
         </activity>
         <activity android:name="com.example.harsh.iiitdquora.HomeActivity" />
-        <activity android:name="com.example.harsh.iiitdquora.SignInActivity" />
-        <activity android:name="com.example.harsh.iiitdquora.SignUpActivity" />
+        <activity
+            android:name="com.example.harsh.iiitdquora.SignInActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.harsh.iiitdquora.SignUpActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

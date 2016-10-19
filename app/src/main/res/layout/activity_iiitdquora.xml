@@ -9,4 +9,13 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.harsh.iiitdquora.IIITDQuoraActivity">
 
+    <TextView
+        android:text="IIITD QUORA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="229dp"
+        android:id="@+id/title"
+        android:textSize="36sp" />
 </RelativeLayout>

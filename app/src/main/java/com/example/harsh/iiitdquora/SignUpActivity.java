@@ -33,8 +33,7 @@ public class SignUpActivity extends AppCompatActivity {
 
     }
 
-    public void userRegistration(View view)
-    {
+    public void userRegistration(View view) {
         String outEmail = registerEmail.getText().toString();
         String outPassword = registerPassword.getText().toString();
         String outUsername = registerUsername.getText().toString();
@@ -43,16 +42,19 @@ public class SignUpActivity extends AppCompatActivity {
         String outPasswordAgain = registerPasswordagain.getText().toString();
 //              TODO check for both usernamea and password
 
-        if(outPassword.equals(outPasswordAgain) == false)
-        {
-            Toast.makeText(SignUpActivity.this," Password don't match",Toast.LENGTH_SHORT).show();
-            return;
-        }
 
-        DatabaseBackgroundTask dbt = new DatabaseBackgroundTask(this);
-        dbt.execute("register",outUsername,outEmail,outPassword,outContact,outAboutme);
-        final Intent intent = new Intent(getApplicationContext(),SignInActivity.class);
-        startActivity(intent);
-        User user = new User(outEmail,outPassword,outUsername,outContact,outAboutme);
+//              TODO check whether username exist in database
+
+                if (outPassword.equals(outPasswordAgain) == false) {
+                    Toast.makeText(SignUpActivity.this, " Password don't match", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                DatabaseBackgroundTask dbt = new DatabaseBackgroundTask(this);
+                dbt.execute("register", outUsername, outEmail, outPassword, outContact, outAboutme);
+                final Intent intent = new Intent(getApplicationContext(), SignInActivity.class);
+                startActivity(intent);
+                User user = new User(outEmail, outPassword, outUsername, outContact, outAboutme);
+            }
+
     }
-}

@@ -14,6 +14,7 @@ public class IIITDQuoraActivity extends AppCompatActivity {
         final Intent intent = new Intent(getApplicationContext(),SignUpActivity.class);
         startActivity(intent);
         //TODO: A lot of things
+        finish();
     }
 
     @Override

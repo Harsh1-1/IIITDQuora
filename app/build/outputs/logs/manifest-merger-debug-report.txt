@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from E:\IIIT_Delhi\Mobile_Computing\IIITDQuora\app\src\main\AndroidManifest.xml:2:1-27:12
+ADDED from E:\IIIT_Delhi\Mobile_Computing\IIITDQuora\app\src\main\AndroidManifest.xml:2:1-29:12
 	package
 		ADDED from E:\IIIT_Delhi\Mobile_Computing\IIITDQuora\app\src\main\AndroidManifest.xml:3:5-43
 		INJECTED from E:\IIIT_Delhi\Mobile_Computing\IIITDQuora\app\src\main\AndroidManifest.xml
@@ -18,7 +18,7 @@ ADDED from E:\IIIT_Delhi\Mobile_Computing\IIITDQuora\app\src\main\AndroidManifes
 	android:name
 		ADDED from E:\IIIT_Delhi\Mobile_Computing\IIITDQuora\app\src\main\AndroidManifest.xml:5:22-64
 application
-ADDED from E:\IIIT_Delhi\Mobile_Computing\IIITDQuora\app\src\main\AndroidManifest.xml:7:5-25:19
+ADDED from E:\IIIT_Delhi\Mobile_Computing\IIITDQuora\app\src\main\AndroidManifest.xml:7:5-27:19
 MERGED from [com.android.support:appcompat-v7:23.4.0] E:\IIIT_Delhi\Mobile_Computing\IIITDQuora\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.4.0\AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:animated-vector-drawable:23.4.0] E:\IIIT_Delhi\Mobile_Computing\IIITDQuora\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.4.0\AndroidManifest.xml:7:5-20
 MERGED from [com.android.support:support-vector-drawable:23.4.0] E:\IIIT_Delhi\Mobile_Computing\IIITDQuora\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\AndroidManifest.xml:7:5-20
@@ -56,13 +56,17 @@ ADDED from E:\IIIT_Delhi\Mobile_Computing\IIITDQuora\app\src\main\AndroidManifes
 	android:name
 		ADDED from E:\IIIT_Delhi\Mobile_Computing\IIITDQuora\app\src\main\AndroidManifest.xml:22:19-47
 activity#com.example.harsh.iiitdquora.SignInActivity
-ADDED from E:\IIIT_Delhi\Mobile_Computing\IIITDQuora\app\src\main\AndroidManifest.xml:23:9-52
+ADDED from E:\IIIT_Delhi\Mobile_Computing\IIITDQuora\app\src\main\AndroidManifest.xml:23:9-24:57
+	android:screenOrientation
+		ADDED from E:\IIIT_Delhi\Mobile_Computing\IIITDQuora\app\src\main\AndroidManifest.xml:24:19-55
 	android:name
 		ADDED from E:\IIIT_Delhi\Mobile_Computing\IIITDQuora\app\src\main\AndroidManifest.xml:23:19-49
 activity#com.example.harsh.iiitdquora.SignUpActivity
-ADDED from E:\IIIT_Delhi\Mobile_Computing\IIITDQuora\app\src\main\AndroidManifest.xml:24:9-61
+ADDED from E:\IIIT_Delhi\Mobile_Computing\IIITDQuora\app\src\main\AndroidManifest.xml:25:9-26:67
+	android:screenOrientation
+		ADDED from E:\IIIT_Delhi\Mobile_Computing\IIITDQuora\app\src\main\AndroidManifest.xml:26:19-55
 	android:name
-		ADDED from E:\IIIT_Delhi\Mobile_Computing\IIITDQuora\app\src\main\AndroidManifest.xml:24:19-49
+		ADDED from E:\IIIT_Delhi\Mobile_Computing\IIITDQuora\app\src\main\AndroidManifest.xml:25:19-49
 uses-sdk
 INJECTED from E:\IIIT_Delhi\Mobile_Computing\IIITDQuora\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:appcompat-v7:23.4.0] E:\IIIT_Delhi\Mobile_Computing\IIITDQuora\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.4.0\AndroidManifest.xml:21:5-23:78
