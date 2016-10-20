@@ -1,9 +1,5 @@
 package com.example.harsh.iiitdquora;
 
-/**
- * Created by Tushar on 17-10-2016.
- */
-
 public class User {
 
     private String EmailId;
@@ -13,9 +9,8 @@ public class User {
     private String AboutMe;
 
 
-    public User(String emailId, String password, String username, String contact, String aboutMe) {
+    public User(String emailId, String username, String contact, String aboutMe) {
         EmailId = emailId;
-        Password = password;
         Username = username;
         Contact = contact;
         AboutMe = aboutMe;
