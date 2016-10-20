@@ -37,7 +37,7 @@
             android:layout_margin="0dp" />
 
         <View
-            android:layout_width="0.5dp"
+            android:layout_width="1dp"
             android:layout_height="match_parent"
             android:background="@color/colorDivider" />
 
@@ -54,7 +54,7 @@
             android:textColor="@android:color/background_light" />
 
         <View
-            android:layout_width="0.5dp"
+            android:layout_width="1dp"
             android:layout_height="match_parent"
             android:background="@color/colorDivider" />
 
@@ -64,6 +64,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/AnsweredButton"
             android:layout_weight="1"
+            android:layout_margin="0dp"
             style="@style/Widget.AppCompat.Button.Borderless.Colored"
             android:background="@color/colorPrimary"
             android:textAlignment="center"
