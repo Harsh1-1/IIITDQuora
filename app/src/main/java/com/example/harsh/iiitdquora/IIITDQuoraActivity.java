@@ -13,6 +13,7 @@ public class IIITDQuoraActivity extends AppCompatActivity {
         setContentView(R.layout.activity_iiitdquora);
         //final Intent intent = new Intent(getApplicationContext(),HomeActivity.class);
         final Intent intent = new Intent(getApplicationContext(),SignUpActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         //TODO: A lot of things
         finish();
