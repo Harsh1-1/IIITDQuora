@@ -44,6 +44,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/login"
             android:layout_marginTop="20dp"
+            android:onClick="userLogin"
             android:textSize="16dp" />
 
         <LinearLayout

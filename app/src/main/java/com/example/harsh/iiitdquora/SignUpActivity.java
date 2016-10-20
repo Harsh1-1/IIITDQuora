@@ -1,5 +1,6 @@
 package com.example.harsh.iiitdquora;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -30,31 +31,30 @@ public class SignUpActivity extends AppCompatActivity {
         registerContact = (EditText)findViewById(R.id.register_contact);
         RegisterButton = (Button)findViewById(R.id.register);
 
+    }
+
+    public void userRegistration(View view) {
+        String outEmail = registerEmail.getText().toString();
+        String outPassword = registerPassword.getText().toString();
+        String outUsername = registerUsername.getText().toString();
+        String outContact = registerContact.getText().toString();
+        String outAboutme = registerAboutMe.getText().toString();
+        String outPasswordAgain = registerPasswordagain.getText().toString();
+//              TODO check for both usernamea and password
 
 
-
-        RegisterButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v){
-
-                String outEmail = registerEmail.getText().toString();
-                String outPassword = registerPassword.getText().toString();
-                String outUsername = registerUsername.getText().toString();
-                String outContact = registerContact.getText().toString();
-                String outAboutme = registerAboutMe.getText().toString();
-                String outPasswordAgain = registerPasswordagain.getText().toString();
 //              TODO check whether username exist in database
 
-                if(outPassword.equals(outPasswordAgain) == false)
-                {
-                    Toast.makeText(SignUpActivity.this," Password don't match",Toast.LENGTH_SHORT).show();
+                if (outPassword.equals(outPasswordAgain) == false) {
+                    Toast.makeText(SignUpActivity.this, " Password don't match", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                User user = new User(outEmail,outPassword,outUsername,outContact,outAboutme);
+                DatabaseBackgroundTask dbt = new DatabaseBackgroundTask(this);
+                dbt.execute("register", outUsername, outEmail, outPassword, outContact, outAboutme);
+                final Intent intent = new Intent(getApplicationContext(), SignInActivity.class);
+                startActivity(intent);
+                User user = new User(outEmail, outPassword, outUsername, outContact, outAboutme);
             }
-        });
-
 
     }
-}
