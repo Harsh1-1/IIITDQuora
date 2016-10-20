@@ -21,6 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/my_toolbar"
+        android:elevation="4dp"
         android:id="@+id/ButtonBar">
 
         <Button
@@ -36,7 +37,7 @@
             android:layout_margin="0dp" />
 
         <View
-            android:layout_width="1dp"
+            android:layout_width="0.5dp"
             android:layout_height="match_parent"
             android:background="@color/colorDivider" />
 
@@ -53,7 +54,7 @@
             android:textColor="@android:color/background_light" />
 
         <View
-            android:layout_width="1dp"
+            android:layout_width="0.5dp"
             android:layout_height="match_parent"
             android:background="@color/colorDivider" />
 
