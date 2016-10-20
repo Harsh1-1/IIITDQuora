@@ -1,5 +1,6 @@
 package com.example.harsh.iiitdquora;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,5 +23,6 @@ public class IIITDQuoraActivity extends AppCompatActivity {
     {
         super.onStart();
     }
+
 
 }

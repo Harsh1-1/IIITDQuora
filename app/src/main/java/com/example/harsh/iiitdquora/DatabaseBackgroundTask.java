@@ -140,8 +140,18 @@ public class DatabaseBackgroundTask extends AsyncTask<String,String,String> {
         }
         else
         {
-            alertDialog.setMessage(result);
-            alertDialog.show();
+            String[] details  = result.split(",");
+            if(details[0].equals("Login Failed"))
+            {
+                alertDialog.setMessage(details[0]);
+                alertDialog.show();
+            }
+            else
+            {
+                SignInActivity.user = new User(details[1],details[0],details[2],details[3]);
+            }
+
+
         }
 
     }

@@ -14,6 +14,7 @@ public class SignInActivity extends AppCompatActivity {
     private EditText inputPassword;
     private TextView RegisterLink;
     private Button LoginButton;
+    public static User user;
 
 
     @Override
@@ -45,5 +46,10 @@ public class SignInActivity extends AppCompatActivity {
 
         DatabaseBackgroundTask dbt = new DatabaseBackgroundTask(this);
         dbt.execute("login",outEmail,outPassword);
+        if(user!=null)
+        {
+            final Intent intent = new Intent(getApplicationContext(),HomeActivity.class);
+            startActivity(intent);
+        }
     }
 }
