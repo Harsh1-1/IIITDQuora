@@ -37,6 +37,7 @@ public class SignInActivity extends AppCompatActivity {
             }
         });
 
+
     }
 
     public void userLogin(View view)
@@ -51,5 +52,6 @@ public class SignInActivity extends AppCompatActivity {
             final Intent intent = new Intent(getApplicationContext(),HomeActivity.class);
             startActivity(intent);
         }
+        finish();
     }
 }

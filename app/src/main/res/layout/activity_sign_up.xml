@@ -60,6 +60,7 @@
             android:layout_height="wrap_content"
             android:hint="ENTER PASSWORD (MAX 16 CHARACTERS)"
             android:textAlignment="viewStart"
+            android:inputType="textPassword"
             android:textStyle="italic"
             android:textSize="14sp" />
 
@@ -68,6 +69,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="ENTER PASSWORD AGAIN"
+            android:inputType="textPassword"
             android:textAlignment="viewStart"
             android:textStyle="italic"
             android:textSize="14sp" />
@@ -75,7 +77,7 @@
 
         <Button
             android:text="REGISTER"
-            android:layout_width="364dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/register"
             android:onClick="userRegistration"
