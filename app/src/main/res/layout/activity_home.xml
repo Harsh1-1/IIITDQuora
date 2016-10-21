@@ -25,7 +25,7 @@
         android:id="@+id/ButtonBar">
 
         <Button
-            android:text="Feed"
+            android:text="@string/feed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/feedButton"
@@ -43,7 +43,7 @@
         -->
 
         <Button
-            android:text="Asked"
+            android:text="@string/asked"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/AskedButton"
@@ -61,7 +61,7 @@
          -->
         
         <Button
-            android:text="Answer"
+            android:text="@string/answer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/AnsweredButton"
