@@ -149,6 +149,7 @@ public class DatabaseBackgroundTask extends AsyncTask<String,String,String> {
             else
             {
                 SignInActivity.user = new User(details[1],details[0],details[2],details[3]);
+                ((SignInActivity)ctx).finishLogin();
             }
 
 

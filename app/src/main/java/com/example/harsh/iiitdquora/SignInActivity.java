@@ -1,6 +1,7 @@
 package com.example.harsh.iiitdquora;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -54,12 +55,13 @@ public class SignInActivity extends AppCompatActivity {
 
         DatabaseBackgroundTask dbt = new DatabaseBackgroundTask(this);
         dbt.execute("login",outEmail,outPassword);
-        if(user!=null)
-        {
-            final Intent intent = new Intent(getApplicationContext(),HomeActivity.class);
-            startActivity(intent);
-            finish();
-        }
 
+    }
+
+    public void finishLogin()
+    {
+        final Intent intent = new Intent(getApplicationContext(),HomeActivity.class);
+        startActivity(intent);
+        finish();
     }
 }
