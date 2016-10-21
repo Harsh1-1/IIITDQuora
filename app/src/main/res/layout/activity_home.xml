@@ -36,10 +36,11 @@
             android:textAlignment="center"
             android:layout_margin="0dp" />
 
-        <View
+        <!--<View
             android:layout_width="1dp"
             android:layout_height="match_parent"
             android:background="@color/colorDivider" />
+        -->
 
         <Button
             android:text="Asked"
@@ -53,11 +54,12 @@
             android:textAlignment="center"
             android:textColor="@android:color/background_light" />
 
-        <View
+        <!--<View
             android:layout_width="1dp"
             android:layout_height="match_parent"
             android:background="@color/colorDivider" />
-
+         -->
+        
         <Button
             android:text="Answer"
             android:layout_width="wrap_content"

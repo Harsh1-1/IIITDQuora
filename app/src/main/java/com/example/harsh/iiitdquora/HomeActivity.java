@@ -48,6 +48,13 @@ public class HomeActivity extends AppCompatActivity {
                 fragmentTransaction.commit();
                 return true;
 
+            case R.id.AskQuestion:
+                fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.add(R.id.mainLayout, AskQuestionFragment.newInstance());
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+                return true;
+
             case R.id.Logout:
                 //TODO
                 return true;
