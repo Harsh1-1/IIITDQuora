@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="E:\IIITDQuora\IIITDQuora\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="298256ca88fe681776b5541733bb16cefcc99dce">
+        <dex dex="E:\IIITDQuora\IIITDQuora\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_ae9c9b0a3ced373b948448a53ce5cc356b293cbe\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\IIITDQuora\IIITDQuora\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.1"
+        sha1="67bd36ee9340ec7c254108936ad16b24bed160cc">
+        <dex dex="E:\IIITDQuora\IIITDQuora\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-23.4.0_6d88b3a8cb6b6819dc27f7c73b8470a24deb4fb8.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\IIITDQuora\IIITDQuora\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="a1cc4d93ce6176031e901f4d7ee4f70738603c97">
+        <dex dex="E:\IIITDQuora\IIITDQuora\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_77d1cff9e7e547e22dee74372244e135ec558c96\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\IIITDQuora\IIITDQuora\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.4.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.1"
+        sha1="de4db3785756bfb0915a9f59a9b3f2fea7407be4">
+        <dex dex="E:\IIITDQuora\IIITDQuora\app\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-23.4.0_addf875ea7f07fb19795dbb00f800928b145c7e2.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\IIITDQuora\IIITDQuora\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="67bd36ee9340ec7c254108936ad16b24bed160cc">
+        <dex dex="E:\IIITDQuora\IIITDQuora\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-23.4.0_6d88b3a8cb6b6819dc27f7c73b8470a24deb4fb8\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Tushar\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.4.0\support-annotations-23.4.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="ffbe55fdb2bb456b1485831706a9eac3300bb6b8">
+        <dex dex="E:\IIITDQuora\IIITDQuora\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-23.4.0_28c2fdcea20520342814d7947402c4dc19389183\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\IIITDQuora\IIITDQuora\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.4.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.1"
+        sha1="548f06de403a9409f00554b3ee12a9fdea0e236c">
+        <dex dex="E:\IIITDQuora\IIITDQuora\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-23.4.0_38644e8a497e33fe8903f800bb17593b0a813714.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\IIITDQuora\IIITDQuora\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="c2c594cace5d83a3227b2b6e658ecbfd586d3ed9">
+        <dex dex="E:\IIITDQuora\IIITDQuora\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-23.4.0_2f958d5f60f80bc53e82f4f9d79a86746a94cf91\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\IIITDQuora\IIITDQuora\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\jars\libs\internal_impl-23.4.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="ea3c07504d2c8f4b13aa17c45c1b68ed9c1c3674">
+        <dex dex="E:\IIITDQuora\IIITDQuora\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-23.4.0_9c7145a70dc85adf0e20ecff8bd082e01c470953\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Tushar\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.4.0\support-annotations-23.4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.1"
+        sha1="ffbe55fdb2bb456b1485831706a9eac3300bb6b8">
+        <dex dex="E:\IIITDQuora\IIITDQuora\app\build\intermediates\pre-dexed\debug\support-annotations-23.4.0_28c2fdcea20520342814d7947402c4dc19389183.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\IIITDQuora\IIITDQuora\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.4.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="de4db3785756bfb0915a9f59a9b3f2fea7407be4">
+        <dex dex="E:\IIITDQuora\IIITDQuora\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-23.4.0_addf875ea7f07fb19795dbb00f800928b145c7e2\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\IIITDQuora\IIITDQuora\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.4.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="548f06de403a9409f00554b3ee12a9fdea0e236c">
+        <dex dex="E:\IIITDQuora\IIITDQuora\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-23.4.0_38644e8a497e33fe8903f800bb17593b0a813714\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\IIITDQuora\IIITDQuora\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\jars\libs\internal_impl-23.4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.1"
+        sha1="ea3c07504d2c8f4b13aa17c45c1b68ed9c1c3674">
+        <dex dex="E:\IIITDQuora\IIITDQuora\app\build\intermediates\pre-dexed\debug\internal_impl-23.4.0_9c7145a70dc85adf0e20ecff8bd082e01c470953.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\IIITDQuora\IIITDQuora\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.1"
+        sha1="c2c594cace5d83a3227b2b6e658ecbfd586d3ed9">
+        <dex dex="E:\IIITDQuora\IIITDQuora\app\build\intermediates\pre-dexed\debug\com.android.support-support-vector-drawable-23.4.0_2f958d5f60f80bc53e82f4f9d79a86746a94cf91.jar" />
+    </item>
+
+</items>
