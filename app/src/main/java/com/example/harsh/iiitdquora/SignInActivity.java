@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class SignInActivity extends AppCompatActivity {
 
@@ -44,6 +45,12 @@ public class SignInActivity extends AppCompatActivity {
     {
         String outEmail = inputEmail.getText().toString();
         String outPassword = inputPassword.getText().toString();
+
+        if(outEmail.equals("") || outPassword.equals(""))
+        {
+            Toast.makeText(SignInActivity.this,"Fields cannot be left blank",Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         DatabaseBackgroundTask dbt = new DatabaseBackgroundTask(this);
         dbt.execute("login",outEmail,outPassword);
