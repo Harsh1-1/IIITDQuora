@@ -12,4 +12,7 @@
     <string name="mobile">Mobile:</string>
     <string name="questionsearch">Question Search</string>
     <string name="inputusername">ENTER USERNAME</string>
+    <string name="ask">ASK</string>
+    <string name="enter_question_description_here">Enter question description here</string>
+    <string name="enter_your_question_here">Enter your question here</string>
 </resources>
