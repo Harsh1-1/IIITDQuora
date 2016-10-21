@@ -19,11 +19,12 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:inputType="textPersonName"
+                android:inputType="textMultiLine"
                 android:ems="10"
                 android:id="@+id/QuestionAskEditText"
                 android:hint="Enter your question here"
-                android:scrollbars="vertical" />
+                android:scrollbars="vertical"
+                android:maxLength="254" />
         </ScrollView>
 
         <ScrollView
@@ -34,16 +35,17 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:inputType="textPersonName"
+                android:inputType="textMultiLine"
                 android:ems="10"
                 android:id="@+id/QuestionDescEditText"
                 android:hint="Enter question description here"
-                android:scrollbars="vertical" />
+                android:scrollbars="vertical"
+                android:maxLength="254" />
         </ScrollView>
 
         <Button
             android:text="ASK"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/AskButton"
             style="@style/Widget.AppCompat.Button.Colored"
