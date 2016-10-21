@@ -22,7 +22,8 @@
                 android:inputType="textPersonName"
                 android:ems="10"
                 android:id="@+id/QuestionAskEditText"
-                android:hint="Enter your question here" />
+                android:hint="Enter your question here"
+                android:scrollbars="vertical" />
         </ScrollView>
 
         <ScrollView
@@ -36,7 +37,8 @@
                 android:inputType="textPersonName"
                 android:ems="10"
                 android:id="@+id/QuestionDescEditText"
-                android:hint="Enter question description here" />
+                android:hint="Enter question description here"
+                android:scrollbars="vertical" />
         </ScrollView>
 
         <Button
