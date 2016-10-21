@@ -35,6 +35,7 @@ public class SignUpActivity extends AppCompatActivity {
 
 
 
+
     public void userRegistration(View view)
     {
         String outEmail = registerEmail.getText().toString();
@@ -43,6 +44,8 @@ public class SignUpActivity extends AppCompatActivity {
         String outContact = registerContact.getText().toString();
         String outAboutme = registerAboutMe.getText().toString();
         String outPasswordAgain = registerPasswordagain.getText().toString();
+
+        
 
         if(outPassword.equals("") || outEmail.equals("") || outUsername.equals(""))
         {
