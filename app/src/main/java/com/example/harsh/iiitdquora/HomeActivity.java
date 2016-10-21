@@ -43,14 +43,14 @@ public class HomeActivity extends AppCompatActivity {
 
             case R.id.UserProfile:
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.add(R.id.mainLayout, UserProfileFragment.newInstance());
+                fragmentTransaction.replace(R.id.mainLayout, UserProfileFragment.newInstance());
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
                 return true;
 
             case R.id.AskQuestion:
                 fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.add(R.id.mainLayout, AskQuestionFragment.newInstance());
+                fragmentTransaction.replace(R.id.mainLayout, AskQuestionFragment.newInstance());
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
                 return true;
