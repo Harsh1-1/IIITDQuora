@@ -46,7 +46,9 @@
             android:id="@+id/login"
             android:layout_marginTop="20dp"
             android:onClick="userLogin"
-            android:textSize="16dp" />
+            android:textSize="16dp"
+            android:background="@color/colorPrimary"
+            android:textColor="@android:color/background_light" />
 
         <LinearLayout
             android:orientation="horizontal"
@@ -58,7 +60,7 @@
 
             <TextView
                 android:layout_width="85dp"
-                android:layout_height="37dp"
+                android:layout_height="50dp"
                 android:id="@+id/register"
                 android:text="New User  Register"
                 android:textSize="12dp"
@@ -70,7 +72,7 @@
             <TextView
                 android:text="Forget Password ?"
                 android:layout_width="69dp"
-                android:layout_height="44dp"
+                android:layout_height="50dp"
                 android:id="@+id/forgetPassword"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="160dp"

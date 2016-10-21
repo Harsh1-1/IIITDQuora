@@ -75,9 +75,19 @@ public class DatabaseBackgroundTask extends AsyncTask<String,String,String> {
                 OS.close();
 
                 InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
+                String response = "";
+                String line = "";
+                while ((line = bufferedReader.readLine())!=null)
+                {
+                    response = response + line;
+                }
+                bufferedReader.close();
                 inputStream.close();
+                httpURLConnection.disconnect();
 
-                return "Registeration Successful";
+                return response;
+
 
 
             } catch (MalformedURLException e) {
@@ -134,26 +144,32 @@ public class DatabaseBackgroundTask extends AsyncTask<String,String,String> {
 
     @Override
     protected void onPostExecute(String result) {
-        if (result.equals("Registeration Successful"))
+        String[] details  = result.split(",");
+
+        //Toast.makeText(ctx,result,Toast.LENGTH_LONG).show();
+
+        if (details[0].equals("registration"))
         {
-            Toast.makeText(ctx,result,Toast.LENGTH_LONG).show();
+            Toast.makeText(ctx,details[1],Toast.LENGTH_LONG).show();
         }
         else
         {
-            String[] details  = result.split(",");
-            if(details[0].equals("Login Failed"))
+
+            if(details[1].equals("Login Failed"))
             {
-                alertDialog.setMessage(details[0]);
+                alertDialog.setMessage(details[1]);
                 alertDialog.show();
             }
             else
             {
-                SignInActivity.user = new User(details[1],details[0],details[2],details[3]);
+                SignInActivity.user = new User(details[2],details[1],details[3],details[4]);
                 ((SignInActivity)ctx).finishLogin();
             }
 
 
         }
+
+
 
     }
 }

@@ -81,7 +81,9 @@
             android:layout_height="wrap_content"
             android:id="@+id/register"
             android:onClick="userRegistration"
-            android:layout_marginTop="20dp" />
+            android:layout_marginTop="20dp"
+            android:background="@color/colorPrimary"
+            android:textColor="@android:color/background_light" />
 
 
     </LinearLayout>
