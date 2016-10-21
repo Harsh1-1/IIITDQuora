@@ -33,6 +33,8 @@ public class SignUpActivity extends AppCompatActivity {
 
     }
 
+
+
     public void userRegistration(View view)
     {
         String outEmail = registerEmail.getText().toString();
@@ -41,7 +43,12 @@ public class SignUpActivity extends AppCompatActivity {
         String outContact = registerContact.getText().toString();
         String outAboutme = registerAboutMe.getText().toString();
         String outPasswordAgain = registerPasswordagain.getText().toString();
-//              TODO check for both usernamea and password
+
+        if(outPassword.equals("") || outEmail.equals("") || outUsername.equals(""))
+        {
+            Toast.makeText(SignUpActivity.this,"Fields cannot be left blank",Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         if(outPassword.equals(outPasswordAgain) == false)
         {
@@ -55,5 +62,6 @@ public class SignUpActivity extends AppCompatActivity {
 
         final Intent intent = new Intent(getApplicationContext(),SignInActivity.class);
         startActivity(intent);
+
     }
 }

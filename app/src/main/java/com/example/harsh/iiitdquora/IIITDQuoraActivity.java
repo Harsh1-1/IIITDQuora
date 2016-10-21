@@ -12,7 +12,7 @@ public class IIITDQuoraActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_iiitdquora);
         //final Intent intent = new Intent(getApplicationContext(),HomeActivity.class);
-        final Intent intent = new Intent(getApplicationContext(),SignUpActivity.class);
+        final Intent intent = new Intent(getApplicationContext(),SignInActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         //TODO: A lot of things

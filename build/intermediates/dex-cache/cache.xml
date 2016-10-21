@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="C:\Users\Abhi\AndroidStudioProjects\IIITDQuora\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="67bd36ee9340ec7c254108936ad16b24bed160cc">
+        <dex dex="C:\Users\Abhi\AndroidStudioProjects\IIITDQuora\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-23.4.0_737b4c48932e132632d7bcd342cb970b1040bdf4\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Abhi\AndroidStudioProjects\IIITDQuora\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.4.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="de4db3785756bfb0915a9f59a9b3f2fea7407be4">
+        <dex dex="C:\Users\Abhi\AndroidStudioProjects\IIITDQuora\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-23.4.0_085d02f60ad8b63536c78e697d475e8af4f1171b\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Abhi\AndroidStudioProjects\IIITDQuora\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="0b79a3c5241468ad6b5570b5a4606c84b69a3229">
+        <dex dex="C:\Users\Abhi\AndroidStudioProjects\IIITDQuora\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_693ee0030ce1b0ba064f54aabb6fc8ca7360f5ea\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Abhi\AndroidStudioProjects\IIITDQuora\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="86e7e91a70759075d8a6df30c2c0b3363d2ad122">
+        <dex dex="C:\Users\Abhi\AndroidStudioProjects\IIITDQuora\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_3ba1856fd4190a6be3126153f6ef829efdb9f5b6\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Abhi\AndroidStudioProjects\IIITDQuora\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="c2c594cace5d83a3227b2b6e658ecbfd586d3ed9">
+        <dex dex="C:\Users\Abhi\AndroidStudioProjects\IIITDQuora\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-23.4.0_50cb2ac7605b8082914602a03410bc347babc5b4\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Abhi\AndroidStudioProjects\IIITDQuora\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.4.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="548f06de403a9409f00554b3ee12a9fdea0e236c">
+        <dex dex="C:\Users\Abhi\AndroidStudioProjects\IIITDQuora\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-23.4.0_e9190d6ed526b19c38dabac7df1d184ba788e244\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Abhi\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.4.0\support-annotations-23.4.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="ffbe55fdb2bb456b1485831706a9eac3300bb6b8">
+        <dex dex="C:\Users\Abhi\AndroidStudioProjects\IIITDQuora\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-23.4.0_73ba5dfcc5d87acc15cbeae7a2024c7b3319205a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Abhi\AndroidStudioProjects\IIITDQuora\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\jars\libs\internal_impl-23.4.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="ea3c07504d2c8f4b13aa17c45c1b68ed9c1c3674">
+        <dex dex="C:\Users\Abhi\AndroidStudioProjects\IIITDQuora\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-23.4.0_5b1bdd982404ec82b31f1ce2a58d3115f6fdcbd1\classes.dex" />
+    </item>
+
+</items>
