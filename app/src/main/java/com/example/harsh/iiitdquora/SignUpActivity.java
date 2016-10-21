@@ -45,7 +45,15 @@ public class SignUpActivity extends AppCompatActivity {
         String outAboutme = registerAboutMe.getText().toString();
         String outPasswordAgain = registerPasswordagain.getText().toString();
 
-        
+        String emailregex = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@iiitd.ac.in";
+        Boolean value = outEmail.matches(emailregex);
+
+        if(value == false)
+        {
+            Toast.makeText(SignUpActivity.this,"Email does not belong to IIITD domain",Toast.LENGTH_SHORT).show();
+            return;
+        }
+
 
         if(outPassword.equals("") || outEmail.equals("") || outUsername.equals(""))
         {
