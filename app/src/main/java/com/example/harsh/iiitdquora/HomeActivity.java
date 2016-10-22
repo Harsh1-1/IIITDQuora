@@ -97,15 +97,15 @@ public class HomeActivity extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int position) {
-            Fragment retFragment = null;
+            Fragment retFragment = FeedFragment.newInstance();
             switch (position){
-                case 1:
+                case 0:
                     retFragment = FeedFragment.newInstance();
                     break;
-                case 2:
+                case 1:
                     retFragment = AskedFragment.newInstance();
                     break;
-                case 3:
+                case 2:
                     retFragment = AnswerFragment.newInstance();
                     break;
             }
