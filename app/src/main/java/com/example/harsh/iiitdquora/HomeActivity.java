@@ -34,6 +34,7 @@ public class HomeActivity extends AppCompatActivity {
         pagerAdapter = new ScreenSlidePagerAdapter(fragmentManager);
         viewPager.setAdapter(pagerAdapter);
 
+
     }
 
     @Override
