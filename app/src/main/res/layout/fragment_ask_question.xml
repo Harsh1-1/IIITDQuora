@@ -6,15 +6,15 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <LinearLayout
-        android:orientation="vertical"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ScrollView
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/QuestionScroller">
+            android:layout_margin="8dp">
 
             <EditText
                 android:layout_width="match_parent"
@@ -25,12 +25,6 @@
                 android:hint="@string/enter_your_question_here"
                 android:scrollbars="vertical"
                 android:maxLength="254" />
-        </ScrollView>
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/QuestionDescriptionScroller">
 
             <EditText
                 android:layout_width="match_parent"
@@ -41,16 +35,17 @@
                 android:hint="@string/enter_question_description_here"
                 android:scrollbars="vertical"
                 android:maxLength="254" />
-        </ScrollView>
 
-        <Button
-            android:text="@string/ask"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/AskButton"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:background="@color/colorPrimary"
-            android:textColor="@android:color/background_light"
-            android:layout_gravity="center_horizontal" />
-    </LinearLayout>
+            <Button
+                android:text="@string/ask"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/AskButton"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:background="@color/colorPrimary"
+                android:textColor="@android:color/background_light"
+                android:layout_gravity="center_horizontal" />
+        </LinearLayout>
+    </ScrollView>
+
 </FrameLayout>
