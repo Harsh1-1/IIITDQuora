@@ -1,10 +1,12 @@
 package com.example.harsh.iiitdquora;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v4.view.*;
@@ -29,7 +31,7 @@ public class HomeActivity extends AppCompatActivity {
         setSupportActionBar(myToolbar);
         fragmentManager=getSupportFragmentManager();
         viewPager = (ViewPager) findViewById(R.id.pager);
-        pagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
+        pagerAdapter = new ScreenSlidePagerAdapter(fragmentManager);
         viewPager.setAdapter(pagerAdapter);
 
     }
@@ -90,6 +92,21 @@ public class HomeActivity extends AppCompatActivity {
     }
 
 
+    public void setFocusOfButtons(int buttonID){
+        int id[] = new int[3];
+        id[0] = R.id.feedButton;
+        id[1] = R.id.AnsweredButton;
+        id[2] = R.id.AskedButton;
+        for(int i = 0; i < id.length; i++){
+            if(id[i] == buttonID){
+                ((Button)findViewById(i)).setTextColor(0xFFFFFF);
+            }
+            else{
+                ((Button)findViewById(i)).setTextColor(0XAAAAAA);
+            }
+        }
+    }
+
     private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
         public ScreenSlidePagerAdapter(FragmentManager fm) {
             super(fm);
@@ -101,12 +118,15 @@ public class HomeActivity extends AppCompatActivity {
             switch (position){
                 case 0:
                     retFragment = FeedFragment.newInstance();
+                    setFocusOfButtons(R.id.feedButton);
                     break;
                 case 1:
                     retFragment = AskedFragment.newInstance();
+                    setFocusOfButtons(R.id.AskedButton);
                     break;
                 case 2:
                     retFragment = AnswerFragment.newInstance();
+                    setFocusOfButtons(R.id.AnsweredButton);
                     break;
             }
             return retFragment;
