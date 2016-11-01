@@ -2,7 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.harsh.iiitdquora.UserProfileFragment">
+    tools:context="com.example.harsh.iiitdquora.UserProfileFragment"
+    android:background="@android:color/background_light">
 
     <TableLayout
         android:layout_width="match_parent"
