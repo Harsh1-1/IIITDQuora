@@ -1,5 +1,6 @@
 package com.example.harsh.iiitdquora;
 
+import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
@@ -9,6 +10,7 @@ import android.os.Bundle;
 public class IIITDQuoraActivity extends AppCompatActivity {
 
     private static int SPLASH_TIME = 3000;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
