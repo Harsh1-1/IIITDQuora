@@ -7,7 +7,6 @@
     <!-- TODO: Update blank fragment layout -->
 
     <TextView
-        android:text="In Asked Fragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView2" />
