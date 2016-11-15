@@ -2,19 +2,24 @@ package com.example.harsh.iiitdquora;
 
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 
 /**
@@ -74,12 +79,30 @@ public class AskQuestionFragment extends Fragment {
                 startActivityForResult(intent, RESULT_GET_IMAGE);
             }
         });
-
-        Button askQuestionButton = (Button)view.findViewById(R.id.AskButton);
-        //askQuestionButton.setOnClickListener();
         return view;
     }
 
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        final View view = getView();
+        Button askQuestionButton = (Button)view.findViewById(R.id.AskButton);
+        askQuestionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText questionText = (EditText) view.findViewById(R.id.QuestionAskEditText);
+                EditText descText = (EditText) view.findViewById(R.id.QuestionDescEditText);
+                if(questionText.getText().toString() == null){
+                    Toast.makeText(getContext(), "Question Text cannot be null", Toast.LENGTH_SHORT);
+                }else{
+                    QuestionBackgroundTask questionBackgroundTask = new QuestionBackgroundTask(getContext());
+                    questionBackgroundTask.execute(SignInActivity.user.getEmailId(),
+                            questionText.getText().toString(), descText.getText().toString());
+                }
+            }
+        });
+    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
