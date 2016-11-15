@@ -75,6 +75,8 @@ public class AskQuestionFragment extends Fragment {
             }
         });
 
+        Button askQuestionButton = (Button)view.findViewById(R.id.AskButton);
+        //askQuestionButton.setOnClickListener();
         return view;
     }
 
