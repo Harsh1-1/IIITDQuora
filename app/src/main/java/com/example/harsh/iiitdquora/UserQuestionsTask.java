@@ -2,6 +2,7 @@ package com.example.harsh.iiitdquora;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -91,33 +92,44 @@ public class UserQuestionsTask extends AsyncTask <String,String,String>{
         String[] server_response = result.split("@@@");
         result=server_response[1];
 
-        try {
-            JSONObject jsonObject = new JSONObject(result);
-            JSONArray jsonArray = jsonObject.getJSONArray("server_response");
-            int count = 0;
-            int questionid;
-            String description,createdby,createdon,questiontext;
-            ArrayList<Question> questionArrayList = new ArrayList<>();
-            while (count<jsonArray.length())
-            {
-                JSONObject JO = jsonArray.getJSONObject(count);
-                questionid = JO.getInt("QuestionID");
-                description = JO.getString("Description");
-                createdby = JO.getString("Createdby");
-                createdon = JO.getString("Createdon");
-                questiontext = JO.getString("Questiontext");
-                Question question = new Question(questionid,description,createdby,createdon,questiontext);
-                questionArrayList.add(question);
-                count++;
+        if(result.equals("No Questions Asked"))
+        {
+            Toast.makeText(ctx,"You did not ask any questions yet!!",Toast.LENGTH_LONG).show();
+        }
+        else if(result.equals("Failed to fetch user questions"))
+        {
+            Toast.makeText(ctx,"Failed to fetch your questions",Toast.LENGTH_SHORT).show();
+        }
+        else
+        {
+            try {
+                JSONObject jsonObject = new JSONObject(result);
+                JSONArray jsonArray = jsonObject.getJSONArray("server_response");
+                int count = 0;
+                int questionid;
+                String description,createdby,createdon,questiontext;
+                ArrayList<Question> questionArrayList = new ArrayList<>();
+                while (count<jsonArray.length())
+                {
+                    JSONObject JO = jsonArray.getJSONObject(count);
+                    questionid = JO.getInt("QuestionID");
+                    description = JO.getString("Description");
+                    createdby = JO.getString("Createdby");
+                    createdon = JO.getString("Createdon");
+                    questiontext = JO.getString("Questiontext");
+                    Question question = new Question(questionid,description,createdby,createdon,questiontext);
+                    questionArrayList.add(question);
+                    count++;
+                }
+                ((HomeActivity)ctx).updateAsked(questionArrayList);
             }
-            ((HomeActivity)ctx).updateAsked(questionArrayList);
 
+            catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
 
 
-        catch (JSONException e) {
-            e.printStackTrace();
-        }
 
     }
 }
