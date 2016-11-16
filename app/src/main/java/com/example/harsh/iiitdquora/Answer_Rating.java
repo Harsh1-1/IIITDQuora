@@ -8,10 +8,20 @@ public class Answer_Rating {
 
     private int answer_id;
     private String user;
+    private int rating;
 
-    public Answer_Rating(int answer_id, String user) {
+    public Answer_Rating(int answer_id, String user,int rating) {
         this.answer_id = answer_id;
         this.user = user;
+        this.rating = rating;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
     }
 
     public int getAnswer_id() {
