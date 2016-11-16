@@ -29,9 +29,9 @@ public class HomeActivity extends AppCompatActivity {
     private PagerAdapter pagerAdapter;
     FragmentManager fragmentManager;
 
-    //private Fragment askedFragment = AskedFragment.newInstance();
-    //private Fragment feedFragment = FeedFragment.newInstance();
-    //private Fragment answerFragment = AnswerFragment.newInstance();
+    private Fragment askedFragment;// = AskedFragment.newInstance();
+    private Fragment feedFragment;// = FeedFragment.newInstance();
+    private Fragment answerFragment;// = AnswerFragment.newInstance();
 
     //ArrayList<Question> askedQuestionArrayList;
 
@@ -78,9 +78,16 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 setFocusOfButtons(R.id.AskedButton);
-                //FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                //fragmentTransaction.replace(R.id.mainLayout, askedFragment);
-                //fragmentTransaction.commit();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                if(fragmentManager.findFragmentById(askedFragment.getId()) == null) {
+                    fragmentTransaction.replace(R.id.mainLayout, askedFragment);
+                }else{
+                    for(Fragment fragment : fragmentManager.getFragments()){
+                        fragmentTransaction.hide(fragment);
+                    }
+                    fragmentTransaction.show(askedFragment);
+                }
+                fragmentTransaction.commit();
                 UserQuestionsTask task = new UserQuestionsTask(context);
                 task.execute(SignInActivity.user.getEmailId());
             }
@@ -171,16 +178,16 @@ public class HomeActivity extends AppCompatActivity {
         @Override
         public Fragment getItem(int position) {
             //Fragment retFragment = feedFragment;
-            Fragment retFragment = FeedFragment.newInstance();
+            Fragment retFragment = feedFragment;
             switch (position){
                 case 0:
-                    retFragment = FeedFragment.newInstance();
+                    retFragment = feedFragment;
                     break;
                 case 1:
-                    retFragment = AskedFragment.newInstance();
+                    retFragment = askedFragment;
                     break;
                 case 2:
-                    retFragment = AnswerFragment.newInstance();
+                    retFragment = answerFragment;
                     break;
             }
             return retFragment;
@@ -199,7 +206,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void updateAsked(ArrayList<Question> questions){
-        //((AskedFragment)askedFragment).update(questions);
+        ((AskedFragment)askedFragment).update(questions);
         //askedAdapter.setDataset(questions);
     }
 
