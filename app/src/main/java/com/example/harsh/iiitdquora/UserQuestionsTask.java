@@ -110,7 +110,7 @@ public class UserQuestionsTask extends AsyncTask <String,String,String>{
                 Question question = new Question(questionid,description,createdby,date,questiontext);
                 questionArrayList.add(question);
             }
-
+            ((HomeActivity)ctx).updateAsked(questionArrayList);
 
         }
 
