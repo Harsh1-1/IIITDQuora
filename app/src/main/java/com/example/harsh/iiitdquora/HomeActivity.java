@@ -29,9 +29,9 @@ public class HomeActivity extends AppCompatActivity {
     private PagerAdapter pagerAdapter;
     FragmentManager fragmentManager;
 
-    private Fragment askedFragment;// = AskedFragment.newInstance();
-    private Fragment feedFragment;// = FeedFragment.newInstance();
-    private Fragment answerFragment;// = AnswerFragment.newInstance();
+    private Fragment askedFragment = AskedFragment.newInstance();
+    private Fragment feedFragment = FeedFragment.newInstance();
+    private Fragment answerFragment = AnswerFragment.newInstance();
 
     //ArrayList<Question> askedQuestionArrayList;
 
@@ -77,7 +77,7 @@ public class HomeActivity extends AppCompatActivity {
         askedButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setFocusOfButtons(R.id.AskedButton);
+                /*setFocusOfButtons(R.id.AskedButton);
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 if(fragmentManager.findFragmentById(askedFragment.getId()) == null) {
                     fragmentTransaction.replace(R.id.mainLayout, askedFragment);
@@ -87,7 +87,8 @@ public class HomeActivity extends AppCompatActivity {
                     }
                     fragmentTransaction.show(askedFragment);
                 }
-                fragmentTransaction.commit();
+                fragmentTransaction.commit();*/
+                viewPager.setCurrentItem(1);
                 UserQuestionsTask task = new UserQuestionsTask(context);
                 task.execute(SignInActivity.user.getEmailId());
             }
