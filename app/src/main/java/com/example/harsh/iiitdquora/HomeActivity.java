@@ -28,6 +28,9 @@ public class HomeActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private PagerAdapter pagerAdapter;
     FragmentManager fragmentManager;
+    private String KEY_FEED_FRAGMENT = "feedFragment";
+    private String KEY_ASKED_FRAGMENT = "askedFragment";
+    private String KEY_ANSWER_FRAGMENT = "answerFragment";
 
     private Fragment askedFragment = AskedFragment.newInstance();
     private Fragment feedFragment = FeedFragment.newInstance();
@@ -49,10 +52,8 @@ public class HomeActivity extends AppCompatActivity {
         viewPager = (ViewPager) findViewById(R.id.pager);
         pagerAdapter = new ScreenSlidePagerAdapter(fragmentManager);
         viewPager.setAdapter(pagerAdapter);
-        if(savedInstanceState == null) {
-            viewPager.setCurrentItem(0);
-            setFocusOfButtons(R.id.feedButton);
-        }
+
+
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
             @Override
@@ -83,6 +84,15 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+
+        if(savedInstanceState == null) {
+            viewPager.setCurrentItem(0);
+            setFocusOfButtons(R.id.feedButton);
+        }else {
+            feedFragment = fragmentManager.getFragment(savedInstanceState, KEY_FEED_FRAGMENT);
+            askedFragment = fragmentManager.getFragment(savedInstanceState, KEY_ASKED_FRAGMENT);
+            answerFragment = fragmentManager.getFragment(savedInstanceState, KEY_ANSWER_FRAGMENT);
+        }
     }
 
     @Override
@@ -205,6 +215,8 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        
+        fragmentManager.putFragment(outState, KEY_FEED_FRAGMENT,feedFragment);
+        fragmentManager.putFragment(outState, KEY_ANSWER_FRAGMENT, answerFragment);
+        fragmentManager.putFragment(outState, KEY_ASKED_FRAGMENT, askedFragment);
     }
 }

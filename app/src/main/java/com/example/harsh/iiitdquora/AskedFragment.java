@@ -65,6 +65,7 @@ public class AskedFragment extends Fragment {
     QuestionListAdapter askedAdapter;
     RecyclerView askedRecyclerView;
     RecyclerView.LayoutManager askedRecyclerViewLayoutManager;
+    ArrayList<Question> dataset;
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -75,10 +76,20 @@ public class AskedFragment extends Fragment {
         askedRecyclerView.setLayoutManager(askedRecyclerViewLayoutManager);
         askedAdapter = new QuestionListAdapter(getActivity());
         askedRecyclerView.setAdapter(askedAdapter);
+        if(savedInstanceState != null){
+            update((ArrayList<Question>) savedInstanceState.getSerializable("dataset"));
+        }
 
     }
 
     public void update(ArrayList<Question> dataset){
+        this.dataset = dataset;
         askedAdapter.setDataset(dataset);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putSerializable("dataset", dataset);
     }
 }
