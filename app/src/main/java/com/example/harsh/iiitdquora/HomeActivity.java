@@ -27,7 +27,7 @@ public class HomeActivity extends AppCompatActivity {
     private PagerAdapter pagerAdapter;
     FragmentManager fragmentManager;
 
-    ArrayList<Question> askedQuestionArrayList;
+    //ArrayList<Question> askedQuestionArrayList;
     private QuestionListAdapter askedAdapter;
     private RecyclerView askedRecyclerView;
     private RecyclerView.LayoutManager askedRecyclerViewLayoutManager;
@@ -69,7 +69,7 @@ public class HomeActivity extends AppCompatActivity {
         askedRecyclerView = (RecyclerView)findViewById(R.id.AskedRecyclerView);
         askedRecyclerViewLayoutManager = new LinearLayoutManager(this);
         askedRecyclerView.setLayoutManager(askedRecyclerViewLayoutManager);
-        askedAdapter = new QuestionListAdapter(this, askedQuestionArrayList);
+        askedAdapter = new QuestionListAdapter(this);
         askedRecyclerView.setAdapter(askedAdapter);
 
         askedButton.setOnClickListener(new View.OnClickListener() {

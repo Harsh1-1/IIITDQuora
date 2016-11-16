@@ -16,14 +16,14 @@ import java.util.ArrayList;
 public class QuestionListAdapter extends RecyclerView.Adapter<QuestionListAdapter.MyViewHolder>{
 
     Context context;
-    ArrayList<Question> dataset;
+    ArrayList<Question> dataset = null;
 
     public void setDataset(ArrayList<Question> dataset){
         this.dataset = dataset;
         notifyDataSetChanged();
     }
 
-    public QuestionListAdapter(Context context, ArrayList<Question> dataset){
+    public QuestionListAdapter(Context context){
         this.context = context;
         this.dataset = dataset;
     }
@@ -44,6 +44,7 @@ public class QuestionListAdapter extends RecyclerView.Adapter<QuestionListAdapte
 
     @Override
     public int getItemCount() {
+        if(dataset == null) return 0;
         return dataset.size();
     }
 
