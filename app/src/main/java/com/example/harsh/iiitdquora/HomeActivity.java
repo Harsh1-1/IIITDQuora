@@ -15,11 +15,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 
+import java.util.ArrayList;
+
 public class HomeActivity extends AppCompatActivity {
 
     private static final int NUM_PAGES = 3;
     private ViewPager viewPager;
     private PagerAdapter pagerAdapter;
+    ArrayList<Question> askedQuestionArrayList;
     FragmentManager fragmentManager;
 
     @Override

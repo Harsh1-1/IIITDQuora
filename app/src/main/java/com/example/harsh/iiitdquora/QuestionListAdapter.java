@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 /**
  * Created by Abhi on 15-11-2016.
  */
@@ -14,9 +16,11 @@ import android.widget.TextView;
 public class QuestionListAdapter extends RecyclerView.Adapter<QuestionListAdapter.MyViewHolder>{
 
     Context context;
+    ArrayList<Question> dataset;
 
-    public QuestionListAdapter(Context context){
+    public QuestionListAdapter(Context context, ArrayList<Question> dataset){
         this.context = context;
+        this.dataset = dataset;
     }
 
     @Override
@@ -27,13 +31,15 @@ public class QuestionListAdapter extends RecyclerView.Adapter<QuestionListAdapte
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        //TODO : Set text of fields and set onClickListener on View
+        Question question = dataset.get(position);
+        holder.questionTitleView.setText(question.getText());
+        holder.questionDescView.setText(question.getDescription());
+        holder.itemView.setOnClickListener(new QuestionListOnClickListener(dataset.get(position).getId(), context));
     }
 
     @Override
     public int getItemCount() {
-        //TODO : return correct count
-        return 0;
+        return dataset.size();
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
@@ -45,4 +51,5 @@ public class QuestionListAdapter extends RecyclerView.Adapter<QuestionListAdapte
             questionDescView = (TextView)itemView.findViewById(R.id.questionLayout_descTextView);
         }
     }
+
 }
