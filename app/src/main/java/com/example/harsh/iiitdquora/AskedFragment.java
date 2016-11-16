@@ -2,10 +2,15 @@ package com.example.harsh.iiitdquora;
 
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import java.util.ArrayList;
 
 
 /**
@@ -57,4 +62,23 @@ public class AskedFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_asked, container, false);
     }
 
+    QuestionListAdapter askedAdapter;
+    RecyclerView askedRecyclerView;
+    RecyclerView.LayoutManager askedRecyclerViewLayoutManager;
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        askedRecyclerView = (RecyclerView)getView().findViewById(R.id.AskedRecyclerView);
+        askedRecyclerViewLayoutManager = new LinearLayoutManager(getActivity());
+        askedRecyclerView.setLayoutManager(askedRecyclerViewLayoutManager);
+        askedAdapter = new QuestionListAdapter(getActivity());
+        askedRecyclerView.setAdapter(askedAdapter);
+
+    }
+
+    public void update(ArrayList<Question> dataset){
+        askedAdapter.setDataset(dataset);
+    }
 }

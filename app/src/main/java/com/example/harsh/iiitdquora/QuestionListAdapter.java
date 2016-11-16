@@ -25,7 +25,6 @@ public class QuestionListAdapter extends RecyclerView.Adapter<QuestionListAdapte
 
     public QuestionListAdapter(Context context){
         this.context = context;
-        this.dataset = dataset;
     }
 
     @Override

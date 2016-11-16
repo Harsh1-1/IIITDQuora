@@ -1,5 +1,6 @@
 package com.example.harsh.iiitdquora;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.v4.app.Fragment;
@@ -13,6 +14,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -27,16 +29,18 @@ public class HomeActivity extends AppCompatActivity {
     private PagerAdapter pagerAdapter;
     FragmentManager fragmentManager;
 
+    //private Fragment askedFragment = AskedFragment.newInstance();
+    //private Fragment feedFragment = FeedFragment.newInstance();
+    //private Fragment answerFragment = AnswerFragment.newInstance();
+
     //ArrayList<Question> askedQuestionArrayList;
-    private QuestionListAdapter askedAdapter;
-    private RecyclerView askedRecyclerView;
-    private RecyclerView.LayoutManager askedRecyclerViewLayoutManager;
 
 
     private Button askedButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.e("f", "Problem occured after this point");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
@@ -66,17 +70,18 @@ public class HomeActivity extends AppCompatActivity {
             @Override public void onPageScrollStateChanged(int state) {}
         });
 
-        askedRecyclerView = (RecyclerView)findViewById(R.id.AskedRecyclerView);
-        askedRecyclerViewLayoutManager = new LinearLayoutManager(this);
-        askedRecyclerView.setLayoutManager(askedRecyclerViewLayoutManager);
-        askedAdapter = new QuestionListAdapter(this);
-        askedRecyclerView.setAdapter(askedAdapter);
 
+
+        final Context context = this;
         askedButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 setFocusOfButtons(R.id.AskedButton);
-
+                //FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                //fragmentTransaction.replace(R.id.mainLayout, askedFragment);
+                //fragmentTransaction.commit();
+                UserQuestionsTask task = new UserQuestionsTask(context);
+                task.execute(SignInActivity.user.getEmailId());
             }
         });
 
@@ -164,6 +169,7 @@ public class HomeActivity extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int position) {
+            //Fragment retFragment = feedFragment;
             Fragment retFragment = FeedFragment.newInstance();
             switch (position){
                 case 0:
@@ -192,7 +198,8 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void updateAsked(ArrayList<Question> questions){
-        askedAdapter.setDataset(questions);
+        //((AskedFragment)askedFragment).update(questions);
+        //askedAdapter.setDataset(questions);
     }
 
 }
