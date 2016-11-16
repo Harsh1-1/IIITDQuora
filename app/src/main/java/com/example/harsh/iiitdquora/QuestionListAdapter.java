@@ -2,6 +2,7 @@ package com.example.harsh.iiitdquora;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,7 @@ public class QuestionListAdapter extends RecyclerView.Adapter<QuestionListAdapte
     public void setDataset(ArrayList<Question> dataset){
         this.dataset = dataset;
         notifyDataSetChanged();
+        Log.d("hhh", dataset.toString());
     }
 
     public QuestionListAdapter(Context context){

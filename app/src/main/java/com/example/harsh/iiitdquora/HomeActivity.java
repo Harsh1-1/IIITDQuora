@@ -32,7 +32,7 @@ public class HomeActivity extends AppCompatActivity {
     private Fragment askedFragment = AskedFragment.newInstance();
     private Fragment feedFragment = FeedFragment.newInstance();
     private Fragment answerFragment = AnswerFragment.newInstance();
-
+    private Context context = this;
     //ArrayList<Question> askedQuestionArrayList;
 
 
@@ -71,23 +71,10 @@ public class HomeActivity extends AppCompatActivity {
         });
 
 
-
-        final Context context = this;
         askedButton = (Button)(findViewById(R.id.AskedButton));
         askedButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*setFocusOfButtons(R.id.AskedButton);
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                if(fragmentManager.findFragmentById(askedFragment.getId()) == null) {
-                    fragmentTransaction.replace(R.id.mainLayout, askedFragment);
-                }else{
-                    for(Fragment fragment : fragmentManager.getFragments()){
-                        fragmentTransaction.hide(fragment);
-                    }
-                    fragmentTransaction.show(askedFragment);
-                }
-                fragmentTransaction.commit();*/
                 viewPager.setCurrentItem(1);
                 UserQuestionsTask task = new UserQuestionsTask(context);
                 task.execute(SignInActivity.user.getEmailId());
@@ -186,6 +173,8 @@ public class HomeActivity extends AppCompatActivity {
                     break;
                 case 1:
                     retFragment = askedFragment;
+                    UserQuestionsTask task = new UserQuestionsTask(context);
+                    task.execute(SignInActivity.user.getEmailId());
                     break;
                 case 2:
                     retFragment = answerFragment;
