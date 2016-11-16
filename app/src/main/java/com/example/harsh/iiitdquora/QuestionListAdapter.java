@@ -1,6 +1,8 @@
 package com.example.harsh.iiitdquora;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -11,18 +13,26 @@ import android.widget.TextView;
 
 public class QuestionListAdapter extends RecyclerView.Adapter<QuestionListAdapter.MyViewHolder>{
 
+    Context context;
+
+    public QuestionListAdapter(Context context){
+        this.context = context;
+    }
+
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return null;
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.question_layout,parent,false);
+        return new MyViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-
+        //TODO : Set text of fields and set onClickListener on View
     }
 
     @Override
     public int getItemCount() {
+        //TODO : return correct count
         return 0;
     }
 
