@@ -1,6 +1,7 @@
 package com.example.harsh.iiitdquora;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 
 /**
@@ -19,6 +20,12 @@ public class QuestionListOnClickListener implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
+
+        Intent intent = new Intent(context,AnswerActivity.class);
+        intent.putExtra("questionID",questionID);
+        context.startActivity(intent);
+
+
         //TODO: Launch an activity with the given QuestionID
     }
 }
