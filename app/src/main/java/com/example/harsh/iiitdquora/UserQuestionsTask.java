@@ -108,6 +108,7 @@ public class UserQuestionsTask extends AsyncTask <String,String,String>{
                 questiontext = JO.getString("Questiontext");
                 Question question = new Question(questionid,description,createdby,createdon,questiontext);
                 questionArrayList.add(question);
+                count++;
             }
             ((HomeActivity)ctx).updateAsked(questionArrayList);
 
