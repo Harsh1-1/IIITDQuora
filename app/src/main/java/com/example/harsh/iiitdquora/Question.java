@@ -14,12 +14,12 @@ public class Question {
     private int id;
     private String description;
     private String created_by;
-    private Date created_on;
+    private String created_on;
     private String text;
     private Bitmap image;
     private ArrayList<Categories>categories;
 
-    public Question(int id, String description, String created_by, Date created_on, String text, Bitmap image, ArrayList<Answer> answers) {
+    public Question(int id, String description, String created_by, String created_on, String text, Bitmap image, ArrayList<Answer> answers) {
         this.id = id;
         this.description = description;
         this.created_by = created_by;
@@ -29,7 +29,7 @@ public class Question {
         this.answers = answers;
     }
 
-    public Question(int id, String description, String created_by, Date created_on, String text)
+    public Question(int id, String description, String created_by, String created_on, String text)
     {
         this.id = id;
         this.description = description;
@@ -91,11 +91,11 @@ public class Question {
         this.created_by = created_by;
     }
 
-    public Date getCreated_on() {
+    public String getCreated_on() {
         return created_on;
     }
 
-    public void setCreated_on(Date created_on) {
+    public void setCreated_on(String created_on) {
         this.created_on = created_on;
     }
 

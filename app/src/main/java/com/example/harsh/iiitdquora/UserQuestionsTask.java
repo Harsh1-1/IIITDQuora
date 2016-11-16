@@ -105,9 +105,8 @@ public class UserQuestionsTask extends AsyncTask <String,String,String>{
                 description = JO.getString("Description");
                 createdby = JO.getString("Createdby");
                 createdon = JO.getString("Createdon");
-                Date date = new Date(createdon);
                 questiontext = JO.getString("Questiontext");
-                Question question = new Question(questionid,description,createdby,date,questiontext);
+                Question question = new Question(questionid,description,createdby,createdon,questiontext);
                 questionArrayList.add(question);
             }
             ((HomeActivity)ctx).updateAsked(questionArrayList);
