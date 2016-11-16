@@ -49,8 +49,10 @@ public class HomeActivity extends AppCompatActivity {
         viewPager = (ViewPager) findViewById(R.id.pager);
         pagerAdapter = new ScreenSlidePagerAdapter(fragmentManager);
         viewPager.setAdapter(pagerAdapter);
-        viewPager.setCurrentItem(0);
-        setFocusOfButtons(R.id.feedButton);
+        if(savedInstanceState == null) {
+            viewPager.setCurrentItem(0);
+            setFocusOfButtons(R.id.feedButton);
+        }
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
             @Override
@@ -200,4 +202,9 @@ public class HomeActivity extends AppCompatActivity {
         //askedAdapter.setDataset(questions);
     }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.
+    }
 }
