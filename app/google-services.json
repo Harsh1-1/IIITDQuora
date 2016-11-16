@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "905491214757",
+    "project_id": "iiitdquora"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:905491214757:android:fc55da36699a2600",
+        "android_client_info": {
+          "package_name": "com.example.harsh.iiitdquora"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "905491214757-4mtr1j8pm9svmnljtnhp3g7kh8gbfs70.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.harsh.iiitdquora",
+            "certificate_hash": "758864230FBC7B9C51396C5A9587AE3C85E55080"
+          }
+        },
+        {
+          "client_id": "905491214757-56o5tn6k476ikpo07b78ov7qh8v0mha7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCA_7opiUoJF5fgt_HoZ9O9LWvbQJesg80"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
