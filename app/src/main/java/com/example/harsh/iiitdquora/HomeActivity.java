@@ -9,10 +9,13 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v4.view.*;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 
 import java.util.ArrayList;
@@ -22,8 +25,15 @@ public class HomeActivity extends AppCompatActivity {
     private static final int NUM_PAGES = 3;
     private ViewPager viewPager;
     private PagerAdapter pagerAdapter;
-    ArrayList<Question> askedQuestionArrayList;
     FragmentManager fragmentManager;
+
+    ArrayList<Question> askedQuestionArrayList;
+    private QuestionListAdapter askedAdapter;
+    private RecyclerView askedRecyclerView;
+    private RecyclerView.LayoutManager askedRecyclerViewLayoutManager;
+
+
+    private Button askedButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +65,21 @@ public class HomeActivity extends AppCompatActivity {
             }
             @Override public void onPageScrollStateChanged(int state) {}
         });
+
+        askedRecyclerView = (RecyclerView)findViewById(R.id.AskedRecyclerView);
+        askedRecyclerViewLayoutManager = new LinearLayoutManager(this);
+        askedRecyclerView.setLayoutManager(askedRecyclerViewLayoutManager);
+        askedAdapter = new QuestionListAdapter(this, askedQuestionArrayList);
+        askedRecyclerView.setAdapter(askedAdapter);
+
+        askedButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setFocusOfButtons(R.id.AskedButton);
+
+            }
+        });
+
     }
 
     @Override
@@ -164,6 +189,10 @@ public class HomeActivity extends AppCompatActivity {
             return NUM_PAGES;
         }
 
+    }
+
+    public void updateAsked(ArrayList<Question> questions){
+        askedAdapter.setDataset(questions);
     }
 
 }
