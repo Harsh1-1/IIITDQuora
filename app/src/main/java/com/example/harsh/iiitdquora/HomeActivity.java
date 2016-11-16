@@ -73,6 +73,7 @@ public class HomeActivity extends AppCompatActivity {
 
 
         final Context context = this;
+        askedButton = (Button)(findViewById(R.id.AskedButton));
         askedButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
