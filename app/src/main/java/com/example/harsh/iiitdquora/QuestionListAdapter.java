@@ -18,6 +18,11 @@ public class QuestionListAdapter extends RecyclerView.Adapter<QuestionListAdapte
     Context context;
     ArrayList<Question> dataset;
 
+    public void setDataset(ArrayList<Question> dataset){
+        this.dataset = dataset;
+        notifyDataSetChanged();
+    }
+
     public QuestionListAdapter(Context context, ArrayList<Question> dataset){
         this.context = context;
         this.dataset = dataset;
