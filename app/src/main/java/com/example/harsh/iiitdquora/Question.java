@@ -29,6 +29,15 @@ public class Question {
         this.answers = answers;
     }
 
+    public Question(int id, String description, String created_by, Date created_on, String text)
+    {
+        this.id = id;
+        this.description = description;
+        this.created_by = created_by;
+        this.created_on = created_on;
+        this.text = text;
+    }
+
 
     public ArrayList<Categories> getCategories() {
         return categories;
