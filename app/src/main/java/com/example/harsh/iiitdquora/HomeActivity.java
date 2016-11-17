@@ -248,7 +248,6 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-
         fragmentManager.putFragment(outState, KEY_FEED_FRAGMENT,feedFragment);
         fragmentManager.putFragment(outState, KEY_ANSWER_FRAGMENT, answerFragment);
         fragmentManager.putFragment(outState, KEY_ASKED_FRAGMENT, askedFragment);
