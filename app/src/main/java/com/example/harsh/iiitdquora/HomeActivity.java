@@ -38,7 +38,6 @@ public class HomeActivity extends AppCompatActivity {
     private Context context = this;
     //ArrayList<Question> askedQuestionArrayList;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.e("f", "Problem occured after this point");
@@ -102,14 +101,23 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         if(savedInstanceState == null) {
-            viewPager.setCurrentItem(2);
-            viewPager.setCurrentItem(1);
+            //viewPager.setCurrentItem(2);
+            //viewPager.setCurrentItem(1);
             viewPager.setCurrentItem(0);
             setFocusOfButtons(R.id.feedButton);
         }else {
             feedFragment = fragmentManager.getFragment(savedInstanceState, KEY_FEED_FRAGMENT);
             askedFragment = fragmentManager.getFragment(savedInstanceState, KEY_ASKED_FRAGMENT);
             answerFragment = fragmentManager.getFragment(savedInstanceState, KEY_ANSWER_FRAGMENT);
+        }
+        int cur = viewPager.getCurrentItem();
+        switch (cur){
+            case 0 : setFocusOfButtons(R.id.feedButton);
+                break;
+            case 1 : setFocusOfButtons(R.id.AskedButton);
+                break;
+            case 2 : setFocusOfButtons(R.id.activityHomeAnswerButton);
+                break;
         }
     }
 
