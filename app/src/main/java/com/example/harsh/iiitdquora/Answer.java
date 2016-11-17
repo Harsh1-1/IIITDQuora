@@ -10,13 +10,13 @@ import java.util.Date;
 public class Answer {
 
     private String created_by;
-    private Date date;
+    private String date;
     private String text;
     private int question_id;
     private int answer_id;
     private ArrayList<Answer_Rating>answer_ratings;
 
-    public Answer(String created_by, Date date, String text, int question_id, int answer_id) {
+    public Answer(String created_by, String date, String text, int question_id, int answer_id) {
         this.created_by = created_by;
         this.date = date;
         this.text = text;
@@ -33,11 +33,11 @@ public class Answer {
         this.created_by = created_by;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

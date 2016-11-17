@@ -31,9 +31,7 @@ public class AnswerBackgroundTask extends AsyncTask<String,String,String> {
 
         String answer = strings[0];
         String questionID = strings[1];
-        String email = SignInActivity.user.getUsername();
-
-
+        String email = SignInActivity.user.getEmailId();
 
 
 
