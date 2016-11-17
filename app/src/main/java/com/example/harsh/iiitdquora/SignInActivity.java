@@ -78,6 +78,10 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
         signinButton = (SignInButton) findViewById(R.id.sign_in_button);
         signinButton.setSize(SignInButton.SIZE_STANDARD);
 
+        //just temporary login credentials
+        inputEmail.setText("test1@iiitd.ac.in");
+        inputPassword.setText("abc123");
+
         signinButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view)
