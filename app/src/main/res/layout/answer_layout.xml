@@ -8,10 +8,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/answerLayout_answerText"
-        android:textSize="24sp"
+        android:textSize="18dp"
         android:textColor="@android:color/black"
         android:layout_marginRight="8dp"
         android:layout_marginLeft="8dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"/>
+
+
 
 
 </LinearLayout>

@@ -11,6 +11,10 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.harsh.iiitdquora.AnswerListActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,10 +22,13 @@
         android:id="@+id/QuestionText"
         android:layout_alignParentTop="true"
         android:maxLines = "255"
+        android:scrollHorizontally="true"
+        android:textColor="@android:color/black"
+        android:textStyle="normal|bold"
         android:scrollbars = "vertical"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"
-        android:textSize="18sp" />
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="8dp"
+        android:textSize="20dp" />
 
 
     <TextView
@@ -29,14 +36,21 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:id="@+id/Questiondesc"
-        android:layout_marginTop="34dp"
+        android:layout_marginTop="5dp"
         android:layout_below="@+id/QuestionText"
         android:layout_alignParentTop="true"
         android:maxLines = "255"
         android:scrollbars = "vertical"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="8dp"
         android:textSize="18sp" />
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+
 
 
 
@@ -45,10 +59,12 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/QuestionText"
         android:layout_alignStart="@+id/Questiondesc"
-        android:layout_marginTop="34dp"
+        android:layout_marginTop="5dp"
+        android:maxLines="255"
         android:id="@+id/userView"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="10dp" />
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp" />
+
 
     <ImageView
         android:layout_width="wrap_content"
@@ -59,24 +75,35 @@
         android:layout_marginStart="80dp"
         android:id="@+id/imageView" />
 
+        <Button
+            android:text="Add Answer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imageView"
+            android:layout_alignParentRight="true"
+            android:layout_marginStart="8dp"
+            android:layout_gravity="right"
+
+
+            android:id="@+id/addAnswer"
+            android:layout_marginTop="20dp"
+            android:textSize="10sp"
+            android:layout_marginEnd="20dp" />
+</LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"/>
+
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="20dp"
+
         android:layout_below="@+id/addAnswer"
         android:scrollbars="vertical"
         android:id="@+id/answerListRecyclerView"
-        android:layout_marginTop="15dp" />
+        android:layout_marginTop="10dp" />
 
-    <Button
-        android:text="Add Answer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/imageView"
-        android:layout_alignParentRight="true"
-        android:paddingTop="20dp"
-        android:layout_marginStart="13dp"
-        android:id="@+id/addAnswer"
-        android:layout_marginTop="20dp"
-        android:textSize="10sp" />
+    </LinearLayout>
 </RelativeLayout>
