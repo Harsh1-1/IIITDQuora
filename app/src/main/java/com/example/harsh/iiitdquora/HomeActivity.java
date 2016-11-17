@@ -50,6 +50,8 @@ public class HomeActivity extends AppCompatActivity {
         viewPager = (ViewPager) findViewById(R.id.pager);
         pagerAdapter = new ScreenSlidePagerAdapter(fragmentManager);
         viewPager.setAdapter(pagerAdapter);
+        viewPager.setOffscreenPageLimit(3);
+        //fragmentManager.beginTransaction().add(askedFragment, null).add(feedFragment, null).add(answerFragment,null).commit();
 
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -100,6 +102,8 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         if(savedInstanceState == null) {
+            viewPager.setCurrentItem(2);
+            viewPager.setCurrentItem(1);
             viewPager.setCurrentItem(0);
             setFocusOfButtons(R.id.feedButton);
         }else {
@@ -208,12 +212,12 @@ public class HomeActivity extends AppCompatActivity {
             }
             return retFragment;
         }
-
+/*
         @Override
         public int getItemPosition(Object object){
             return POSITION_NONE;
         }
-
+*/
         @Override
         public int getCount() {
             return NUM_PAGES;
@@ -236,6 +240,7 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
+
         fragmentManager.putFragment(outState, KEY_FEED_FRAGMENT,feedFragment);
         fragmentManager.putFragment(outState, KEY_ANSWER_FRAGMENT, answerFragment);
         fragmentManager.putFragment(outState, KEY_ASKED_FRAGMENT, askedFragment);
