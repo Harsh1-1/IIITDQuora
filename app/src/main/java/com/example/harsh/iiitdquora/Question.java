@@ -2,6 +2,7 @@ package com.example.harsh.iiitdquora;
 
 import android.graphics.Bitmap;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -9,7 +10,7 @@ import java.util.Date;
  * Created by Tushar on 15-11-2016.
  */
 
-public class Question {
+public class Question implements Serializable {
 
     private int id;
     private String description;
