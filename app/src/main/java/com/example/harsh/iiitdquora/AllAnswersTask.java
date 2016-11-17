@@ -29,6 +29,8 @@ public class AllAnswersTask extends AsyncTask<String,String,String> {
 
     Context ctx;
 
+    public AllAnswersTask(Context context){this.ctx = context;}
+
     @Override
     protected String doInBackground(String... params) {
 
@@ -112,7 +114,7 @@ public class AllAnswersTask extends AsyncTask<String,String,String> {
                     answerArrayList.add(answer);
                     count++;
                 }
-                //((HomeActivity)ctx).updateAsked(answerArrayList);
+                ((AnswerListActivity)ctx).update(answerArrayList);
             }
 
             catch (JSONException e) {

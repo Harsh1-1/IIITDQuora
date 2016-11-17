@@ -40,7 +40,7 @@ public class QuestionListAdapter extends RecyclerView.Adapter<QuestionListAdapte
         Question question = dataset.get(position);
         holder.questionTitleView.setText(question.getText());
         holder.questionDescView.setText(question.getDescription());
-        holder.itemView.setOnClickListener(new QuestionListOnClickListener(dataset.get(position).getId(), context));
+        holder.itemView.setOnClickListener(new QuestionListOnClickListener(dataset.get(position).getId(),dataset.get(position).getText(),dataset.get(position).getDescription(),dataset.get(position).getCreated_by(), context));
     }
 
     @Override

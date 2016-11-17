@@ -27,7 +27,8 @@
         <activity
             android:name=".SignUpActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".AnswerActivity"></activity>
+        <activity android:name=".AnswerActivity" />
+        <activity android:name=".AnswerListActivity"></activity>
     </application>
 
 </manifest>
