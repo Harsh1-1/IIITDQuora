@@ -2,10 +2,15 @@ package com.example.harsh.iiitdquora;
 
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import java.util.ArrayList;
 
 
 /**
@@ -55,6 +60,37 @@ public class AnswerFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_answer, container, false);
+    }
+
+    QuestionListAdapter answerAdapter;
+    RecyclerView answerRecyclerView;
+    RecyclerView.LayoutManager answerRecyclerViewLayoutManager;
+    ArrayList<Question> dataset;
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        answerRecyclerView = (RecyclerView)getView().findViewById(R.id.answerFragmentRecyclerView);
+        answerRecyclerViewLayoutManager = new LinearLayoutManager(getActivity());
+        answerRecyclerView.setLayoutManager(answerRecyclerViewLayoutManager);
+        answerAdapter = new QuestionListAdapter(getActivity());
+        answerRecyclerView.setAdapter(answerAdapter);
+        if(savedInstanceState != null){
+            update((ArrayList<Question>) savedInstanceState.getSerializable("dataset"));
+        }
+
+    }
+
+    public void update(ArrayList<Question> dataset){
+        this.dataset = dataset;
+        answerAdapter.setDataset(dataset);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putSerializable("dataset", dataset);
     }
 
 }

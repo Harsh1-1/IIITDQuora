@@ -22,7 +22,7 @@ public class QuestionListAdapter extends RecyclerView.Adapter<QuestionListAdapte
     public void setDataset(ArrayList<Question> dataset){
         this.dataset = dataset;
         notifyDataSetChanged();
-        Log.d("hhh", dataset.toString());
+        //Log.d("hhh", dataset.toString());
     }
 
     public QuestionListAdapter(Context context){

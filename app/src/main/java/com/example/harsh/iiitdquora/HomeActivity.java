@@ -39,8 +39,6 @@ public class HomeActivity extends AppCompatActivity {
     //ArrayList<Question> askedQuestionArrayList;
 
 
-    private Button askedButton;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.e("f", "Problem occured after this point");
@@ -66,15 +64,23 @@ public class HomeActivity extends AppCompatActivity {
                         setFocusOfButtons(R.id.AskedButton);
                         break;
                     case 2:
-                        setFocusOfButtons(R.id.AnsweredButton);
+                        setFocusOfButtons(R.id.activityHomeAnswerButton);
                         break;
                 }
             }
             @Override public void onPageScrollStateChanged(int state) {}
         });
 
+        Button feedButton = (Button)(findViewById(R.id.feedButton));
+        feedButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewPager.setCurrentItem(0);
+                //TODO: Call feed task
+            }
+        });
 
-        askedButton = (Button)(findViewById(R.id.AskedButton));
+        Button askedButton = (Button)(findViewById(R.id.AskedButton));
         askedButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,6 +90,14 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        Button answerButton = (Button)(findViewById(R.id.activityHomeAnswerButton));
+        answerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewPager.setCurrentItem(2);
+                //TODO: call answer task
+            }
+        });
 
         if(savedInstanceState == null) {
             viewPager.setCurrentItem(0);
@@ -158,7 +172,7 @@ public class HomeActivity extends AppCompatActivity {
     public void setFocusOfButtons(int buttonID){
         int id[] = new int[3];
         id[0] = R.id.feedButton;
-        id[1] = R.id.AnsweredButton;
+        id[1] = R.id.activityHomeAnswerButton;
         id[2] = R.id.AskedButton;
         for(int i = 0; i < id.length; i++){
             if(id[i] == buttonID){
@@ -209,7 +223,14 @@ public class HomeActivity extends AppCompatActivity {
 
     public void updateAsked(ArrayList<Question> questions){
         ((AskedFragment)askedFragment).update(questions);
-        //askedAdapter.setDataset(questions);
+    }
+
+    public void updateFeed(ArrayList<Question> questions){
+        ((FeedFragment)feedFragment).update(questions);
+    }
+
+    public void updateAnswer(ArrayList<Question> questions){
+        ((AnswerFragment)answerFragment).update(questions);
     }
 
     @Override
