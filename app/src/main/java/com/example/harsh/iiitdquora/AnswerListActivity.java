@@ -19,6 +19,8 @@ public class AnswerListActivity extends AppCompatActivity {
     RecyclerView.LayoutManager answerRecyclerViewLayoutManager;
     ArrayList<Answer> dataset;
 
+    private String id_st;
+
     private TextView QuestionText;
     private TextView QuestionCreatedby;
     private TextView QuestionDesc;
@@ -45,12 +47,10 @@ public class AnswerListActivity extends AppCompatActivity {
 
 
         final int id = getIntent().getIntExtra("questionID",0);
-        String id_st = Integer.toString(id);
+        id_st = Integer.toString(id);
         Log.d("Android :","Inside Answer ListActivity");
         Log.d("Android : ","QuestionID :"+id_st);
 
-        AllAnswersTask allAnswersTask = new AllAnswersTask(this);
-        allAnswersTask.execute(id_st);
 
         addAnswer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,6 +67,8 @@ public class AnswerListActivity extends AppCompatActivity {
     @Override
     public void onResume(){
         super.onResume();
+        AllAnswersTask allAnswersTask = new AllAnswersTask(this);
+        allAnswersTask.execute(id_st);
         answerListAdapter.setDataset(dataset);
         // put your code here...
 
