@@ -64,6 +64,16 @@ public class AnswerListActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onResume(){
+        super.onResume();
+        answerListAdapter.setDataset(dataset);
+        // put your code here...
+
+    }
+
+
+
     public void update(ArrayList<Answer> dataset){
         this.dataset = dataset;
         answerListAdapter.setDataset(dataset);
