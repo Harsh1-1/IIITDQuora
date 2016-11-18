@@ -13,6 +13,7 @@ public class SearchActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     RecyclerView.LayoutManager recyclerLayoutManager;
     ArrayList<Question>dataset;
+    String query;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +25,7 @@ public class SearchActivity extends AppCompatActivity {
         recyclerLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(recyclerLayoutManager);
         recyclerView.setAdapter(questionListAdapter);
+        query = getIntent().getStringExtra("QUERY");
     }
 
     public void update(ArrayList<Question> dataset){
