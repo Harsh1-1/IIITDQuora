@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
@@ -117,7 +118,10 @@ public class AskQuestionFragment extends Fragment {
             String imageString = cursor.getString(columnIndex);
             cursor.close();
             ImageView imageView = (ImageView) getView().findViewById(R.id.selectedImageView);
-            imageView.setImageBitmap(BitmapFactory.decodeFile(imageString));
+
+            ImageResizerTask task = new ImageResizerTask(imageView);
+            task.execute(imageString, "512", "512");
+            //imageView.setImageBitmap(BitmapFactory.decodeFile(imageString));
         }
     }
 }
