@@ -125,9 +125,26 @@ public class HomeActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.home_menu, menu);
 
-        MenuItem searchItem = menu.findItem(R.id.QuestionSearch);
-        SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+        final MenuItem searchItem = menu.findItem(R.id.QuestionSearch);
+        final SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                if(query != null) {
+                    Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
+                    intent.putExtra("QUERY", query);
+                    startActivity(intent);
+                    searchView.setQuery("", false);
+                    searchItem.collapseActionView();
+                }
+                return true;
+            }
 
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return true;
+            }
+        });
         // Configure the search info and add any event listeners...
 
         return super.onCreateOptionsMenu(menu);
