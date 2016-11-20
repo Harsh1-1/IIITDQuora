@@ -70,7 +70,7 @@ public class AskQuestionFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view =  inflater.inflate(R.layout.fragment_ask_question, container, false);
+        final View view =  inflater.inflate(R.layout.fragment_ask_question, container, false);
 
         Button uploadImageButton = (Button)view.findViewById(R.id.UploadImageButton);
         uploadImageButton.setOnClickListener(new View.OnClickListener() {
@@ -80,10 +80,31 @@ public class AskQuestionFragment extends Fragment {
                 startActivityForResult(intent, RESULT_GET_IMAGE);
             }
         });
+
+        Button askQuestionButton = (Button)view.findViewById(R.id.AskButton);
+        askQuestionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText questionText = (EditText) view.findViewById(R.id.QuestionAskEditText);
+                EditText descText = (EditText) view.findViewById(R.id.QuestionDescEditText);
+                if(questionText.getText().toString() == null || questionText.getText().toString().isEmpty()){
+                    Toast.makeText(getContext(), "Question Text cannot be null", Toast.LENGTH_SHORT);
+                }else{
+                    QuestionBackgroundTask questionBackgroundTask = new QuestionBackgroundTask(getContext());
+                    questionBackgroundTask.execute(SignInActivity.user.getEmailId(),
+                            questionText.getText().toString(), descText.getText().toString());
+                    ((HomeActivity)getActivity()).updateAskedDataset();
+                }
+            }
+        });
         return view;
     }
 
-
+    @Override
+    public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+    }
+/*
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -104,7 +125,7 @@ public class AskQuestionFragment extends Fragment {
             }
         });
     }
-
+*/
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

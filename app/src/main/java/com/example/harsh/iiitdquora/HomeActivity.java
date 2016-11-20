@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -86,8 +87,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 viewPager.setCurrentItem(1);
-                UserQuestionsTask task = new UserQuestionsTask(context);
-                task.execute(SignInActivity.user.getEmailId());
+                updateAskedDataset();
             }
         });
 
@@ -250,8 +250,14 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
+    public void updateAskedDataset(){
+        UserQuestionsTask task = new UserQuestionsTask(context);
+        task.execute(SignInActivity.user.getEmailId());
+    }
+
     public void updateAsked(ArrayList<Question> questions){
         ((AskedFragment)askedFragment).update(questions);
+        pagerAdapter.notifyDataSetChanged();
     }
 
     public void updateFeed(ArrayList<Question> questions){
