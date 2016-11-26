@@ -78,7 +78,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 viewPager.setCurrentItem(0);
-                //TODO: Call feed task
+                updateFeedDataset();
             }
         });
 
@@ -225,11 +225,11 @@ public class HomeActivity extends AppCompatActivity {
             switch (position){
                 case 0:
                     retFragment = feedFragment;
+                    updateFeedDataset();
                     break;
                 case 1:
                     retFragment = askedFragment;
-                    UserQuestionsTask task = new UserQuestionsTask(context);
-                    task.execute(SignInActivity.user.getEmailId());
+                    updateAskedDataset();
                     break;
                 case 2:
                     retFragment = answerFragment;
@@ -255,6 +255,11 @@ public class HomeActivity extends AppCompatActivity {
         task.execute(SignInActivity.user.getEmailId());
     }
 
+    public void updateFeedDataset(){
+        FeedTask task = new FeedTask(context);
+        task.execute("50");
+    }
+
     public void updateAsked(ArrayList<Question> questions){
         ((AskedFragment)askedFragment).update(questions);
         pagerAdapter.notifyDataSetChanged();
@@ -262,10 +267,12 @@ public class HomeActivity extends AppCompatActivity {
 
     public void updateFeed(ArrayList<Question> questions){
         ((FeedFragment)feedFragment).update(questions);
+        pagerAdapter.notifyDataSetChanged();
     }
 
     public void updateAnswer(ArrayList<Question> questions){
         ((AnswerFragment)answerFragment).update(questions);
+        pagerAdapter.notifyDataSetChanged();
     }
 
     @Override
