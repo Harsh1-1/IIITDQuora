@@ -54,6 +54,9 @@ public class SearchActivity extends AppCompatActivity {
         final MenuItem searchItem = menu.findItem(R.id.QuestionSearch2);
         final SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
 
+        searchItem.expandActionView(); // expand the search action item automatically
+        searchView.setQuery(query, false);
+
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
