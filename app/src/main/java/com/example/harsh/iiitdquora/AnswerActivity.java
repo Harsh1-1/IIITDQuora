@@ -19,7 +19,7 @@ public class AnswerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_answer);
 
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.answerActivityToolbar);
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.answerActivityToolbar );
         setSupportActionBar(myToolbar);
 
 

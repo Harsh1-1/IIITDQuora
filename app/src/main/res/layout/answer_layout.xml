@@ -25,7 +25,20 @@
         android:layout_marginRight="8dp"
         android:layout_marginLeft="8dp"/>
 
+
 </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/answerLayout_answerUser"
+        android:paddingTop="5dp"
+        android:paddingLeft="12dp"
+        android:textSize="14dp"
+        android:text="test"
+        android:textColor="@android:color/black"
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="8dp"/>
 
     <View
         android:layout_width="match_parent"
