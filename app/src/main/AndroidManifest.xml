@@ -28,7 +28,8 @@
             android:name=".SignUpActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".AnswerActivity" />
-        <activity android:name=".AnswerListActivity" />
+        <activity android:name=".AnswerListActivity"
+            android:parentActivityName=".HomeActivity"/>
         <activity android:name=".SearchActivity"
             android:parentActivityName=".HomeActivity"></activity>
     </application>

@@ -1,10 +1,12 @@
 package com.example.harsh.iiitdquora;
 
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -30,6 +32,11 @@ public class AnswerListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_answer_list);
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.answerToolbar);
+        setSupportActionBar(myToolbar);
+        ActionBar action = getSupportActionBar();
+        action.setDisplayHomeAsUpEnabled(true);
+
 
         QuestionText = (TextView)findViewById(R.id.QuestionText);
         QuestionDesc  =(TextView)findViewById(R.id.Questiondesc);

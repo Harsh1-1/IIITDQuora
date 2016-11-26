@@ -1,7 +1,9 @@
 package com.example.harsh.iiitdquora;
 
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -16,6 +18,11 @@ public class AnswerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_answer);
+
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.answerActivityToolbar);
+        setSupportActionBar(myToolbar);
+
+
 
         mAnswer = (EditText)findViewById(R.id.AnswerText);
         mSubmit = (Button)findViewById(R.id.answerButton);
