@@ -112,7 +112,7 @@ public class FeedTask extends AsyncTask<String,String,String> {
                     count++;
                 }
                 //Need to put appropriate method
-                //((HomeActivity) ctx).updateAsked(questionArrayList);
+                ((HomeActivity) ctx).updateFeed(questionArrayList);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
