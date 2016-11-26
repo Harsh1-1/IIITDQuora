@@ -40,7 +40,7 @@ public class FeedTask extends AsyncTask<String,String,String> {
     @Override
     protected String doInBackground(String... params) {
         String retrieving_url = "http://onlyforgeeks.net16.net/iiitdquora/retrievefeed.php";
-        String search_query = params[0];
+        String result_count = params[0];
         try {
             URL url = new URL(retrieving_url);
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
@@ -49,7 +49,7 @@ public class FeedTask extends AsyncTask<String,String,String> {
             httpURLConnection.setDoOutput(true);
             OutputStream OS = httpURLConnection.getOutputStream();
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(OS, "UTF-8"));
-            String data = URLEncoder.encode("search_query", "UTF-8") + "=" + URLEncoder.encode(search_query, "UTF-8");
+            String data = URLEncoder.encode("result_count", "UTF-8") + "=" + URLEncoder.encode(result_count, "UTF-8");
 
             writer.write(data);
             writer.flush();
