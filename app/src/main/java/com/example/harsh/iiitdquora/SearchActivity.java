@@ -26,6 +26,9 @@ public class SearchActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(recyclerLayoutManager);
         recyclerView.setAdapter(questionListAdapter);
         query = getIntent().getStringExtra("QUERY");
+
+        SearchQuestionsTask searchQuestionsTask = new SearchQuestionsTask(this);
+        searchQuestionsTask.execute(query);
     }
 
     public void update(ArrayList<Question> dataset){
