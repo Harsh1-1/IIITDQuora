@@ -96,6 +96,7 @@ public class IIITDQuoraActivity extends AppCompatActivity implements GoogleApiCl
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             handleSignInResult(result);
         }
+
     }
 
     public  void signOut() {
