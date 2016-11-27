@@ -118,7 +118,7 @@
         android:layout_below="@+id/addAnswer"
         android:scrollbars="vertical"
         android:id="@+id/answerListRecyclerView"
-        android:layout_marginTop="10dp" />
+        android:layout_marginTop="5dp" />
 
     </LinearLayout>
 </RelativeLayout>
