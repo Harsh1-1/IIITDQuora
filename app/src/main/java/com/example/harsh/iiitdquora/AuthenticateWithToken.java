@@ -103,7 +103,7 @@ public class AuthenticateWithToken extends AsyncTask<String, Void, String> {
 
                     name = JO.getString("name");
                     email = JO.getString("email");
-                    picture = JO.getString("picture");
+                    picture = JO.getString("pic ture");
                     count++;
                 }
 
