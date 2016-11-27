@@ -2,6 +2,7 @@ package com.example.harsh.iiitdquora;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.support.v4.app.Fragment;
 import android.widget.Toast;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -18,9 +19,9 @@ import java.util.ArrayList;
 
 public class CategoriesTask extends AsyncTask<String,String,String>{
 
-    Context ctx;
+    Fragment ctx;
 
-    CategoriesTask(Context ctx) {
+    CategoriesTask(Fragment ctx) {
         this.ctx = ctx;
     }
 
@@ -72,9 +73,9 @@ public class CategoriesTask extends AsyncTask<String,String,String>{
         result = server_response[1];
 
         if (result.equals("No Categories List exist")) {
-            Toast.makeText(ctx, "No Category exist!!", Toast.LENGTH_LONG).show();
+            Toast.makeText(ctx.getContext(), "No Category exist!!", Toast.LENGTH_LONG).show();
         } else if (result.equals("Failed to fetch Categories")) {
-            Toast.makeText(ctx, "Failed to fetch Categories", Toast.LENGTH_SHORT).show();
+            Toast.makeText(ctx.getContext(), "Failed to fetch Categories", Toast.LENGTH_SHORT).show();
         } else {
             try {
                 JSONObject jsonObject = new JSONObject(result);
@@ -93,7 +94,7 @@ public class CategoriesTask extends AsyncTask<String,String,String>{
                 }
 
                 //put appropriate method here
-               // ((SearchActivity)ctx).update(questionArrayList);
+                ((UserProfileFragment)ctx).setAllCategories(categoriesArrayList);
             } catch (JSONException e) {
                 e.printStackTrace();
             }

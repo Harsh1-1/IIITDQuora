@@ -94,6 +94,10 @@ public class AskQuestionFragment extends Fragment {
                     questionBackgroundTask.execute(SignInActivity.user.getEmailId(),
                             questionText.getText().toString(), descText.getText().toString());
                     ((HomeActivity)getActivity()).updateAskedDataset();
+                    questionText.setText("");
+                    descText.setText("");
+                    ImageView imageView = (ImageView)getView().findViewById(R.id.selectedImageView);
+                    imageView.setImageDrawable(null);
                 }
             }
         });

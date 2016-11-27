@@ -16,11 +16,11 @@ public class Categories {
         this.interest = interest;
     }
 
-    public int getQuestion_id() {
+    public int getInterest_id() {
         return interest_id;
     }
 
-    public void setQuestion_id(int question_id) {
+    public void setInterest_id(int question_id) {
         this.interest_id = question_id;
     }
 

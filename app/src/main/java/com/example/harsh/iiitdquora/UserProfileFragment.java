@@ -6,7 +6,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 
 /**
@@ -33,6 +36,21 @@ public class UserProfileFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        CategoriesTask task = new CategoriesTask(this);
+        task.execute();
+        userInterests = new ArrayList<>();
+        //TODO: Call appropriate tasks
+    }
+
+    private ArrayList<Categories> userInterests;
+    private ArrayList<Categories> allCategories;
+
+    public void setAllCategories(ArrayList<Categories> allCategories){
+        this.allCategories = allCategories;
+    }
+
+    public void setUserInterests(ArrayList<Categories> userInterests){
+        this.userInterests = userInterests;
     }
 
     @Override
@@ -43,6 +61,15 @@ public class UserProfileFragment extends Fragment {
         ((TextView)view.findViewById(R.id.UserEmailView)).setText(SignInActivity.user.getEmailId());
         ((TextView)view.findViewById(R.id.ContactView)).setText(SignInActivity.user.getContact());
         ((TextView)view.findViewById(R.id.AboutMeView)).setText(SignInActivity.user.getAboutMe());
+        Button updateInterest = (Button)view.findViewById(R.id.updateInterestButton);
+        updateInterest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CategoriesDialog dialog = new CategoriesDialog();
+                dialog.setList(allCategories, userInterests);
+                dialog.show(getFragmentManager(), "CategoriesDialog");
+            }
+        });
         return view;
     }
 

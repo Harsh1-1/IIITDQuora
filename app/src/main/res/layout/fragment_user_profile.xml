@@ -5,97 +5,139 @@
     tools:context="com.example.harsh.iiitdquora.UserProfileFragment"
     android:background="@android:color/background_light">
 
-    <TableLayout
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:focusable="false"
-        android:focusableInTouchMode="false"
-        android:id="@+id/UserInformationLayout"
-        android:gravity="start">
+        android:layout_height="match_parent">
 
-        <TableRow
+        <TableLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/UserIDRow"
-            android:layout_gravity="start|center_vertical"
-            android:layout_margin="8dp">
+            android:layout_height="wrap_content"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:id="@+id/UserInformationLayout"
+            android:gravity="start"
+            android:layout_gravity="top">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/user_name"
-                android:id="@+id/UserNameLabel" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/UserNameView"/>
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="start|center_vertical"
-            android:id="@+id/UserEmailRow"
-            android:layout_margin="8dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/UserEmailLabel"
-                android:text="@string/email_id" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/UserEmailView" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="start|center_vertical"
-            android:id="@+id/ContactRow"
-            android:layout_margin="8dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/mobile"
-                android:id="@+id/ContactLabel" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/ContactView" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/AboutMeRow"
-            android:layout_gravity="start|center_vertical"
-            android:layout_margin="8dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/about"
-                android:id="@+id/AboutMeLabel" />
-
-            <ScrollView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/AboutMeScrollView"
-                android:fillViewport="true">
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/UserIDRow"
+                android:layout_gravity="start|center_vertical"
+                android:layout_margin="8dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/AboutMeView" />
-            </ScrollView>
+                    android:text="@string/user_name"
+                    android:id="@+id/UserNameLabel" />
 
-        </TableRow>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/UserNameView"/>
+            </TableRow>
 
-    </TableLayout>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="start|center_vertical"
+                android:id="@+id/UserEmailRow"
+                android:layout_margin="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/UserEmailLabel"
+                    android:text="@string/email_id" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/UserEmailView" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="start|center_vertical"
+                android:id="@+id/ContactRow"
+                android:layout_margin="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mobile"
+                    android:id="@+id/ContactLabel" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/ContactView" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/AboutMeRow"
+                android:layout_gravity="start|center_vertical"
+                android:layout_margin="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/about"
+                    android:id="@+id/AboutMeLabel" />
+
+                <ScrollView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/AboutMeScrollView"
+                    android:fillViewport="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/AboutMeView" />
+                </ScrollView>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/CategorySelectionRow"
+                android:layout_gravity="start|center_vertical"
+                android:layout_margin="8dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Interests"
+                    android:id="@+id/InterestsLabel" />
+
+                <ScrollView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/InterestsScrollView"
+                    android:fillViewport="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/InterestView" />
+                </ScrollView>
+            </TableRow>
+
+        </TableLayout>
+
+        <Button
+            android:text="Update Interests"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/updateInterestButton"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+            android:background="@android:color/background_light" />
+
+    </LinearLayout>
+
 </FrameLayout>
