@@ -199,7 +199,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
             Log.d("gdf", acct.getDisplayName());
 
             AuthenticateWithToken authenticateWithToken = new AuthenticateWithToken(this);
-            authenticateWithToken.execute(acct.getIdToken());
+            authenticateWithToken.execute(acct.getIdToken(),"SignIn");
 
         } else {
             // Signed out, show unauthenticated UI.

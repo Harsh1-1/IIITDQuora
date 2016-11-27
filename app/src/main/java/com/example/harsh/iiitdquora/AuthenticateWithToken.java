@@ -2,6 +2,7 @@ package com.example.harsh.iiitdquora;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -25,7 +26,7 @@ import java.util.ArrayList;
  * Created by Tushar on 27-11-2016.
  */
 
-public class AuthenticateWithToken extends AsyncTask<String, Void, String> {
+public class AuthenticateWithToken extends AsyncTask<String, Void, ArrayList<String>> {
 
     Context ctx;
 
@@ -35,10 +36,11 @@ public class AuthenticateWithToken extends AsyncTask<String, Void, String> {
     }
 
     @Override
-    protected String doInBackground(String... strings) {
+    protected ArrayList<String> doInBackground(String... strings) {
 
-         String signinurl = "http://onlyforgeeks.net16.net/iiitdquora/googlesignin.php";
+        String signinurl = "http://onlyforgeeks.net16.net/iiitdquora/googlesignin.php";
         String tokenID = strings[0];
+        String activityName = strings[1];
 
         try {
             URL url = new URL(signinurl);
@@ -67,7 +69,11 @@ public class AuthenticateWithToken extends AsyncTask<String, Void, String> {
             inputStream.close();
             httpURLConnection.disconnect();
 
-            return response;
+            ArrayList<String>param = new ArrayList<String>();
+            param.add(response);
+            param.add(activityName);
+
+            return param;
 
 
         } catch (MalformedURLException e) {
@@ -81,11 +87,12 @@ public class AuthenticateWithToken extends AsyncTask<String, Void, String> {
 
 
     @Override
-    protected void onPostExecute(String result) {
+    protected void onPostExecute(ArrayList<String> results) {
 
 
-        String[] server_response = result.split("@@@");
-        result = server_response[1];
+        String[] server_response = results.get(0).split("@@@");
+        String activityName = results.get(1);
+        String result = server_response[1];
 
         if (result.equals("new user registered, click again to sign in")) {
             Toast.makeText(ctx, "new user registered, click again to sign in", Toast.LENGTH_LONG).show();
@@ -103,12 +110,20 @@ public class AuthenticateWithToken extends AsyncTask<String, Void, String> {
 
                     name = JO.getString("name");
                     email = JO.getString("email");
-                    picture = JO.getString("pic ture");
+                    picture = JO.getString("picture");
                     count++;
                 }
 
+                Log.d("Android","Inside authentication");
+
+
+
                 SignInActivity.user = new User(email,name,"","",picture);
-                ((SignInActivity)ctx).finishLogin();
+                if(activityName.equals("SignIn"))
+                    ((SignInActivity)ctx).finishLogin();
+
+                else if(activityName.equals("IIITD"))
+                    ((IIITDQuoraActivity)ctx).finishLogin();
 
             } catch (JSONException e) {
                 e.printStackTrace();
