@@ -54,7 +54,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
         passwordWrapper.setHint("Password");
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestEmail().setHostedDomain("iiitd.ac.in").requestId()
+                .requestEmail().setHostedDomain("iiitd.ac.in").requestId().requestIdToken(getString(R.string.server_client_id))
                 .build();
 
 
@@ -173,7 +173,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
         }
     }
 
-    private void signOut() {
+    public  void signOut() {
         Auth.GoogleSignInApi.signOut(googleApiClient).setResultCallback(
                 new ResultCallback<Status>() {
                     @Override
@@ -195,7 +195,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
             GoogleSignInAccount acct = result.getSignInAccount();
             Log.d("Sign In",acct.getEmail());
             Log.d("Detail",acct.getId());
-        //    Log.d("tokenID", acct.getIdToken());
+            Log.d("tokenID", acct.getIdToken());
             Log.d("gdf", acct.getDisplayName());
 
         } else {

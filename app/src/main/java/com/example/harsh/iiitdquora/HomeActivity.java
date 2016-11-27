@@ -177,6 +177,8 @@ public class HomeActivity extends AppCompatActivity {
 
             case R.id.Logout:
                 SignInActivity.user = null;
+               // SignInActivity signInActivity = new SignInActivity();
+                //signInActivity.signOut();
                 Intent intent = new Intent(getApplicationContext(),SignInActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
