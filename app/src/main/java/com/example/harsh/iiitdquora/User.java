@@ -7,13 +7,15 @@ public class User {
     private String Username;
     private String Contact;
     private String AboutMe;
+    private String picurl;
 
 
-    public User(String emailId, String username, String contact, String aboutMe) {
+    public User(String emailId, String username, String contact, String aboutMe,String picurl) {
         EmailId = emailId;
         Username = username;
         Contact = contact;
         AboutMe = aboutMe;
+        this.picurl = picurl;
     }
 
 
@@ -55,6 +57,10 @@ public class User {
 
     public void setAboutMe(String aboutMe) {
         AboutMe = aboutMe;
+    }
+
+    public String getPicurl() {
+        return picurl;
     }
 
 }
