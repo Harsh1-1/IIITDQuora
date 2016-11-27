@@ -2,9 +2,11 @@ package com.example.harsh.iiitdquora;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -16,7 +18,7 @@ import java.util.ArrayList;
 public class AnswerListAdapter  extends RecyclerView.Adapter<AnswerListAdapter.MyViewHolder> {
 
     Context context;
-    ArrayList<Answer> dataset = null;
+    static ArrayList<Answer> dataset = null;
 
     public AnswerListAdapter(Context context){this.context = context;}
 
@@ -49,12 +51,31 @@ public class AnswerListAdapter  extends RecyclerView.Adapter<AnswerListAdapter.M
     public static class MyViewHolder extends RecyclerView.ViewHolder{
         public TextView answerTextView;
         public TextView answerUser;
+        public Button upvoteButton;
+        public Button upvoteValueButton;
 
         public MyViewHolder(View itemView){
             super(itemView);
             answerTextView = (TextView)itemView.findViewById(R.id.answerLayout_answerText);
             answerUser = (TextView)itemView.findViewById(R.id.answerLayout_answerUser);
+            upvoteButton = (Button)itemView.findViewById(R.id.upvote);
+            upvoteValueButton = (Button)itemView.findViewById(R.id.upvoteVAlue);
 
+            upvoteButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    int rating = Integer.parseInt(upvoteValueButton.getText().toString());
+                    int position = getLayoutPosition();
+
+                    Log.d("Inside Answer List  ","rating : "+rating);
+                    Log.d("Inside Answer list:","position : "+position);
+                    Answer answer = dataset.get(position);
+                    Answer_Rating answer_rating = new Answer_Rating(answer.getAnswer_id(),SignInActivity.user.getEmailId(),rating+1);
+                    upvoteValueButton.setText(Integer.toString(rating+1)) ;
+
+                }
+            });
         }
     }
 }
