@@ -114,8 +114,6 @@ public class SearchQuestionsTask extends AsyncTask<String,String,String> {
                 }
 
                 ((SearchActivity)ctx).update(questionArrayList);
-                //Need to put appropriate method
-                //((HomeActivity) ctx).updateAsked(questionArrayList);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
