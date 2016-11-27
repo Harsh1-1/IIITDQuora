@@ -56,7 +56,15 @@ public class CategoriesDialog extends DialogFragment {
                                 choice.add(allCategories.get(i));
                             }
                         }
-                        //TODO: update items in database
+                        String s = "";
+                        for(int i=0; i < choice.size(); i++){
+                            s += String.valueOf(choice.get(i).getInterest_id());
+                            if(i != choice.size() - 1){
+                                s += ",";
+                            }
+                        }
+                        UpdateInterestTask task = new UpdateInterestTask(getContext());
+                        task.execute(SignInActivity.user.getEmailId(), s);
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
