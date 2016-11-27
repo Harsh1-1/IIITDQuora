@@ -37,6 +37,7 @@ public class AnswerActivity extends AppCompatActivity {
                 //CHECK context part
                 AnswerBackgroundTask  task = new AnswerBackgroundTask(getApplicationContext());
                 task.execute(answer,Integer.toString(questionID));
+                mAnswer.setText("");
             }
         });
 
