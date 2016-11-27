@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 
 import java.util.ArrayList;
@@ -17,11 +18,25 @@ public class CategoriesDialog extends DialogFragment {
     ArrayList<Categories> allCategories;
     ArrayList<Categories> selectedCategories;
 
-
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putSerializable("allCategories", allCategories);
+        outState.putSerializable("selectedCategories", selectedCategories);
+    }
 
     public void setList(ArrayList<Categories> allCategories, ArrayList<Categories> selectedCategories){
         this.allCategories = allCategories;
         this.selectedCategories = selectedCategories;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if(savedInstanceState != null){
+            allCategories = (ArrayList<Categories>) savedInstanceState.getSerializable("allCategories");
+            selectedCategories = (ArrayList<Categories>) savedInstanceState.getSerializable("selectedCategories");
+        }
     }
 
     @NonNull

@@ -39,7 +39,7 @@ public class UserProfileFragment extends Fragment {
         CategoriesTask task = new CategoriesTask(this);
         task.execute();
         RetrieveInterestTask retrieveInterestTask = new RetrieveInterestTask(this);
-        task.execute();
+        retrieveInterestTask.execute();
     }
 
     private ArrayList<Categories> userInterests;
