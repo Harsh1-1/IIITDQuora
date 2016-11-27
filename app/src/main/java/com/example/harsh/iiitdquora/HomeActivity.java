@@ -23,6 +23,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
@@ -57,9 +58,14 @@ public class HomeActivity extends AppCompatActivity implements GoogleApiClient.O
         setSupportActionBar(myToolbar);
         fragmentManager=getSupportFragmentManager();
 
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail().setHostedDomain("iiitd.ac.in").requestId().requestIdToken(getString(R.string.server_client_id))
+                .build();
+
         googleApiClient = new GoogleApiClient.Builder(this)
-                .addOnConnectionFailedListener(this)
-                .addApi(Auth.GOOGLE_SIGN_IN_API).build();
+                .enableAutoManage(this,this)
+                .addApi(Auth.GOOGLE_SIGN_IN_API,gso)
+                .build();
 
 
         viewPager = (ViewPager) findViewById(R.id.pager);
@@ -195,8 +201,7 @@ public class HomeActivity extends AppCompatActivity implements GoogleApiClient.O
 
                 if(googleApiClient.isConnected() && googleApiClient != null)
                 {
-                    Auth.GoogleSignInApi.signOut(googleApiClient);
-                    googleApiClient.clearDefaultAccountAndReconnect().setResultCallback(new ResultCallback<Status>() {
+                    Auth.GoogleSignInApi.signOut(googleApiClient).setResultCallback(new ResultCallback<Status>() {
                         @Override
                         public void onResult(@NonNull Status status) {
                             googleApiClient.disconnect();
