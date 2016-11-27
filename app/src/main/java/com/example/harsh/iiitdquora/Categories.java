@@ -8,20 +8,20 @@ import java.util.ArrayList;
 
 public class Categories {
 
-    private int question_id;
+    private int interest_id;
     private String interest;
 
     public Categories(int question_id, String interest) {
-        this.question_id = question_id;
+        this.interest_id = question_id;
         this.interest = interest;
     }
 
     public int getQuestion_id() {
-        return question_id;
+        return interest_id;
     }
 
     public void setQuestion_id(int question_id) {
-        this.question_id = question_id;
+        this.interest_id = question_id;
     }
 
     public String getInterest() {
