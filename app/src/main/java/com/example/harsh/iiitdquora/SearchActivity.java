@@ -1,9 +1,16 @@
 package com.example.harsh.iiitdquora;
 
+import android.content.Intent;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import java.util.ArrayList;
 
@@ -19,6 +26,10 @@ public class SearchActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_searchToolbar);
+        setSupportActionBar(myToolbar);
+        ActionBar action = getSupportActionBar();
+        action.setDisplayHomeAsUpEnabled(true);
 
         questionListAdapter = new QuestionListAdapter(this);
         recyclerView = (RecyclerView)findViewById(R.id.searchRecyclerView);
@@ -34,5 +45,38 @@ public class SearchActivity extends AppCompatActivity {
     public void update(ArrayList<Question> dataset){
         this.dataset = dataset;
         questionListAdapter.setDataset(dataset);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.search_menu, menu);
+
+        final MenuItem searchItem = menu.findItem(R.id.QuestionSearch2);
+        final SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+
+        searchItem.expandActionView(); // expand the search action item automatically
+        searchView.setQuery(query, false);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                if(query != null) {
+                    Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
+                    intent.putExtra("QUERY", query);
+                    startActivity(intent);
+                    searchView.setQuery("", false);
+                    searchItem.collapseActionView();
+                }
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return true;
+            }
+        });
+        // Configure the search info and add any event listeners...
+
+        return super.onCreateOptionsMenu(menu);
     }
 }

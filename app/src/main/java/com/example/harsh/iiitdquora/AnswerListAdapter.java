@@ -37,6 +37,7 @@ public class AnswerListAdapter  extends RecyclerView.Adapter<AnswerListAdapter.M
 
         Answer answer = dataset.get(position);
         holder.answerTextView.setText(answer.getText());
+        holder.answerUser.setText(answer.getCreated_by());
     }
 
     @Override
@@ -47,10 +48,13 @@ public class AnswerListAdapter  extends RecyclerView.Adapter<AnswerListAdapter.M
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
         public TextView answerTextView;
+        public TextView answerUser;
 
         public MyViewHolder(View itemView){
             super(itemView);
             answerTextView = (TextView)itemView.findViewById(R.id.answerLayout_answerText);
+            answerUser = (TextView)itemView.findViewById(R.id.answerLayout_answerUser);
+
         }
     }
 }
