@@ -97,21 +97,17 @@ public class AuthenticateWithToken extends AsyncTask<String, Void, String> {
                 JSONArray jsonArray = jsonObject.getJSONArray("server_response");
                 int count = 0;
 
-                String name,email,picture;
-                ArrayList<Question> questionArrayList = new ArrayList<>();
+                String name="",email="",picture="";
                 while (count < jsonArray.length()) {
                     JSONObject JO = jsonArray.getJSONObject(count);
-                    questionid = JO.getInt("QuestionID");
-                    description = JO.getString("Description");
-                    createdby = JO.getString("Createdby");
-                    createdon = JO.getString("Createdon");
-                    questiontext = JO.getString("Questiontext");
-                    Question question = new Question(questionid, description, createdby, createdon, questiontext);
-                    questionArrayList.add(question);
+
+                    name = JO.getString("name");
+                    email = JO.getString("email");
+                    picture = JO.getString("picture");
                     count++;
                 }
 
-                SignInActivity.user = new User(details[2],details[1],details[3],details[4],"");
+                SignInActivity.user = new User(email,name,"","",picture);
                 ((SignInActivity)ctx).finishLogin();
 
             } catch (JSONException e) {
