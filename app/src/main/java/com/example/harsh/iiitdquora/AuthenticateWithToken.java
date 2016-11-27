@@ -87,10 +87,10 @@ public class AuthenticateWithToken extends AsyncTask<String, Void, String> {
         String[] server_response = result.split("@@@");
         result = server_response[1];
 
-        if (result.equals("No Results found")) {
-            Toast.makeText(ctx, "No results found", Toast.LENGTH_LONG).show();
-        } else if (result.equals("Failed to fetch questions")) {
-            Toast.makeText(ctx, "Failed to retrieve results", Toast.LENGTH_SHORT).show();
+        if (result.equals("new user registered, click again to sign in")) {
+            Toast.makeText(ctx, "new user registered, click again to sign in", Toast.LENGTH_LONG).show();
+        } else if (result.equals("Failed to sign in")) {
+            Toast.makeText(ctx, "Failed to sign in", Toast.LENGTH_SHORT).show();
         } else {
             try {
                 JSONObject jsonObject = new JSONObject(result);
