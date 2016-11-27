@@ -2,6 +2,7 @@ package com.example.harsh.iiitdquora;
 
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import java.lang.ref.WeakReference;
@@ -13,12 +14,14 @@ import java.lang.ref.WeakReference;
 public class ImageResizerTask extends AsyncTask<String, Void, Bitmap> {
 
     private final WeakReference<ImageView> imageViewReference;
+    private final WeakReference<Updatable> fragmentReference;
     private String data = null;
     private int width = 0;
     private int height = 0;
 
-    public ImageResizerTask(ImageView imageView) {
+    public ImageResizerTask(ImageView imageView, Updatable fragment) {
         imageViewReference = new WeakReference<ImageView>(imageView);
+        this.fragmentReference = new WeakReference<Updatable>(fragment);
     }
 
     @Override
@@ -31,10 +34,14 @@ public class ImageResizerTask extends AsyncTask<String, Void, Bitmap> {
 
     @Override
     protected void onPostExecute(Bitmap bitmap) {
-        if (imageViewReference != null && bitmap != null) {
+        if (imageViewReference != null && bitmap != null && fragmentReference != null) {
             final ImageView imageView = imageViewReference.get();
+            final Updatable fragment = fragmentReference.get();
             if (imageView != null) {
                 imageView.setImageBitmap(bitmap);
+            }
+            if(fragment != null){
+                fragment.update(bitmap);
             }
         }
     }

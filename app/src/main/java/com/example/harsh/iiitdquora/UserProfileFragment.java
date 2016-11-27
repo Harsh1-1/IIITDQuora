@@ -38,8 +38,8 @@ public class UserProfileFragment extends Fragment {
         super.onCreate(savedInstanceState);
         CategoriesTask task = new CategoriesTask(this);
         task.execute();
-        userInterests = new ArrayList<>();
-        //TODO: Call appropriate tasks
+        RetrieveInterestTask retrieveInterestTask = new RetrieveInterestTask(this);
+        task.execute();
     }
 
     private ArrayList<Categories> userInterests;
@@ -51,6 +51,15 @@ public class UserProfileFragment extends Fragment {
 
     public void setUserInterests(ArrayList<Categories> userInterests){
         this.userInterests = userInterests;
+        TextView interests = (TextView)getView().findViewById(R.id.InterestView);
+        String temp = "";
+        for(int i=0; i<userInterests.size(); i++){
+            temp += userInterests.get(i).getInterest();
+            if(i != userInterests.size() - 1){
+                temp += ", ";
+            }
+        }
+        interests.setText(temp);
     }
 
     @Override
