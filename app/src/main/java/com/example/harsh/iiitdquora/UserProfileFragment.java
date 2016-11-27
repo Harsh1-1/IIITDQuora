@@ -39,7 +39,7 @@ public class UserProfileFragment extends Fragment {
         CategoriesTask task = new CategoriesTask(this);
         task.execute();
         RetrieveInterestTask retrieveInterestTask = new RetrieveInterestTask(this);
-        retrieveInterestTask.execute();
+        retrieveInterestTask.execute(SignInActivity.user.getEmailId());
     }
 
     private ArrayList<Categories> userInterests;

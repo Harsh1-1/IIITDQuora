@@ -80,16 +80,11 @@ public class AskQuestionFragment extends Fragment implements Updatable {
         // Inflate the layout for this fragment
         final View view =  inflater.inflate(R.layout.fragment_ask_question, container, false);
 
-        if(savedInstanceState != null){
-            bm = savedInstanceState.getParcelable("bitmap");
-        }
-
         Button uploadImageButton = (Button)view.findViewById(R.id.UploadImageButton);
         final Button askQuestionButton = (Button)view.findViewById(R.id.AskButton);
         uploadImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                askQuestionButton.setEnabled(false);
                 Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(intent, RESULT_GET_IMAGE);
             }
@@ -114,6 +109,13 @@ public class AskQuestionFragment extends Fragment implements Updatable {
                 }
             }
         });
+
+        if(savedInstanceState != null){
+            bm = (Bitmap) savedInstanceState.getParcelable("bitmap");
+            ImageView imageView = (ImageView) getView().findViewById(R.id.selectedImageView);
+            imageView.setImageBitmap(bm);
+        }
+
         return view;
     }
 
@@ -136,6 +138,7 @@ public class AskQuestionFragment extends Fragment implements Updatable {
             cursor.close();
             ImageView imageView = (ImageView) getView().findViewById(R.id.selectedImageView);
             Button button = (Button) getView().findViewById(R.id.AskButton);
+            button.setEnabled(false);
             ImageResizerTask task = new ImageResizerTask(imageView, this);
             task.execute(imageString, "512", "512");
             //imageView.setImageBitmap(BitmapFactory.decodeFile(imageString));

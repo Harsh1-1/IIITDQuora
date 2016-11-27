@@ -49,7 +49,7 @@ public class CategoriesDialog extends DialogFragment {
             items[i] = allCategories.get(i).getInterest();
             boolean found = false;
             for(int j=0; j<selectedCategories.size(); j++){
-                if(selectedCategories.get(i).getInterest().equals(items[i])){
+                if(selectedCategories.get(j).getInterest().equals(items[i])){
                     found = true;
                     break;
                 }
