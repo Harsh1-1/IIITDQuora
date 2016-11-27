@@ -106,7 +106,7 @@ public class AuthenticateWithToken extends AsyncTask<String, Void, ArrayList<Str
 
                 String name="",email="",picture="";
                 while (count < jsonArray.length()) {
-                    JSONObject JO = jsonArray.getJSONObject(count);
+                     JSONObject JO = jsonArray.getJSONObject(count);
 
                     name = JO.getString("name");
                     email = JO.getString("email");
