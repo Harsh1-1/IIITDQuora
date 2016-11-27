@@ -3,6 +3,7 @@ package com.example.harsh.iiitdquora;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -21,9 +22,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
+
 import java.util.ArrayList;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
 
     private static final int NUM_PAGES = 3;
     private ViewPager viewPager;
@@ -37,6 +44,8 @@ public class HomeActivity extends AppCompatActivity {
     private Fragment feedFragment = FeedFragment.newInstance();
     private Fragment answerFragment = AnswerFragment.newInstance();
     private Context context = this;
+    GoogleApiClient googleApiClient;
+
     //ArrayList<Question> askedQuestionArrayList;
 
     @Override
@@ -47,6 +56,12 @@ public class HomeActivity extends AppCompatActivity {
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
         fragmentManager=getSupportFragmentManager();
+
+        googleApiClient = new GoogleApiClient.Builder(this)
+                .addOnConnectionFailedListener(this)
+                .addApi(Auth.GOOGLE_SIGN_IN_API).build();
+
+
         viewPager = (ViewPager) findViewById(R.id.pager);
         pagerAdapter = new ScreenSlidePagerAdapter(fragmentManager);
         viewPager.setAdapter(pagerAdapter);
@@ -177,6 +192,19 @@ public class HomeActivity extends AppCompatActivity {
 
             case R.id.Logout:
                 SignInActivity.user = null;
+
+                if(googleApiClient.isConnected() && googleApiClient != null)
+                {
+                    Auth.GoogleSignInApi.signOut(googleApiClient);
+                    googleApiClient.clearDefaultAccountAndReconnect().setResultCallback(new ResultCallback<Status>() {
+                        @Override
+                        public void onResult(@NonNull Status status) {
+                            googleApiClient.disconnect();
+                        }
+                    });
+
+
+                }
                // SignInActivity signInActivity = new SignInActivity();
                 //signInActivity.signOut();
                 Intent intent = new Intent(getApplicationContext(),SignInActivity.class);
@@ -213,6 +241,11 @@ public class HomeActivity extends AppCompatActivity {
                 ((Button)findViewById(id[i])).setTextColor(Color.parseColor("#AAAAAA"));
             }
         }
+    }
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
     }
 
     private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
