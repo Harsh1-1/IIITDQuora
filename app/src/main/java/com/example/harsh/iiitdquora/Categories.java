@@ -1,12 +1,13 @@
 package com.example.harsh.iiitdquora;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by Tushar on 15-11-2016.
  */
 
-public class Categories {
+public class Categories implements Serializable{
 
     private int interest_id;
     private String interest;

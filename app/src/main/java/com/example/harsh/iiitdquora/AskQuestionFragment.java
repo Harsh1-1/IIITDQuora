@@ -28,7 +28,7 @@ import android.widget.Toast;
  * Use the {@link AskQuestionFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class AskQuestionFragment extends Fragment {
+public class AskQuestionFragment extends Fragment implements Updatable {
     /*private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -66,22 +66,35 @@ public class AskQuestionFragment extends Fragment {
         }*/
     }
 
+    private Bitmap bm;
+
+    public void update(Bitmap bm){
+        this.bm = bm;
+        final Button askQuestionButton = (Button)getView().findViewById(R.id.AskButton);
+        askQuestionButton.setEnabled(true);
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View view =  inflater.inflate(R.layout.fragment_ask_question, container, false);
 
+        if(savedInstanceState != null){
+            bm = savedInstanceState.getParcelable("bitmap");
+        }
+
         Button uploadImageButton = (Button)view.findViewById(R.id.UploadImageButton);
+        final Button askQuestionButton = (Button)view.findViewById(R.id.AskButton);
         uploadImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                askQuestionButton.setEnabled(false);
                 Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(intent, RESULT_GET_IMAGE);
             }
         });
 
-        Button askQuestionButton = (Button)view.findViewById(R.id.AskButton);
         askQuestionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -108,28 +121,7 @@ public class AskQuestionFragment extends Fragment {
     public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
     }
-/*
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        final View view = getView();
-        Button askQuestionButton = (Button)view.findViewById(R.id.AskButton);
-        askQuestionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                EditText questionText = (EditText) view.findViewById(R.id.QuestionAskEditText);
-                EditText descText = (EditText) view.findViewById(R.id.QuestionDescEditText);
-                if(questionText.getText().toString() == null){
-                    Toast.makeText(getContext(), "Question Text cannot be null", Toast.LENGTH_SHORT);
-                }else{
-                    QuestionBackgroundTask questionBackgroundTask = new QuestionBackgroundTask(getContext());
-                    questionBackgroundTask.execute(SignInActivity.user.getEmailId(),
-                            questionText.getText().toString(), descText.getText().toString());
-                }
-            }
-        });
-    }
-*/
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -143,10 +135,19 @@ public class AskQuestionFragment extends Fragment {
             String imageString = cursor.getString(columnIndex);
             cursor.close();
             ImageView imageView = (ImageView) getView().findViewById(R.id.selectedImageView);
-
-            ImageResizerTask task = new ImageResizerTask(imageView);
+            Button button = (Button) getView().findViewById(R.id.AskButton);
+            ImageResizerTask task = new ImageResizerTask(imageView, this);
             task.execute(imageString, "512", "512");
             //imageView.setImageBitmap(BitmapFactory.decodeFile(imageString));
         }
     }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        if(bm != null){
+            outState.putParcelable("bitmap", bm);
+        }
+    }
+
 }

@@ -17,6 +17,8 @@ public class CategoriesDialog extends DialogFragment {
     ArrayList<Categories> allCategories;
     ArrayList<Categories> selectedCategories;
 
+
+
     public void setList(ArrayList<Categories> allCategories, ArrayList<Categories> selectedCategories){
         this.allCategories = allCategories;
         this.selectedCategories = selectedCategories;

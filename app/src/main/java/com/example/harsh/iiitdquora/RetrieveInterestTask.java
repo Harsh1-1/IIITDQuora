@@ -2,6 +2,7 @@ package com.example.harsh.iiitdquora;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.support.v4.app.Fragment;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -24,9 +25,9 @@ import java.util.ArrayList;
 
 public class RetrieveInterestTask extends AsyncTask<String,String,String> {
 
-    Context ctx;
+    Fragment ctx;
 
-    RetrieveInterestTask(Context ctx)
+    RetrieveInterestTask(Fragment ctx)
     {
         this.ctx = ctx;
     }
@@ -90,11 +91,11 @@ public class RetrieveInterestTask extends AsyncTask<String,String,String> {
 
         if(result.equals("No Interests exist"))
         {
-            Toast.makeText(ctx,"You do not have any interests",Toast.LENGTH_LONG).show();
+            Toast.makeText(ctx.getContext(),"You do not have any interests",Toast.LENGTH_LONG).show();
         }
         else if(result.equals("Failed to fetch interest Category"))
         {
-            Toast.makeText(ctx,"Failed to fetch interest Category",Toast.LENGTH_SHORT).show();
+            Toast.makeText(ctx.getContext(),"Failed to fetch interest Category",Toast.LENGTH_SHORT).show();
         }
         else
         {
@@ -115,6 +116,7 @@ public class RetrieveInterestTask extends AsyncTask<String,String,String> {
                 }
 
                 //put appropriate method here
+                ((UserProfileFragment)ctx).setUserInterests(categoriesArrayList);
 
             } catch (JSONException e) {
                 e.printStackTrace();
