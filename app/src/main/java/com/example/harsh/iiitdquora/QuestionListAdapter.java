@@ -40,6 +40,7 @@ public class QuestionListAdapter extends RecyclerView.Adapter<QuestionListAdapte
         Question question = dataset.get(position);
         holder.questionTitleView.setText(question.getText());
         holder.questionDescView.setText(question.getDescription());
+        holder.questionCategoryTextView.setText("Asked in " + question.getCategoryname());
         holder.itemView.setOnClickListener(new QuestionListOnClickListener(dataset.get(position).getId(),dataset.get(position).getText(),dataset.get(position).getDescription(),dataset.get(position).getCreated_by(), context));
     }
 
@@ -52,10 +53,12 @@ public class QuestionListAdapter extends RecyclerView.Adapter<QuestionListAdapte
     public static class MyViewHolder extends RecyclerView.ViewHolder{
         public TextView questionTitleView;
         public TextView questionDescView;
+        public TextView questionCategoryTextView;
         public MyViewHolder(View itemView){
             super(itemView);
             questionTitleView = (TextView)itemView.findViewById(R.id.questionLayout_questionTextView);
             questionDescView = (TextView)itemView.findViewById(R.id.questionLayout_descTextView);
+            questionCategoryTextView = (TextView)itemView.findViewById(R.id.questionLayout_categoryTextView);
         }
     }
 
