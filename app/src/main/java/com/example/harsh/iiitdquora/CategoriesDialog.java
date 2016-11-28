@@ -52,6 +52,10 @@ public class CategoriesDialog extends DialogFragment {
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
+        AlertDialog.Builder buil = new AlertDialog.Builder(getActivity());
+        if(allCategories == null || selectedCategories == null)
+            return buil.create();
+
         String[] items = new String[allCategories.size()];
         final boolean[] selectedItems = new boolean[allCategories.size()];
 
