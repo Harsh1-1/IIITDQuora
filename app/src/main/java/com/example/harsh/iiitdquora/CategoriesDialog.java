@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.app.Fragment;
 
 import java.util.ArrayList;
 
@@ -23,11 +24,18 @@ public class CategoriesDialog extends DialogFragment {
         super.onSaveInstanceState(outState);
         outState.putSerializable("allCategories", allCategories);
         outState.putSerializable("selectedCategories", selectedCategories);
+        getFragmentManager().putFragment(outState, "frag", frag);
     }
 
     public void setList(ArrayList<Categories> allCategories, ArrayList<Categories> selectedCategories){
         this.allCategories = allCategories;
         this.selectedCategories = selectedCategories;
+    }
+
+    Fragment frag = null;
+
+    public void setFrag(Fragment frag){
+        this.frag = frag;
     }
 
     @Override
@@ -36,6 +44,7 @@ public class CategoriesDialog extends DialogFragment {
         if(savedInstanceState != null){
             allCategories = (ArrayList<Categories>) savedInstanceState.getSerializable("allCategories");
             selectedCategories = (ArrayList<Categories>) savedInstanceState.getSerializable("selectedCategories");
+            frag = getFragmentManager().getFragment(savedInstanceState, "frag");
         }
     }
 
@@ -82,6 +91,9 @@ public class CategoriesDialog extends DialogFragment {
                         }
                         UpdateInterestTask task = new UpdateInterestTask(getContext());
                         task.execute(SignInActivity.user.getEmailId(), s);
+                        if(frag != null) {
+                            ((UserProfileFragment) frag).setUserInterests(choice);
+                        }
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {

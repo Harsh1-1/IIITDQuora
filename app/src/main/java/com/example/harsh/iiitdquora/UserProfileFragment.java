@@ -70,12 +70,14 @@ public class UserProfileFragment extends Fragment {
         ((TextView)view.findViewById(R.id.UserEmailView)).setText(SignInActivity.user.getEmailId());
         ((TextView)view.findViewById(R.id.ContactView)).setText(SignInActivity.user.getContact());
         ((TextView)view.findViewById(R.id.AboutMeView)).setText(SignInActivity.user.getAboutMe());
+        final Fragment frag = this;
         Button updateInterest = (Button)view.findViewById(R.id.updateInterestButton);
         updateInterest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 CategoriesDialog dialog = new CategoriesDialog();
                 dialog.setList(allCategories, userInterests);
+                dialog.setFrag(frag);
                 dialog.show(getFragmentManager(), "CategoriesDialog");
             }
         });
