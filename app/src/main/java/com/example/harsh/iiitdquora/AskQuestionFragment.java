@@ -100,7 +100,7 @@ public class AskQuestionFragment extends Fragment implements Updatable {
                 }else{
                     QuestionBackgroundTask questionBackgroundTask = new QuestionBackgroundTask(getContext());
                     questionBackgroundTask.execute(SignInActivity.user.getEmailId(),
-                            questionText.getText().toString(), descText.getText().toString());
+                            questionText.getText().toString(), descText.getText().toString(), "2", "Food");
                     ((HomeActivity)getActivity()).updateAskedDataset();
                     questionText.setText("");
                     descText.setText("");

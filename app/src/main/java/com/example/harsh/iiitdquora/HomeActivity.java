@@ -118,7 +118,7 @@ public class HomeActivity extends AppCompatActivity implements GoogleApiClient.O
             @Override
             public void onClick(View v) {
                 viewPager.setCurrentItem(2);
-                //TODO: call answer task
+                updateAnswerDataset();
             }
         });
 
@@ -274,6 +274,7 @@ public class HomeActivity extends AppCompatActivity implements GoogleApiClient.O
                     break;
                 case 2:
                     retFragment = answerFragment;
+                    updateAnswerDataset();
                     break;
             }
             return retFragment;
@@ -305,6 +306,11 @@ public class HomeActivity extends AppCompatActivity implements GoogleApiClient.O
     public void updateFeedDataset(){
         FeedTask task = new FeedTask(context);
         task.execute("50");
+    }
+
+    public void updateAnswerDataset(){
+        UnAnsweredQuestionsTask task = new UnAnsweredQuestionsTask(context);
+        task.execute();
     }
 
     public void updateAsked(ArrayList<Question> questions){
