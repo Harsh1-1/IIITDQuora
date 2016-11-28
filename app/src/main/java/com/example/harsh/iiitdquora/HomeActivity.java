@@ -326,6 +326,13 @@ public class HomeActivity extends AppCompatActivity implements GoogleApiClient.O
     }
 
     public void updateAnswerDataset(){
+
+        if(InternetConnectivity.isConnected() == false)
+        {
+            Toast.makeText(this, "No internet connectivity ", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         UnAnsweredQuestionsTask task = new UnAnsweredQuestionsTask(context);
         task.execute();
     }
