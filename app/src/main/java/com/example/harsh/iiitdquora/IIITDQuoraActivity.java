@@ -130,7 +130,8 @@ public class IIITDQuoraActivity extends AppCompatActivity implements GoogleApiCl
         if (InternetConnectivity.isConnected() == false) {
             // Toast.makeText(this, "No internet connectivity ", Toast.LENGTH_SHORT).show();
             return;
-        } else {
+        }
+        else {
 
             if (result.isSuccess()) {
                 // Signed in successfully, show authenticated UI.

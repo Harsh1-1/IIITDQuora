@@ -199,7 +199,14 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
     // [START handleSignInResult]
     private void handleSignInResult(GoogleSignInResult result) {
 
-        if (result.isSuccess()) {
+        if (InternetConnectivity.isConnected() == false) {
+            // Toast.makeText(this, "No internet connectivity ", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        else {
+
+
+            if (result.isSuccess()) {
             // Signed in successfully, show authenticated UI.
             GoogleSignInAccount acct = result.getSignInAccount();
             Log.d("Sign In",acct.getEmail());
@@ -210,9 +217,10 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
             AuthenticateWithToken authenticateWithToken = new AuthenticateWithToken(this);
             authenticateWithToken.execute(acct.getIdToken(),"SignIn");
 
-        } else {
-            // Signed out, show unauthenticated UI.
-
+        }
+            else {
+                // Signed out, show unauthenticated UI.
+                }
         }
 
     }

@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class AnswerActivity extends AppCompatActivity {
 
@@ -35,6 +36,12 @@ public class AnswerActivity extends AppCompatActivity {
 
                 Log.d("Android :","question ID is :"+ questionID);
                 //CHECK context part
+
+                if(InternetConnectivity.isConnected() == false)
+                {
+                    Toast.makeText(getApplicationContext(), "No internet connectivity ", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 AnswerBackgroundTask  task = new AnswerBackgroundTask(getApplicationContext());
                 task.execute(answer,Integer.toString(questionID));
                 mAnswer.setText("");

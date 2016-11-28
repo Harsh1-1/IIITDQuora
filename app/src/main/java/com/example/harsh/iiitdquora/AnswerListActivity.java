@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -20,6 +21,9 @@ public class AnswerListActivity extends AppCompatActivity {
     RecyclerView answerRecyclerView;
     RecyclerView.LayoutManager answerRecyclerViewLayoutManager;
     ArrayList<Answer> dataset;
+    ArrayList<Integer> answerid;
+    ArrayList<Integer>rating;
+    ArrayList<Integer>answered_answer;
 
     private String id_st;
 
@@ -74,17 +78,41 @@ public class AnswerListActivity extends AppCompatActivity {
     @Override
     public void onResume(){
         super.onResume();
+
+        if(InternetConnectivity.isConnected() == false)
+        {
+            Toast.makeText(this,"No Internet Connectivity",Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         AllAnswersTask allAnswersTask = new AllAnswersTask(this);
         allAnswersTask.execute(id_st);
+        UpvoteAnswersTask upvoteAnswersTask = new UpvoteAnswersTask(this);
+        upvoteAnswersTask.execute(id_st);
+        UserUpvotesTask userUpvotesTask = new UserUpvotesTask(this);
+        userUpvotesTask.execute(id_st, SignInActivity.user.getEmailId());
+
         answerListAdapter.setDataset(dataset);
-        // put your code here...
-
+        answerListAdapter.setRating(answerid,rating);
+        answerListAdapter.setAnswered(answered_answer);
     }
-
-
 
     public void update(ArrayList<Answer> dataset){
         this.dataset = dataset;
         answerListAdapter.setDataset(dataset);
     }
+
+    public void updateRating(ArrayList<Integer>answerid,ArrayList<Integer>rating)
+    {
+        this.answerid = answerid;
+        this.rating = rating;
+        answerListAdapter.setRating(answerid,rating);
+    }
+
+    public void updateAnswered(ArrayList<Integer>answered_answer)
+    {
+        this.answered_answer = answered_answer;
+        answerListAdapter.setAnswered(answered_answer);
+    }
+
 }

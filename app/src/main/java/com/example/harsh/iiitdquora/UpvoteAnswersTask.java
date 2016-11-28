@@ -116,7 +116,8 @@ public class UpvoteAnswersTask extends AsyncTask<String,String,String> {
                     count++;
                 }
 
-                //put appropriate method here to get arraylist of ratings and answerids
+                ((AnswerListActivity)ctx).updateRating(answeridArrayList,ratings);
+
 
 
             } catch (JSONException e) {

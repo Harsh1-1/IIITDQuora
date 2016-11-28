@@ -314,6 +314,13 @@ public class HomeActivity extends AppCompatActivity implements GoogleApiClient.O
     }
 
     public void updateFeedDataset(){
+
+        if(InternetConnectivity.isConnected() == false)
+        {
+            Toast.makeText(this, "No internet connectivity ", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         FeedTask task = new FeedTask(context);
         task.execute("50");
     }
