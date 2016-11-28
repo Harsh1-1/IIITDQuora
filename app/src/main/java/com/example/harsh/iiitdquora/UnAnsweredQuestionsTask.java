@@ -88,6 +88,7 @@ public class UnAnsweredQuestionsTask extends AsyncTask <String,String,String>{
         else
         {
             try {
+
                 JSONObject jsonObject = new JSONObject(result);
                 JSONArray jsonArray = jsonObject.getJSONArray("server_response");
                 int count = 0;
@@ -107,6 +108,10 @@ public class UnAnsweredQuestionsTask extends AsyncTask <String,String,String>{
                     Question question = new Question(questionid,description,createdby,createdon,questiontext,categoryid,categoryname);
                     questionArrayList.add(question);
                     count++;
+                }
+                for(int i=0; i<count; i++)
+                {
+                    System.out.println(questionArrayList.get(i));
                 }
                 ((HomeActivity)ctx).updateAnswer(questionArrayList);
             }
