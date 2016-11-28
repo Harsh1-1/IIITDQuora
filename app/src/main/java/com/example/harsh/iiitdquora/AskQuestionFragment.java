@@ -22,6 +22,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
@@ -107,7 +108,7 @@ public class AskQuestionFragment extends Fragment implements Updatable {
                 Spinner spinner = (Spinner)getView().findViewById(R.id.categorySpinner);
                 String s = (String)spinner.getSelectedItem();
                 if(s.equalsIgnoreCase("Please Select a Category")){
-                    Toast.makeText(getContext(), "Please select a Category", Toast.LENGTH_SHORT);
+                    Toast.makeText(getContext(), "Please select a Category", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 int pos = -1;
@@ -117,9 +118,9 @@ public class AskQuestionFragment extends Fragment implements Updatable {
                     }
                 }
                 if(questionText.getText().toString() == null || questionText.getText().toString().isEmpty()){
-                    Toast.makeText(getContext(), "Question Text cannot be null", Toast.LENGTH_SHORT);
+                    Toast.makeText(getContext(), "Question Text cannot be null", Toast.LENGTH_SHORT).show();
                 }else{
-                    Toast.makeText(getContext(), "Question Asked Successfully", Toast.LENGTH_SHORT);
+                    Toast.makeText(getContext(), "Question Asked Successfully", Toast.LENGTH_SHORT).show();
                     QuestionBackgroundTask questionBackgroundTask = new QuestionBackgroundTask(getContext());
                     questionBackgroundTask.execute(SignInActivity.user.getEmailId(),
                             questionText.getText().toString(), descText.getText().toString(), String.valueOf(pos), s);
@@ -142,7 +143,11 @@ public class AskQuestionFragment extends Fragment implements Updatable {
         ImageView imageView = (ImageView) getView().findViewById(R.id.selectedImageView);
         if(savedInstanceState != null){
             bm = (Bitmap) savedInstanceState.getParcelable("bitmap");
-            imageView.setImageBitmap(bm);
+            if(bm != null) {
+                imageView.setImageBitmap(bm);
+            }else{
+                imageView.setImageDrawable(null);
+            }
         }else {
             imageView.setImageDrawable(null);
         }
@@ -155,6 +160,7 @@ public class AskQuestionFragment extends Fragment implements Updatable {
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, choices);
         spinner.setAdapter(spinnerAdapter);
         spinner.setSelection(choices.length-1);
+        //((LinearLayout)getView().findViewById(R.id.askQuestionLinearLayout)).invalidate();
     }
 
     @Override
