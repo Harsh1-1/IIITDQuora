@@ -38,6 +38,13 @@
                 android:scrollbars="vertical"
                 android:maxLength="254" />
 
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/categorySpinner"
+                android:layout_marginTop="8dp"
+                android:spinnerMode="dialog" />
+
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

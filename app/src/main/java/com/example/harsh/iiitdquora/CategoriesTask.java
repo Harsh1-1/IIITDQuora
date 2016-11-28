@@ -19,9 +19,9 @@ import java.util.ArrayList;
 
 public class CategoriesTask extends AsyncTask<String,String,String>{
 
-    Fragment ctx;
+    Context ctx;
 
-    CategoriesTask(Fragment ctx) {
+    CategoriesTask(Context ctx) {
         this.ctx = ctx;
     }
 
@@ -73,9 +73,9 @@ public class CategoriesTask extends AsyncTask<String,String,String>{
         result = server_response[1];
 
         if (result.equals("No Categories List exist")) {
-            Toast.makeText(ctx.getContext(), "No Category exist!!", Toast.LENGTH_LONG).show();
+            Toast.makeText(ctx, "No Category exist!!", Toast.LENGTH_LONG).show();
         } else if (result.equals("Failed to fetch Categories")) {
-            Toast.makeText(ctx.getContext(), "Failed to fetch Categories", Toast.LENGTH_SHORT).show();
+            Toast.makeText(ctx, "Failed to fetch Categories", Toast.LENGTH_SHORT).show();
         } else {
             try {
                 JSONObject jsonObject = new JSONObject(result);
@@ -94,7 +94,8 @@ public class CategoriesTask extends AsyncTask<String,String,String>{
                 }
 
                 //put appropriate method here
-                ((UserProfileFragment)ctx).setAllCategories(categoriesArrayList);
+                HomeActivity.updateCategories(categoriesArrayList);
+                //((UserProfileFragment)ctx).setAllCategories(categoriesArrayList);
             } catch (JSONException e) {
                 e.printStackTrace();
             }

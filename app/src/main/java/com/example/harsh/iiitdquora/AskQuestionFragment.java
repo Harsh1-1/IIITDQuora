@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.DataSetObserver;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -13,14 +14,20 @@ import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 
 
 /**
@@ -66,7 +73,7 @@ public class AskQuestionFragment extends Fragment implements Updatable {
         }*/
     }
 
-    private Bitmap bm;
+    private Bitmap bm = null;
 
     public void update(Bitmap bm){
         this.bm = bm;
@@ -93,28 +100,38 @@ public class AskQuestionFragment extends Fragment implements Updatable {
         askQuestionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d("f", "askButton Clicked");
                 EditText questionText = (EditText) view.findViewById(R.id.QuestionAskEditText);
                 EditText descText = (EditText) view.findViewById(R.id.QuestionDescEditText);
+                Log.d("f", "Question Asked is " + questionText.getText().toString());
+                Spinner spinner = (Spinner)getView().findViewById(R.id.categorySpinner);
+                String s = (String)spinner.getSelectedItem();
+                if(s.equalsIgnoreCase("Please Select a Category")){
+                    Toast.makeText(getContext(), "Please select a Category", Toast.LENGTH_SHORT);
+                    return;
+                }
+                int pos = -1;
+                for(Categories c : HomeActivity.categoriesArrayList){
+                    if(s.equalsIgnoreCase(c.getInterest())){
+                        pos = c.getInterest_id();
+                    }
+                }
                 if(questionText.getText().toString() == null || questionText.getText().toString().isEmpty()){
                     Toast.makeText(getContext(), "Question Text cannot be null", Toast.LENGTH_SHORT);
                 }else{
+                    Toast.makeText(getContext(), "Question Asked Successfully", Toast.LENGTH_SHORT);
                     QuestionBackgroundTask questionBackgroundTask = new QuestionBackgroundTask(getContext());
                     questionBackgroundTask.execute(SignInActivity.user.getEmailId(),
-                            questionText.getText().toString(), descText.getText().toString(), "2", "Food");
+                            questionText.getText().toString(), descText.getText().toString(), String.valueOf(pos), s);
                     ((HomeActivity)getActivity()).updateAskedDataset();
                     questionText.setText("");
                     descText.setText("");
+                    spinner.setSelection(HomeActivity.categoriesArrayList.size());
                     ImageView imageView = (ImageView)getView().findViewById(R.id.selectedImageView);
                     imageView.setImageDrawable(null);
                 }
             }
         });
-
-        if(savedInstanceState != null){
-            bm = (Bitmap) savedInstanceState.getParcelable("bitmap");
-            ImageView imageView = (ImageView) getView().findViewById(R.id.selectedImageView);
-            imageView.setImageBitmap(bm);
-        }
 
         return view;
     }
@@ -122,6 +139,22 @@ public class AskQuestionFragment extends Fragment implements Updatable {
     @Override
     public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        ImageView imageView = (ImageView) getView().findViewById(R.id.selectedImageView);
+        if(savedInstanceState != null){
+            bm = (Bitmap) savedInstanceState.getParcelable("bitmap");
+            imageView.setImageBitmap(bm);
+        }else {
+            imageView.setImageDrawable(null);
+        }
+        Spinner spinner = (Spinner) getView().findViewById(R.id.categorySpinner);
+        String choices[] = new String[HomeActivity.categoriesArrayList.size() + 1];
+        for(int i = 0; i < HomeActivity.categoriesArrayList.size(); i++){
+            choices[i] = HomeActivity.categoriesArrayList.get(i).getInterest();
+        }
+        choices[choices.length - 1] = "Please Select a Category";
+        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, choices);
+        spinner.setAdapter(spinnerAdapter);
+        spinner.setSelection(choices.length-1);
     }
 
     @Override

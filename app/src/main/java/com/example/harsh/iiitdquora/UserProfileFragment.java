@@ -36,8 +36,8 @@ public class UserProfileFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        CategoriesTask task = new CategoriesTask(this);
-        task.execute();
+        //CategoriesTask task = new CategoriesTask(this);
+        //task.execute();
         RetrieveInterestTask retrieveInterestTask = new RetrieveInterestTask(this);
         retrieveInterestTask.execute(SignInActivity.user.getEmailId());
     }
@@ -46,7 +46,7 @@ public class UserProfileFragment extends Fragment {
     private ArrayList<Categories> allCategories;
 
     public void setAllCategories(ArrayList<Categories> allCategories){
-        this.allCategories = allCategories;
+        this.allCategories = HomeActivity.categoriesArrayList;
     }
 
     public void setUserInterests(ArrayList<Categories> userInterests){

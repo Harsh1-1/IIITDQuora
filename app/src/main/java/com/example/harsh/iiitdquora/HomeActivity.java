@@ -50,11 +50,21 @@ public class HomeActivity extends AppCompatActivity implements GoogleApiClient.O
 
     //ArrayList<Question> askedQuestionArrayList;
 
+    public static ArrayList<Categories> categoriesArrayList;
+
+    public static void updateCategories(ArrayList<Categories> categories){
+        categoriesArrayList = categories;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.e("f", "Problem occured after this point");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        CategoriesTask categoriesTask = new CategoriesTask(this);
+        categoriesTask.execute();
+
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
         fragmentManager=getSupportFragmentManager();
@@ -100,7 +110,7 @@ public class HomeActivity extends AppCompatActivity implements GoogleApiClient.O
             @Override
             public void onClick(View v) {
                 viewPager.setCurrentItem(0);
-                updateFeedDataset();
+                //updateFeedDataset();
             }
         });
 
@@ -109,7 +119,7 @@ public class HomeActivity extends AppCompatActivity implements GoogleApiClient.O
             @Override
             public void onClick(View v) {
                 viewPager.setCurrentItem(1);
-                updateAskedDataset();
+                //updateAskedDataset();
             }
         });
 
@@ -118,7 +128,7 @@ public class HomeActivity extends AppCompatActivity implements GoogleApiClient.O
             @Override
             public void onClick(View v) {
                 viewPager.setCurrentItem(2);
-                updateAnswerDataset();
+                //updateAnswerDataset();
             }
         });
 
