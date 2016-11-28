@@ -114,6 +114,7 @@ public class UserUpvotesTask extends AsyncTask<String,String,String> {
                     count++;
                 }
 
+                ((AnswerListActivity)ctx).updateAnswered(answeridArrayList);
                 //put appropriate method here to get arraylist of answerids
 
 
