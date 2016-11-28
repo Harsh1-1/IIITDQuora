@@ -18,7 +18,9 @@ public class Question implements Serializable {
     private String created_on;
     private String text;
     private Bitmap image;
-    private ArrayList<Categories>categories;
+    private int categoryid;
+    private String categoryname;
+
 
     public Question(int id, String description, String created_by, String created_on, String text, Bitmap image, ArrayList<Answer> answers) {
         this.id = id;
@@ -30,23 +32,17 @@ public class Question implements Serializable {
         this.answers = answers;
     }
 
-    public Question(int id, String description, String created_by, String created_on, String text)
+    public Question(int id, String description, String created_by, String created_on, String text, int categoryid, String categoryname)
     {
         this.id = id;
         this.description = description;
         this.created_by = created_by;
         this.created_on = created_on;
         this.text = text;
+        this.categoryid = categoryid;
+        this.categoryname = categoryname;
     }
 
-
-    public ArrayList<Categories> getCategories() {
-        return categories;
-    }
-
-    public void setCategories(ArrayList<Categories> categories) {
-        this.categories = categories;
-    }
 
     public ArrayList<Answer> getAnswers() {
         return answers;
@@ -106,5 +102,21 @@ public class Question implements Serializable {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public int getCategoryid() {
+        return categoryid;
+    }
+
+    public void setCategoryid(int categoryid) {
+        this.categoryid = categoryid;
+    }
+
+    public String getCategoryname() {
+        return categoryname;
+    }
+
+    public void setCategoryname(String categoryname) {
+        this.categoryname = categoryname;
     }
 }
