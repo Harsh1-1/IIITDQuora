@@ -191,6 +191,7 @@ public class AskQuestionFragment extends Fragment implements Updatable {
                 return;
             }
 
+
             ImageResizerTask task = new ImageResizerTask(imageView, this);
             task.execute(imageString, "512", "512");
             //imageView.setImageBitmap(BitmapFactory.decodeFile(imageString));
