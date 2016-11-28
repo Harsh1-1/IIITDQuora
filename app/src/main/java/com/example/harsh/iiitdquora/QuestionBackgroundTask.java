@@ -17,9 +17,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 
-/**
- * Created by harsh on 22-10-2016.
- */
 
 public class QuestionBackgroundTask extends AsyncTask<String,String,String> {
 
@@ -43,6 +40,8 @@ public class QuestionBackgroundTask extends AsyncTask<String,String,String> {
         String email = params[0];
         String question = params[1];
         String questiondescription = params[2];
+        String categoryid = params[3];
+        String categoryname = params[4];
 
 
         try {
@@ -54,7 +53,9 @@ public class QuestionBackgroundTask extends AsyncTask<String,String,String> {
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(OS,"UTF-8"));
             String data =  URLEncoder.encode("user_email","UTF-8") + "=" + URLEncoder.encode(email,"UTF-8") + "&"
                     + URLEncoder.encode("user_question","UTF-8") + "=" + URLEncoder.encode(question,"UTF-8") + "&"
-                    +URLEncoder.encode("question_description","UTF-8") + "=" + URLEncoder.encode(questiondescription,"UTF-8");
+                    +URLEncoder.encode("question_description","UTF-8") + "=" + URLEncoder.encode(questiondescription,"UTF-8")+ "&"
+                    +URLEncoder.encode("category_id","UTF-8") + "=" + URLEncoder.encode(categoryid,"UTF-8")+ "&"
+                    +URLEncoder.encode("category_name","UTF-8") + "=" + URLEncoder.encode(categoryname,"UTF-8");
 
             writer.write(data);
             writer.flush();

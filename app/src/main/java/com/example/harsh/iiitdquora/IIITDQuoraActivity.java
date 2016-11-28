@@ -35,10 +35,10 @@ public class IIITDQuoraActivity extends AppCompatActivity implements GoogleApiCl
                 .requestEmail().setHostedDomain("iiitd.ac.in").requestId().requestIdToken(getString(R.string.server_client_id))
                 .build();
 
-      googleApiClient = new GoogleApiClient.Builder(this)
-              .enableAutoManage(this,this)
-              .addApi(Auth.GOOGLE_SIGN_IN_API,gso)
-              .build();
+        googleApiClient = new GoogleApiClient.Builder(this)
+                .enableAutoManage(this,this)
+                .addApi(Auth.GOOGLE_SIGN_IN_API,gso)
+                .build();
 
         //final Intent intent = new Intent(getApplicationContext(),HomeActivity.class);
 
@@ -102,7 +102,7 @@ public class IIITDQuoraActivity extends AppCompatActivity implements GoogleApiCl
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
+        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             handleSignInResult(result);
@@ -128,7 +128,7 @@ public class IIITDQuoraActivity extends AppCompatActivity implements GoogleApiCl
     private void handleSignInResult(GoogleSignInResult result) {
 
         if (InternetConnectivity.isConnected() == false) {
-           // Toast.makeText(this, "No internet connectivity ", Toast.LENGTH_SHORT).show();
+            // Toast.makeText(this, "No internet connectivity ", Toast.LENGTH_SHORT).show();
             return;
         } else {
 
