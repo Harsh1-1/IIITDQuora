@@ -92,10 +92,15 @@ public class UserProfileFragment extends Fragment implements Updatable{
         updateInterest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CategoriesDialog dialog = new CategoriesDialog();
-                dialog.setList(allCategories, userInterests);
-                dialog.setFrag(frag);
-                dialog.show(getFragmentManager(), "CategoriesDialog");
+                if(InternetConnectivity.isConnected() == false)
+                {
+                    Toast.makeText(getContext(),"No Internet Connectivity",Toast.LENGTH_SHORT).show();
+                }else {
+                    CategoriesDialog dialog = new CategoriesDialog();
+                    dialog.setList(allCategories, userInterests);
+                    dialog.setFrag(frag);
+                    dialog.show(getFragmentManager(), "CategoriesDialog");
+                }
             }
         });
         return view;
@@ -114,6 +119,11 @@ public class UserProfileFragment extends Fragment implements Updatable{
             }
         }else {
             if(SignInActivity.user.getPicurl() != null && !SignInActivity.user.getPicurl().isEmpty()) {
+                if(InternetConnectivity.isConnected() == false)
+                {
+                    Toast.makeText(getContext(),"No Internet Connectivity",Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 ImageResizerTask imageResizerTask = new ImageResizerTask(imageView, this);
                 imageResizerTask.execute(SignInActivity.user.getPicurl(), "128", "128", "url");
             }else imageView.setImageDrawable(null);
