@@ -41,6 +41,7 @@ public class FeedTask extends AsyncTask<String,String,String> {
     protected String doInBackground(String... params) {
         String retrieving_url = "http://onlyforgeeks.net16.net/iiitdquora/retrievefeed.php";
         String result_count = params[0];
+        String email = SignInActivity.user.getEmailId();
         try {
             URL url = new URL(retrieving_url);
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
@@ -49,7 +50,8 @@ public class FeedTask extends AsyncTask<String,String,String> {
             httpURLConnection.setDoOutput(true);
             OutputStream OS = httpURLConnection.getOutputStream();
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(OS, "UTF-8"));
-            String data = URLEncoder.encode("result_count", "UTF-8") + "=" + URLEncoder.encode(result_count, "UTF-8");
+            String data = URLEncoder.encode("result_count", "UTF-8") + "=" + URLEncoder.encode(result_count, "UTF-8")+ "&"
+                    +URLEncoder.encode("user_email","UTF-8") + "=" + URLEncoder.encode(email,"UTF-8");
 
             writer.write(data);
             writer.flush();
@@ -88,10 +90,10 @@ public class FeedTask extends AsyncTask<String,String,String> {
         String[] server_response = result.split("@@@");
         result = server_response[1];
 
-        if (result.equals("No Results found")) {
-            Toast.makeText(ctx, "No results found", Toast.LENGTH_LONG).show();
-        } else if (result.equals("Failed to fetch questions")) {
-            Toast.makeText(ctx, "Failed to retrieve results", Toast.LENGTH_SHORT).show();
+        if (result.equals("Nothing to show in feed")) {
+            Toast.makeText(ctx, "please select an interest for getting feed", Toast.LENGTH_LONG).show();
+        } else if (result.equals("Failed to fetch feed")) {
+            Toast.makeText(ctx, "Failed to fetch feed", Toast.LENGTH_SHORT).show();
         } else {
             try {
                 JSONObject jsonObject = new JSONObject(result);
