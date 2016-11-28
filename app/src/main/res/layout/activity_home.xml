@@ -82,12 +82,17 @@
         android:layout_below="@+id/ButtonBar"
         android:layout_centerHorizontal="true"
         android:id="@+id/mainLayout">
-        <android.support.v4.view.ViewPager
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/pager"
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/myRefreshLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
-        </android.support.v4.view.ViewPager>
+            android:layout_height="match_parent">
+            <android.support.v4.view.ViewPager
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/pager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+            </android.support.v4.view.ViewPager>
+        </android.support.v4.widget.SwipeRefreshLayout>
     </FrameLayout>
 
 </RelativeLayout>

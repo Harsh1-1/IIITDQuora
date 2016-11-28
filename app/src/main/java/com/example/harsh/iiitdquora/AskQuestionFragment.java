@@ -120,7 +120,7 @@ public class AskQuestionFragment extends Fragment implements Updatable {
                 if(questionText.getText().toString() == null || questionText.getText().toString().isEmpty()){
                     Toast.makeText(getContext(), "Question Text cannot be null", Toast.LENGTH_SHORT).show();
                 }else{
-                    Toast.makeText(getContext(), "Question Asked Successfully", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getContext(), "Question Asked Successfully", Toast.LENGTH_SHORT).show();
                     QuestionBackgroundTask questionBackgroundTask = new QuestionBackgroundTask(getContext());
                     questionBackgroundTask.execute(SignInActivity.user.getEmailId(),
                             questionText.getText().toString(), descText.getText().toString(), String.valueOf(pos), s);

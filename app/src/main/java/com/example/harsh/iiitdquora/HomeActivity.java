@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v4.view.*;
@@ -38,6 +39,7 @@ public class HomeActivity extends AppCompatActivity implements GoogleApiClient.O
     private ViewPager viewPager;
     private PagerAdapter pagerAdapter;
     FragmentManager fragmentManager;
+    private SwipeRefreshLayout mySwipeRefreshLayout;
     private String KEY_FEED_FRAGMENT = "feedFragment";
     private String KEY_ASKED_FRAGMENT = "askedFragment";
     private String KEY_ANSWER_FRAGMENT = "answerFragment";
@@ -51,6 +53,7 @@ public class HomeActivity extends AppCompatActivity implements GoogleApiClient.O
     //ArrayList<Question> askedQuestionArrayList;
 
     public static ArrayList<Categories> categoriesArrayList;
+    private int refresh = 0;
 
     public static void updateCategories(ArrayList<Categories> categories){
         categoriesArrayList = categories;
@@ -129,6 +132,17 @@ public class HomeActivity extends AppCompatActivity implements GoogleApiClient.O
             public void onClick(View v) {
                 viewPager.setCurrentItem(2);
                 //updateAnswerDataset();
+            }
+        });
+
+        mySwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.myRefreshLayout);
+        mySwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                refresh = 1;
+                updateFeedDataset();
+                updateAskedDataset();
+                updateAnswerDataset();
             }
         });
 
@@ -322,7 +336,7 @@ public class HomeActivity extends AppCompatActivity implements GoogleApiClient.O
         }
 
         FeedTask task = new FeedTask(context);
-        task.execute("50");
+        task.execute("100");
     }
 
     public void updateAnswerDataset(){
@@ -337,19 +351,33 @@ public class HomeActivity extends AppCompatActivity implements GoogleApiClient.O
         task.execute();
     }
 
+    private void updateRefreshCount(){
+        if(refresh >= 1){
+            refresh += 1;
+            if(refresh == 4){
+                mySwipeRefreshLayout.setRefreshing(false);
+                refresh = 0;
+                return;
+            }
+        }
+    }
+
     public void updateAsked(ArrayList<Question> questions){
         ((AskedFragment)askedFragment).update(questions);
         pagerAdapter.notifyDataSetChanged();
+        updateRefreshCount();
     }
 
     public void updateFeed(ArrayList<Question> questions){
         ((FeedFragment)feedFragment).update(questions);
         pagerAdapter.notifyDataSetChanged();
+        updateRefreshCount();
     }
 
     public void updateAnswer(ArrayList<Question> questions){
         ((AnswerFragment)answerFragment).update(questions);
         pagerAdapter.notifyDataSetChanged();
+        updateRefreshCount();
     }
 
     @Override
