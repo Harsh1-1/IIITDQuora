@@ -8,6 +8,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -89,6 +90,13 @@ public class CategoriesDialog extends DialogFragment {
                                 s += ",";
                             }
                         }
+
+                        if(InternetConnectivity.isConnected() == false)
+                        {
+                            Toast.makeText(getContext(),"No Internet Connectivity",Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+
                         UpdateInterestTask task = new UpdateInterestTask(getContext());
                         task.execute(SignInActivity.user.getEmailId(), s);
                         if(frag != null) {

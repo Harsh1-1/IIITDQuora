@@ -120,7 +120,13 @@ public class AskQuestionFragment extends Fragment implements Updatable {
                 if(questionText.getText().toString() == null || questionText.getText().toString().isEmpty()){
                     Toast.makeText(getContext(), "Question Text cannot be null", Toast.LENGTH_SHORT).show();
                 }else{
-                    //Toast.makeText(getContext(), "Question Asked Successfully", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Question Asked Successfully", Toast.LENGTH_SHORT).show();
+
+                    if(InternetConnectivity.isConnected() == false)
+                    {
+                        Toast.makeText(getContext(),"No Internet Connectivity",Toast.LENGTH_SHORT).show();
+                        return;
+                    }
                     QuestionBackgroundTask questionBackgroundTask = new QuestionBackgroundTask(getContext());
                     questionBackgroundTask.execute(SignInActivity.user.getEmailId(),
                             questionText.getText().toString(), descText.getText().toString(), String.valueOf(pos), s);
@@ -178,6 +184,13 @@ public class AskQuestionFragment extends Fragment implements Updatable {
             ImageView imageView = (ImageView) getView().findViewById(R.id.selectedImageView);
             Button button = (Button) getView().findViewById(R.id.AskButton);
             button.setEnabled(false);
+
+            if(InternetConnectivity.isConnected() == false)
+            {
+                Toast.makeText(getContext(),"No internet connectivity",Toast.LENGTH_SHORT).show();
+                return;
+            }
+
             ImageResizerTask task = new ImageResizerTask(imageView, this);
             task.execute(imageString, "512", "512");
             //imageView.setImageBitmap(BitmapFactory.decodeFile(imageString));

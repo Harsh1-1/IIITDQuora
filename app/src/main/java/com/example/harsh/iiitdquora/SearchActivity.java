@@ -11,6 +11,7 @@ import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -37,6 +38,12 @@ public class SearchActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(recyclerLayoutManager);
         recyclerView.setAdapter(questionListAdapter);
         query = getIntent().getStringExtra("QUERY");
+
+        if(InternetConnectivity.isConnected() == false)
+        {
+            Toast.makeText(this,"No Internet Connectivity",Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         SearchQuestionsTask searchQuestionsTask = new SearchQuestionsTask(this);
         searchQuestionsTask.execute(query);

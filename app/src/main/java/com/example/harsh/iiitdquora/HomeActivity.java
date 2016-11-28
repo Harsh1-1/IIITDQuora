@@ -65,6 +65,12 @@ public class HomeActivity extends AppCompatActivity implements GoogleApiClient.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        if(InternetConnectivity.isConnected() == false)
+        {
+            Toast.makeText(this,"No Internet Connectivity",Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         CategoriesTask categoriesTask = new CategoriesTask(this);
         categoriesTask.execute();
 

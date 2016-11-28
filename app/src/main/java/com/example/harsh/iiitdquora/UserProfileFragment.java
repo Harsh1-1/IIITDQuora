@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -38,6 +39,11 @@ public class UserProfileFragment extends Fragment {
         super.onCreate(savedInstanceState);
         //CategoriesTask task = new CategoriesTask(this);
         //task.execute();
+        if(InternetConnectivity.isConnected() == false)
+        {
+            Toast.makeText(getContext(),"No Internet Connectivity",Toast.LENGTH_SHORT).show();
+            return;
+        }
         RetrieveInterestTask retrieveInterestTask = new RetrieveInterestTask(this);
         retrieveInterestTask.execute(SignInActivity.user.getEmailId());
     }
