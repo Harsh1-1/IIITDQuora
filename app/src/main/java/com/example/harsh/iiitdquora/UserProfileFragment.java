@@ -43,7 +43,7 @@ public class UserProfileFragment extends Fragment {
     }
 
     private ArrayList<Categories> userInterests;
-    private ArrayList<Categories> allCategories;
+    private ArrayList<Categories> allCategories = HomeActivity.categoriesArrayList;
 
     public void setAllCategories(ArrayList<Categories> allCategories){
         this.allCategories = HomeActivity.categoriesArrayList;
