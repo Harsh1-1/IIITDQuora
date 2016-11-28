@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+//Activity Class for answer Related to Activity
 public class AnswerActivity extends AppCompatActivity {
 
     private EditText mAnswer;

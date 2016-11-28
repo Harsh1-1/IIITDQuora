@@ -2,7 +2,6 @@ package com.example.harsh.iiitdquora;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.support.v4.app.Fragment;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -22,7 +21,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
-
+//Task for retrieving upvotes on answers
 public class UpvoteAnswersTask extends AsyncTask<String,String,String> {
 
     Context ctx;

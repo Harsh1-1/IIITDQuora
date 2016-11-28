@@ -8,9 +8,7 @@ import android.widget.ImageView;
 import java.lang.ref.WeakReference;
 import java.net.URL;
 
-/**
- * Created by Abhi on 18-11-2016.
- */
+//For Resizing image
 
 public class ImageResizerTask extends AsyncTask<String, Void, Bitmap> {
 

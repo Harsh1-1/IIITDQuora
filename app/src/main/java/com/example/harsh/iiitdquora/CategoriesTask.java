@@ -16,7 +16,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
-
+//Task for retrieving category list
 public class CategoriesTask extends AsyncTask<String,String,String>{
 
     Context ctx;

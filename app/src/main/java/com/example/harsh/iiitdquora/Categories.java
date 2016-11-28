@@ -3,9 +3,7 @@ package com.example.harsh.iiitdquora;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-/**
- * Created by Tushar on 15-11-2016.
- */
+//Class for Categories/Interests
 
 public class Categories implements Serializable{
 

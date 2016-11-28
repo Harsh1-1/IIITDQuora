@@ -16,7 +16,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 
-
+//Task for upvoting an answer
 public class UpvoteTask extends AsyncTask<String,String,String> {
 
     Context ctx;

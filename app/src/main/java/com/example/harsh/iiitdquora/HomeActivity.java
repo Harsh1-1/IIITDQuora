@@ -33,6 +33,7 @@ import com.google.android.gms.common.api.Status;
 
 import java.util.ArrayList;
 
+//Home Page for user is handled by this activity
 public class HomeActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener{
 
     private static final int NUM_PAGES = 3;

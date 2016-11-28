@@ -21,9 +21,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
-/**
- * Created by harsh on 18-11-2016.
- */
+//Async Task for getting all the user Questions
 
 public class AllAnswersTask extends AsyncTask<String,String,String> {
 

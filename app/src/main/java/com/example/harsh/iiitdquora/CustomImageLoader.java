@@ -5,9 +5,7 @@ import android.graphics.BitmapFactory;
 
 import java.net.URL;
 
-/**
- * Created by Abhi on 18-11-2016.
- */
+//for loading image from device
 
 public class CustomImageLoader {
     private CustomImageLoader(){}

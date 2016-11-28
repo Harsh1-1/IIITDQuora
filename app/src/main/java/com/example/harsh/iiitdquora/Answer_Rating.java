@@ -1,8 +1,6 @@
 package com.example.harsh.iiitdquora;
 
-/**
- * Created by Tushar on 15-11-2016.
- */
+//Class for up votes
 
 public class Answer_Rating {
 

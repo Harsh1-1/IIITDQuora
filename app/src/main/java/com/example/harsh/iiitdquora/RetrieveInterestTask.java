@@ -22,7 +22,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
-
+//Task for retrieving user interests
 public class RetrieveInterestTask extends AsyncTask<String,String,String> {
 
     Fragment ctx;

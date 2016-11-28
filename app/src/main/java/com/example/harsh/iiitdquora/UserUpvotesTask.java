@@ -21,7 +21,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
-
+//Task for retrieving Answers where user upvoted
 public class UserUpvotesTask extends AsyncTask<String,String,String> {
 
     Context ctx;

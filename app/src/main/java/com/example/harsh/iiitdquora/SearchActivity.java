@@ -14,7 +14,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-
+//Activity for implementing search
 public class SearchActivity extends AppCompatActivity {
 
     QuestionListAdapter questionListAdapter;

@@ -21,9 +21,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
-/**
- * Created by harsh on 26-11-2016.
- */
+//Retrieving user feed
 
 public class FeedTask extends AsyncTask<String,String,String> {
     Context ctx;

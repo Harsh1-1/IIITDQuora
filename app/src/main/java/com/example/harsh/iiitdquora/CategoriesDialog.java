@@ -12,9 +12,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-/**
- * Created by Abhi on 27-11-2016.
- */
+//Class for Displaying Categories in a Dialog
 
 public class CategoriesDialog extends DialogFragment {
     ArrayList<Categories> allCategories;

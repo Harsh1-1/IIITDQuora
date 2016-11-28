@@ -5,9 +5,7 @@ import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 
-/**
- * Created by Abhi on 16-11-2016.
- */
+//Listener Class to handle when a question is clicked
 
 public class QuestionListOnClickListener implements View.OnClickListener {
 

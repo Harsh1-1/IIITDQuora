@@ -23,9 +23,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
-/**
- * Created by Tushar on 27-11-2016.
- */
+//Async Task for authenticating user with Google Sign in
 
 public class AuthenticateWithToken extends AsyncTask<String, Void, ArrayList<String>> {
 

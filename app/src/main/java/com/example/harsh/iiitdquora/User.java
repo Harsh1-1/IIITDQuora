@@ -1,5 +1,6 @@
 package com.example.harsh.iiitdquora;
 
+//User Class
 public class User {
 
     private String EmailId;

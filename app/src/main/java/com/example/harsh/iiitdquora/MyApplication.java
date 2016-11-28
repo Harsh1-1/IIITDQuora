@@ -2,9 +2,7 @@ package com.example.harsh.iiitdquora;
 
 import android.app.Application;
 
-/**
- * Created by Tushar on 28-11-2016.
- */
+//Listener for connectivity
 
 public class MyApplication extends Application {
 

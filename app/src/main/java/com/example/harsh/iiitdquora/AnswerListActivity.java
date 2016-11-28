@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+//Activity Class for listing all the Answers
 public class AnswerListActivity extends AppCompatActivity {
 
     AnswerListAdapter answerListAdapter;

@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
-
+//Fragment for feed
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link FeedFragment#newInstance} factory method to

@@ -1,9 +1,6 @@
 package com.example.harsh.iiitdquora;
 
-import android.app.ActivityManager;
-import android.content.Context;
 import android.content.Intent;
-import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -40,21 +37,6 @@ public class IIITDQuoraActivity extends AppCompatActivity implements GoogleApiCl
                 .addApi(Auth.GOOGLE_SIGN_IN_API,gso)
                 .build();
 
-        //final Intent intent = new Intent(getApplicationContext(),HomeActivity.class);
-
-
-/*        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-
-                final Intent intent = new Intent(getApplicationContext(),SignInActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-                //TODO: A lot of things
-                finish();
-            }
-        },SPLASH_TIME);
-    */
     }
 
     @Override
@@ -215,11 +197,5 @@ public class IIITDQuoraActivity extends AppCompatActivity implements GoogleApiCl
 
     }
 
-/*    @Override
-    protected void onStart()
-    {
-      super.onStart();
-    }
-**/
 
 }

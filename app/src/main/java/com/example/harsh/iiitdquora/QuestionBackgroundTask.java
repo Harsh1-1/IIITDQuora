@@ -18,7 +18,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 
-
+//Task for posting a question
 public class QuestionBackgroundTask extends AsyncTask<String,String,String> {
 
     Context ctx;

@@ -14,9 +14,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 
-/**
- * Created by Tushar on 17-11-2016.
- */
+//Aysnc Task for posting answers
 
 public class AnswerBackgroundTask extends AsyncTask<String,String,String> {
 

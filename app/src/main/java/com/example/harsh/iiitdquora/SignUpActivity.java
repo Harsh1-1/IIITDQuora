@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
+//Sign up activity
 public class SignUpActivity extends AppCompatActivity {
 
     private EditText registerUsername;

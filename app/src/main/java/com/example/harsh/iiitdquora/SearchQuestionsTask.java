@@ -20,10 +20,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
-
-/**
- * Created by harsh on 26-11-2016.
- */
+//Task for handling search query
 
 public class SearchQuestionsTask extends AsyncTask<String,String,String> {
 

@@ -3,9 +3,7 @@ package com.example.harsh.iiitdquora;
 import java.util.ArrayList;
 import java.util.Date;
 
-/**
- * Created by Tushar on 15-11-2016.
- */
+//Class for a Answer
 
 public class Answer {
 

@@ -7,9 +7,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.Log;
 
-/**
- * Created by Tushar on 27-11-2016.
- */
+//Broadcast Receiver for checking internet connectivity
 
 public class InternetConnectivity extends BroadcastReceiver {
 

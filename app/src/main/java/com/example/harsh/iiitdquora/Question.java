@@ -6,9 +6,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
-/**
- * Created by Tushar on 15-11-2016.
- */
+//Class for question
 
 public class Question implements Serializable {
 

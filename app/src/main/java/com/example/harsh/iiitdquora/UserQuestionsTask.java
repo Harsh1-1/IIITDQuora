@@ -22,9 +22,7 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Date;
 
-/**
- * Created by harsh on 16-11-2016.
- */
+//Task for Retrieving Questions Asked by user
 
 public class UserQuestionsTask extends AsyncTask <String,String,String>{
 

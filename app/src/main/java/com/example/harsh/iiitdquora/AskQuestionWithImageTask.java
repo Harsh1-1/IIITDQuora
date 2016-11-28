@@ -14,9 +14,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 
-/**
- * Created by harsh on 29-11-2016.
- */
+//Task for posting questions with image
 
 public class AskQuestionWithImageTask extends AsyncTask<String,String,String> {
 

@@ -12,9 +12,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-/**
- * Created by Tushar on 18-11-2016.
- */
+//Adapter for AnswerList
 
 public class AnswerListAdapter  extends RecyclerView.Adapter<AnswerListAdapter.MyViewHolder> {
 
