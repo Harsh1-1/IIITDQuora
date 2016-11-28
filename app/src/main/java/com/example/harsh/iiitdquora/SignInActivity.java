@@ -25,7 +25,7 @@ import com.google.android.gms.common.api.OptionalPendingResult;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 
-public class SignInActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
+public class SignInActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener,InternetConnectivity.ConnectivityReceiverListener {
 
     private EditText inputEmail;
     private EditText inputPassword;
@@ -119,7 +119,16 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
 
         DatabaseBackgroundTask dbt = new DatabaseBackgroundTask(this);
 
-        dbt.execute("login",outEmail,outPassword);
+        if(InternetConnectivity.isConnected() == false)
+        {
+            Toast.makeText(this, "No internet connectivity ", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        else
+        {
+            dbt.execute("login", outEmail, outPassword);
+        }
 
     }
 
@@ -220,5 +229,48 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
                 });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
 
+        // register connection status listener
+        MyApplication.getInstance().setConnectivityListener(this);
+    }
+
+
+    @Override
+    public void onNetworkConnectionChanged(boolean isConnected) {
+
+        if(isConnected == false)
+        {
+            Toast.makeText(this,"No internet connectivity here",Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        else if(isConnected == true)
+        {
+
+            OptionalPendingResult<GoogleSignInResult> opr = Auth.GoogleSignInApi.silentSignIn(googleApiClient);
+            if (opr.isDone()) {
+                // If the user's cached credentials are valid, the OptionalPendingResult will be "done"
+                // and the GoogleSignInResult will be available instantly.
+
+                GoogleSignInResult result = opr.get();
+                handleSignInResult(result);
+            } else {
+                // If the user has not previously signed in on this device or the sign-in has expired,
+                // this asynchronous branch will attempt to sign in the user silently.  Cross-device
+                // single sign-on will occur in this branch.
+
+                opr.setResultCallback(new ResultCallback<GoogleSignInResult>() {
+                    @Override
+                    public void onResult(GoogleSignInResult googleSignInResult) {
+
+                        handleSignInResult(googleSignInResult);
+                    }
+                });
+            }
+        }
+
+    }
 }

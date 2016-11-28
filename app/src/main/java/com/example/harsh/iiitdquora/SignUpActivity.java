@@ -68,12 +68,19 @@ public class SignUpActivity extends AppCompatActivity {
             return;
         }
 
-        DatabaseBackgroundTask dbt = new DatabaseBackgroundTask(this);
-        dbt.execute("register",outUsername,outEmail,outPassword,outContact,outAboutme);
+        if(InternetConnectivity.isConnected() == false)
+        {
+            Toast.makeText(this, "No internet connectivity ", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
+        else {
+            DatabaseBackgroundTask dbt = new DatabaseBackgroundTask(this);
+            dbt.execute("register", outUsername, outEmail, outPassword, outContact, outAboutme);
+        }
 
-        final Intent intent = new Intent(getApplicationContext(),SignInActivity.class);
-        startActivity(intent);
+            final Intent intent = new Intent(getApplicationContext(),SignInActivity.class);
+            startActivity(intent);
 
     }
 }
