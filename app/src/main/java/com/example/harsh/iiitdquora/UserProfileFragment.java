@@ -1,12 +1,15 @@
 package com.example.harsh.iiitdquora;
 
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,7 +21,7 @@ import java.util.ArrayList;
  * Use the {@link UserProfileFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class UserProfileFragment extends Fragment {
+public class UserProfileFragment extends Fragment implements Updatable{
 
     public UserProfileFragment() {
         // Required empty public constructor
@@ -90,4 +93,36 @@ public class UserProfileFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        ImageView imageView = (ImageView)view.findViewById(R.id.profileImageView);
+        if(savedInstanceState != null){
+            bitmap = savedInstanceState.getParcelable("bitmap");
+            if(bitmap != null) {
+                imageView.setImageBitmap(bitmap);
+            }else{
+                imageView.setImageDrawable(null);
+            }
+        }else {
+            if(SignInActivity.user.getPicurl() != null && !SignInActivity.user.getPicurl().isEmpty()) {
+                ImageResizerTask imageResizerTask = new ImageResizerTask(imageView, this);
+                imageResizerTask.execute(SignInActivity.user.getPicurl(), "128", "128", "url");
+            }else imageView.setImageDrawable(null);
+        }
+    }
+
+    private Bitmap bitmap;
+    @Override
+    public void update(Bitmap bm) {
+        this.bitmap = bm;
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        if(bitmap != null){
+            outState.putParcelable("bitmap", bitmap);
+        }
+    }
 }

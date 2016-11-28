@@ -6,6 +6,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import java.lang.ref.WeakReference;
+import java.net.URL;
 
 /**
  * Created by Abhi on 18-11-2016.
@@ -29,6 +30,18 @@ public class ImageResizerTask extends AsyncTask<String, Void, Bitmap> {
         data = params[0];
         width = Integer.parseInt(params[1]);
         height = Integer.parseInt(params[2]);
+        if(params.length == 4){
+            String type = params[3];
+            if(type.equals("url")){
+                try {
+                    URL url = new URL(data);
+                    return CustomImageLoader.getImage(url, width, height);
+                }catch (Exception ex){
+                    ex.printStackTrace();
+                }
+                return null;
+            }
+        }
         return CustomImageLoader.getImage(data, width, height);
     }
 
@@ -39,6 +52,8 @@ public class ImageResizerTask extends AsyncTask<String, Void, Bitmap> {
             final Updatable fragment = fragmentReference.get();
             if (imageView != null) {
                 imageView.setImageBitmap(bitmap);
+            }else{
+                imageView.setImageDrawable(null);
             }
             if(fragment != null){
                 fragment.update(bitmap);
