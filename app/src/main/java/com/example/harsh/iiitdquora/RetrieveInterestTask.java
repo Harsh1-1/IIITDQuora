@@ -88,9 +88,11 @@ public class RetrieveInterestTask extends AsyncTask<String,String,String> {
     protected void onPostExecute(String result) {
         String[] server_response = result.split("@@@");
         result=server_response[1];
+        ArrayList<Categories> categoriesArrayList = new ArrayList<>();
         if(result.equals("No Interests exist"))
         {
             Toast.makeText(ctx.getContext(),"You do not have any interests",Toast.LENGTH_LONG).show();
+            ((UserProfileFragment)ctx).setUserInterests(categoriesArrayList);
         }
         else if(result.equals("Failed to fetch interest Category"))
         {
@@ -99,7 +101,7 @@ public class RetrieveInterestTask extends AsyncTask<String,String,String> {
         else
         {
             try {
-                ArrayList<Categories> categoriesArrayList = new ArrayList<>();
+
                 JSONObject jsonObject = new JSONObject(result);
                 JSONArray jsonArray = jsonObject.getJSONArray("server_response");
                 int count = 0;

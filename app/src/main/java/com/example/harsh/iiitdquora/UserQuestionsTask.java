@@ -91,10 +91,12 @@ public class UserQuestionsTask extends AsyncTask <String,String,String>{
     protected void onPostExecute(String result) {
         String[] server_response = result.split("@@@");
         result=server_response[1];
-
+        ArrayList<Question> questionArrayList = new ArrayList<>();
         if(result.equals("No Questions Asked"))
         {
+            ((HomeActivity)ctx).updateAsked(questionArrayList);
             Toast.makeText(ctx,"You did not ask any questions yet!!",Toast.LENGTH_LONG).show();
+
         }
         else if(result.equals("Failed to fetch user questions"))
         {
@@ -108,7 +110,6 @@ public class UserQuestionsTask extends AsyncTask <String,String,String>{
                 int count = 0;
                 int questionid,categoryid;
                 String description,createdby,createdon,questiontext,categoryname;
-                ArrayList<Question> questionArrayList = new ArrayList<>();
                 while (count<jsonArray.length())
                 {
                     JSONObject JO = jsonArray.getJSONObject(count);

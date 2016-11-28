@@ -89,8 +89,10 @@ public class FeedTask extends AsyncTask<String,String,String> {
     protected void onPostExecute(String result) {
         String[] server_response = result.split("@@@");
         result = server_response[1];
+        ArrayList<Question> questionArrayList = new ArrayList<>();
 
         if (result.equals("Nothing to show in feed")) {
+            ((HomeActivity) ctx).updateFeed(questionArrayList);
             Toast.makeText(ctx, "please select an interest for getting feed", Toast.LENGTH_LONG).show();
         } else if (result.equals("Failed to fetch feed")) {
             Toast.makeText(ctx, "Failed to fetch feed", Toast.LENGTH_SHORT).show();
@@ -101,7 +103,6 @@ public class FeedTask extends AsyncTask<String,String,String> {
                 int count = 0;
                 int questionid,categoryid;
                 String description, createdby, createdon, questiontext,categoryname;
-                ArrayList<Question> questionArrayList = new ArrayList<>();
                 while (count < jsonArray.length()) {
                     JSONObject JO = jsonArray.getJSONObject(count);
                     questionid = JO.getInt("QuestionID");
