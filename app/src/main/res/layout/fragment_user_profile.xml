@@ -9,13 +9,15 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:id="@+id/userProfileLinearLayout">
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/profileImageView"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="12dp" />
 
         <TableLayout
             android:layout_width="match_parent"
@@ -24,7 +26,8 @@
             android:focusableInTouchMode="false"
             android:id="@+id/UserInformationLayout"
             android:gravity="start"
-            android:layout_gravity="top">
+            android:layout_gravity="top"
+            android:layout_marginTop="8dp">
 
             <TableRow
                 android:layout_width="match_parent"

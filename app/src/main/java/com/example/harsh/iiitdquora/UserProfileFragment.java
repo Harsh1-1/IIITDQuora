@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -80,6 +81,13 @@ public class UserProfileFragment extends Fragment implements Updatable{
         //((TextView)view.findViewById(R.id.ContactView)).setText(SignInActivity.user.getContact());
         //((TextView)view.findViewById(R.id.AboutMeView)).setText(SignInActivity.user.getAboutMe());
         final Fragment frag = this;
+        LinearLayout linearLayout = (LinearLayout)view.findViewById(R.id.userProfileLinearLayout);
+        linearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
         Button updateInterest = (Button)view.findViewById(R.id.updateInterestButton);
         updateInterest.setOnClickListener(new View.OnClickListener() {
             @Override
