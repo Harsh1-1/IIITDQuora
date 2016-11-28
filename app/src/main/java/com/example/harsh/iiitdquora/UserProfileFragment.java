@@ -74,8 +74,8 @@ public class UserProfileFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_user_profile, container, false);
         ((TextView)view.findViewById(R.id.UserNameView)).setText(SignInActivity.user.getUsername());
         ((TextView)view.findViewById(R.id.UserEmailView)).setText(SignInActivity.user.getEmailId());
-        ((TextView)view.findViewById(R.id.ContactView)).setText(SignInActivity.user.getContact());
-        ((TextView)view.findViewById(R.id.AboutMeView)).setText(SignInActivity.user.getAboutMe());
+        //((TextView)view.findViewById(R.id.ContactView)).setText(SignInActivity.user.getContact());
+        //((TextView)view.findViewById(R.id.AboutMeView)).setText(SignInActivity.user.getAboutMe());
         final Fragment frag = this;
         Button updateInterest = (Button)view.findViewById(R.id.updateInterestButton);
         updateInterest.setOnClickListener(new View.OnClickListener() {
