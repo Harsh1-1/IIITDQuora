@@ -98,8 +98,8 @@ public class SearchQuestionsTask extends AsyncTask<String,String,String> {
                 JSONObject jsonObject = new JSONObject(result);
                 JSONArray jsonArray = jsonObject.getJSONArray("server_response");
                 int count = 0;
-                int questionid;
-                String description, createdby, createdon, questiontext;
+                int questionid,categoryid;
+                String description, createdby, createdon, questiontext,categoryname;
                 ArrayList<Question> questionArrayList = new ArrayList<>();
                 while (count < jsonArray.length()) {
                     JSONObject JO = jsonArray.getJSONObject(count);
@@ -108,7 +108,9 @@ public class SearchQuestionsTask extends AsyncTask<String,String,String> {
                     createdby = JO.getString("Createdby");
                     createdon = JO.getString("Createdon");
                     questiontext = JO.getString("Questiontext");
-                    Question question = new Question(questionid, description, createdby, createdon, questiontext);
+                    categoryid = JO.getInt("Categoryid");
+                    categoryname = JO.getString("Categoryname");
+                    Question question = new Question(questionid,description,createdby,createdon,questiontext,categoryid,categoryname);
                     questionArrayList.add(question);
                     count++;
                 }
