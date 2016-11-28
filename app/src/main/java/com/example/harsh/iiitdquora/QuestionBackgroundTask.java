@@ -1,5 +1,6 @@
 package com.example.harsh.iiitdquora;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.StrictMode;
@@ -21,6 +22,7 @@ import java.net.URLEncoder;
 public class QuestionBackgroundTask extends AsyncTask<String,String,String> {
 
     Context ctx;
+    ProgressDialog loading;
 
     QuestionBackgroundTask(Context ctx)
     {
@@ -31,6 +33,7 @@ public class QuestionBackgroundTask extends AsyncTask<String,String,String> {
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
+        loading = ProgressDialog.show(ctx, "Posting Question...", null,true,true);
     }
 
     @Override
@@ -86,7 +89,7 @@ public class QuestionBackgroundTask extends AsyncTask<String,String,String> {
 
     @Override
     protected void onPostExecute(String result) {
-
+            loading.dismiss();
             Toast.makeText(ctx,"Question posted successfully!!",Toast.LENGTH_LONG).show();
 
     }

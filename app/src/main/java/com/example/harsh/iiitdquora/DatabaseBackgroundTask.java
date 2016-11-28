@@ -1,6 +1,7 @@
 package com.example.harsh.iiitdquora;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.Toast;
@@ -20,6 +21,7 @@ import java.net.URLEncoder;
 public class DatabaseBackgroundTask extends AsyncTask<String,String,String> {
     Context ctx;
     AlertDialog alertDialog;
+    ProgressDialog loading;
 
     DatabaseBackgroundTask(Context ctx)
     {
@@ -32,6 +34,7 @@ public class DatabaseBackgroundTask extends AsyncTask<String,String,String> {
 
         alertDialog = new AlertDialog.Builder(ctx).create();
         alertDialog.setTitle("Login info");
+        loading = ProgressDialog.show(ctx, "Signing in/up...", null,true,true);
     }
 
 
@@ -146,6 +149,7 @@ public class DatabaseBackgroundTask extends AsyncTask<String,String,String> {
     protected void onPostExecute(String result) {
         String[] details  = result.split(",");
 
+        loading.dismiss();
         //Toast.makeText(ctx,result,Toast.LENGTH_LONG).show();
 
         if (details[0].equals("registration"))

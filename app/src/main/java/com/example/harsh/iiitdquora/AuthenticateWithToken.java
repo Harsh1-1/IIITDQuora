@@ -1,5 +1,6 @@
 package com.example.harsh.iiitdquora;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -29,10 +30,17 @@ import java.util.ArrayList;
 public class AuthenticateWithToken extends AsyncTask<String, Void, ArrayList<String>> {
 
     Context ctx;
+    ProgressDialog loading;
 
     AuthenticateWithToken(Context ctx)
     {
         this.ctx = ctx;
+    }
+
+    @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
+        loading = ProgressDialog.show(ctx, "Signing in...", null,true,true);
     }
 
     @Override
@@ -93,6 +101,7 @@ public class AuthenticateWithToken extends AsyncTask<String, Void, ArrayList<Str
         String[] server_response = results.get(0).split("@@@");
         String activityName = results.get(1);
         String result = server_response[1];
+        loading.dismiss();
 
         if (result.equals("new user registered, click again to sign in")) {
             Toast.makeText(ctx, "new user registered, click again to sign in", Toast.LENGTH_LONG).show();
