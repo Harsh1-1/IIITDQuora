@@ -21,6 +21,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -31,7 +32,7 @@ import com.google.android.gms.common.api.Status;
 
 import java.util.ArrayList;
 
-public class HomeActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
+public class HomeActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener{
 
     private static final int NUM_PAGES = 3;
     private ViewPager viewPager;
@@ -292,6 +293,12 @@ public class HomeActivity extends AppCompatActivity implements GoogleApiClient.O
 
     public void updateAskedDataset(){
         UserQuestionsTask task = new UserQuestionsTask(context);
+
+        if(InternetConnectivity.isConnected() == false)
+        {
+            Toast.makeText(context,"No Internet connectivity",Toast.LENGTH_SHORT).show();
+            return;
+        }
         task.execute(SignInActivity.user.getEmailId());
     }
 

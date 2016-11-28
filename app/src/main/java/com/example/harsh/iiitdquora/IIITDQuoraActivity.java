@@ -8,6 +8,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -19,7 +20,7 @@ import com.google.android.gms.common.api.OptionalPendingResult;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 
-public class IIITDQuoraActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
+public class IIITDQuoraActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener, InternetConnectivity.ConnectivityReceiverListener {
 
     private static int SPLASH_TIME = 1000;
     private static final int RC_SIGN_IN = 9001;
@@ -57,8 +58,18 @@ public class IIITDQuoraActivity extends AppCompatActivity implements GoogleApiCl
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+
+        // register connection status listener
+        MyApplication.getInstance().setConnectivityListener(this);
+    }
+
+
+    @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
+        Log.d("Android :","FAiled internet connection");
     }
 
     @Override
@@ -116,31 +127,37 @@ public class IIITDQuoraActivity extends AppCompatActivity implements GoogleApiCl
     // [START handleSignInResult]
     private void handleSignInResult(GoogleSignInResult result) {
 
-        if (result.isSuccess()) {
-            // Signed in successfully, show authenticated UI.
-            GoogleSignInAccount acct = result.getSignInAccount();
-            Log.d("Sign In",acct.getEmail());
-            Log.d("Detail",acct.getId());
-            Log.d("tokenID", acct.getIdToken());
-            Log.d("gdf", acct.getDisplayName());
-
-            AuthenticateWithToken authenticateWithToken = new AuthenticateWithToken(this);
-            authenticateWithToken.execute(acct.getIdToken(),"IIITD");
-
+        if (InternetConnectivity.isConnected() == false) {
+           // Toast.makeText(this, "No internet connectivity ", Toast.LENGTH_SHORT).show();
+            return;
         } else {
 
-            Log.d("Android","IIIT");
-            final Intent intent = new Intent(getApplicationContext(),SignInActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
-            //TODO: A lot of things
-            finish();
-            // Signed out, show unauthenticated UI.
+            if (result.isSuccess()) {
+                // Signed in successfully, show authenticated UI.
+                GoogleSignInAccount acct = result.getSignInAccount();
+                Log.d("Sign In", acct.getEmail());
+                Log.d("Detail", acct.getId());
+                Log.d("tokenID", acct.getIdToken());
+                Log.d("gdf", acct.getDisplayName());
+
+                AuthenticateWithToken authenticateWithToken = new AuthenticateWithToken(this);
+                authenticateWithToken.execute(acct.getIdToken(), "IIITD");
+
+
+            } else {
+
+                Log.d("Android", "IIIT");
+                final Intent intent = new Intent(getApplicationContext(), SignInActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                //TODO: A lot of things
+                finish();
+                // Signed out, show unauthenticated UI.
+
+            }
 
         }
-
     }
-
     private void revokeAccess() {
         Auth.GoogleSignInApi.revokeAccess(googleApiClient).setResultCallback(
                 new ResultCallback<Status>() {
@@ -159,6 +176,42 @@ public class IIITDQuoraActivity extends AppCompatActivity implements GoogleApiCl
         final Intent intent = new Intent(getApplicationContext(),HomeActivity.class);
         startActivity(intent);
         finish();
+    }
+
+    @Override
+    public void onNetworkConnectionChanged(boolean isConnected) {
+
+        if(isConnected == false)
+        {
+            Toast.makeText(this,"No internet connectivity here",Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        else if(isConnected == true)
+        {
+
+            OptionalPendingResult<GoogleSignInResult> opr = Auth.GoogleSignInApi.silentSignIn(googleApiClient);
+            if (opr.isDone()) {
+                // If the user's cached credentials are valid, the OptionalPendingResult will be "done"
+                // and the GoogleSignInResult will be available instantly.
+
+                GoogleSignInResult result = opr.get();
+                handleSignInResult(result);
+            } else {
+                // If the user has not previously signed in on this device or the sign-in has expired,
+                // this asynchronous branch will attempt to sign in the user silently.  Cross-device
+                // single sign-on will occur in this branch.
+
+                opr.setResultCallback(new ResultCallback<GoogleSignInResult>() {
+                    @Override
+                    public void onResult(GoogleSignInResult googleSignInResult) {
+
+                        handleSignInResult(googleSignInResult);
+                    }
+                });
+            }
+        }
+
     }
 
 /*    @Override
