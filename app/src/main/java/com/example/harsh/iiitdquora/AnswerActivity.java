@@ -12,7 +12,7 @@ import android.widget.Toast;
 import com.example.harsh.iiitdquora.Helpers.InternetConnectivity;
 import com.example.harsh.iiitdquora.tasks.AnswerBackgroundTask;
 
-//Activity Class for answer Related to Activity
+//Activity Class for Answering questions
 public class AnswerActivity extends AppCompatActivity {
 
     private EditText mAnswer;
@@ -40,11 +40,14 @@ public class AnswerActivity extends AppCompatActivity {
                 Log.d("Android :","question ID is :"+ questionID);
                 //CHECK context part
 
+                //Check Internet Connectivity
                 if(InternetConnectivity.isConnected() == false)
                 {
                     Toast.makeText(getApplicationContext(), "No internet connectivity ", Toast.LENGTH_SHORT).show();
                     return;
                 }
+
+                //Update answer in database
                 AnswerBackgroundTask task = new AnswerBackgroundTask(getApplicationContext());
                 task.execute(answer,Integer.toString(questionID));
                 mAnswer.setText("");
