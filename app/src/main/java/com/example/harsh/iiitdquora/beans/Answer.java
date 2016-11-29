@@ -2,7 +2,10 @@ package com.example.harsh.iiitdquora.beans;
 
 import java.util.ArrayList;
 
-//Class for a Answer
+/*
+CLASS NAME : ANSWER
+PURPOSE : DATA MEMBERS AND GETTERS AND SETTER FOR ANSWER
+ */
 
 public class Answer {
 
