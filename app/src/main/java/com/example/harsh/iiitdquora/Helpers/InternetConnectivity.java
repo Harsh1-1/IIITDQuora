@@ -7,7 +7,10 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.Log;
 
-//Broadcast Receiver for checking internet connectivity
+/*
+CLASS NAME : InternetConnectivity
+PURPOSE : Broadcast Receiver for checking internet connectivity
+*/
 
 public class InternetConnectivity extends BroadcastReceiver {
 

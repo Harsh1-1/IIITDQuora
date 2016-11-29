@@ -12,7 +12,11 @@ import com.example.harsh.iiitdquora.R;
 
 import java.util.ArrayList;
 
-//Adapter for questions
+/*
+CLASS NAME : QuestionListAdapter
+PURPOSE : Provides interface for question
+ */
+
 
 public class QuestionListAdapter extends RecyclerView.Adapter<QuestionListAdapter.MyViewHolder>{
 

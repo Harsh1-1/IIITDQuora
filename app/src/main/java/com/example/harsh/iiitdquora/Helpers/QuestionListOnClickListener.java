@@ -7,7 +7,10 @@ import android.view.View;
 
 import com.example.harsh.iiitdquora.AnswerListActivity;
 
-//Listener Class to handle when a question is clicked
+/*
+CLASS NAME : QuestionListOnClickListener
+PURPOSE : Listener Class to handle when a question is clicked
+*/
 
 public class QuestionListOnClickListener implements View.OnClickListener {
 

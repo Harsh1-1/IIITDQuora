@@ -2,7 +2,10 @@ package com.example.harsh.iiitdquora.Helpers;
 
 import android.app.Application;
 
-//Listener for connectivity
+/*
+CLASS NAME : MyApplication
+PURPOSE : Listener for connectivity
+*/
 
 public class MyApplication extends Application {
 

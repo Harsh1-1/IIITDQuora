@@ -5,8 +5,10 @@ import android.graphics.BitmapFactory;
 
 import java.net.URL;
 
-//for loading image from device
-
+/*
+CLASS NAME : CustomImageLoader
+PURPOSE :for loading image from device
+*/
 public class CustomImageLoader {
     private CustomImageLoader(){}
 

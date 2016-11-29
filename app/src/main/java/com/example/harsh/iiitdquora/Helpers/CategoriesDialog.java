@@ -17,7 +17,10 @@ import com.example.harsh.iiitdquora.tasks.UpdateInterestTask;
 
 import java.util.ArrayList;
 
-//Class for Displaying Categories in a Dialog
+/*
+CLASS NAME : CategoriesDialog
+PURPOSE : Class for Displaying Categories in a Dialog
+*/
 
 public class CategoriesDialog extends DialogFragment {
     ArrayList<Categories> allCategories;
