@@ -111,6 +111,7 @@ public class RetrieveInterestTask extends AsyncTask<String,String,String> {
                 String interest;
 
                 while (count < jsonArray.length()) {
+                    //parse json to fill categories array
                     JSONObject JO = jsonArray.getJSONObject(count);
                     interestid = JO.getInt("interest_id");
                     interest = JO.getString("interest");

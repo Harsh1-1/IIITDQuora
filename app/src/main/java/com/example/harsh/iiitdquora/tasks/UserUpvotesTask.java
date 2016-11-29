@@ -94,7 +94,7 @@ public class UserUpvotesTask extends AsyncTask<String,String,String> {
 
         if(result.equals("No Answer upvoted"))
         {
-            Toast.makeText(ctx,"please upvote answer you like most",Toast.LENGTH_LONG).show();
+            //Toast.makeText(ctx,"please upvote answer you like most",Toast.LENGTH_LONG).show();
         }
         else if(result.equals("Failed to fetch upvotes"))
         {

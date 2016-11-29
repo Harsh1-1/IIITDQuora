@@ -102,6 +102,7 @@ public class SearchQuestionsTask extends AsyncTask<String,String,String> {
                 String description, createdby, createdon, questiontext,categoryname;
                 ArrayList<Question> questionArrayList = new ArrayList<>();
                 while (count < jsonArray.length()) {
+                    //retrieve the Questions that matches the query
                     JSONObject JO = jsonArray.getJSONObject(count);
                     questionid = JO.getInt("QuestionID");
                     description = JO.getString("Description");

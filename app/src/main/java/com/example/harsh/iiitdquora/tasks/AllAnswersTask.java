@@ -24,7 +24,11 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
-//Async Task for getting all the user Questions
+/*
+CLASS NAME : AllAnswerTask
+PURPOSE : Async Task for getting all the user Questions
+ */
+
 
 public class AllAnswersTask extends AsyncTask<String,String,String> {
 
@@ -43,6 +47,8 @@ public class AllAnswersTask extends AsyncTask<String,String,String> {
             httpURLConnection.setRequestMethod("POST");
             httpURLConnection.setDoInput(true);
             httpURLConnection.setDoOutput(true);
+
+           //send question id to retrieve answers
             OutputStream OS = httpURLConnection.getOutputStream();
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(OS,"UTF-8"));
             String data = URLEncoder.encode("ques_id","UTF-8") + "=" + URLEncoder.encode(quesid,"UTF-8");
@@ -52,6 +58,7 @@ public class AllAnswersTask extends AsyncTask<String,String,String> {
             writer.close();
             OS.close();
 
+            //get the response in string which is in json format
             InputStream inputStream = httpURLConnection.getInputStream();
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
             String response = "";
@@ -88,7 +95,7 @@ public class AllAnswersTask extends AsyncTask<String,String,String> {
 
         if(result.equals("No one Answered this question yet"))
         {
-            Toast.makeText(ctx,result,Toast.LENGTH_LONG).show();
+            //Toast.makeText(ctx,result,Toast.LENGTH_LONG).show();
         }
         else if(result.equals("Failed to fetch answers"))
         {
@@ -97,12 +104,14 @@ public class AllAnswersTask extends AsyncTask<String,String,String> {
         else
         {
             try {
+                //parse the json object to get answer object
                 JSONObject jsonObject = new JSONObject(result);
                 JSONArray jsonArray = jsonObject.getJSONArray("server_response");
                 int count = 0;
                 int answerid,questionid;
                 String createdby,createdon,answertext;
                 ArrayList<Answer> answerArrayList = new ArrayList<>();
+                //store jasonArray to arraylist of answer
                 while (count<jsonArray.length())
                 {
                     JSONObject JO = jsonArray.getJSONObject(count);
