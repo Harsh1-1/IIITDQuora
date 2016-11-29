@@ -56,6 +56,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
         usernameWrapper.setHint("Email");
         passwordWrapper.setHint("Password");
 
+
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail().setHostedDomain("iiitd.ac.in").requestId().requestIdToken(getString(R.string.server_client_id))
                 .build();

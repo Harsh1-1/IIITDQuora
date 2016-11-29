@@ -19,7 +19,8 @@ import com.example.harsh.iiitdquora.beans.Question;
 import com.example.harsh.iiitdquora.tasks.SearchQuestionsTask;
 
 import java.util.ArrayList;
-//Activity for implementing search
+
+//Activity for implementing search functionality
 public class SearchActivity extends AppCompatActivity {
 
     QuestionListAdapter questionListAdapter;
@@ -50,10 +51,12 @@ public class SearchActivity extends AppCompatActivity {
             return;
         }
 
+        //Start database search
         SearchQuestionsTask searchQuestionsTask = new SearchQuestionsTask(this);
         searchQuestionsTask.execute(query);
     }
 
+    //Update search results
     public void update(ArrayList<Question> dataset){
         this.dataset = dataset;
         questionListAdapter.setDataset(dataset);

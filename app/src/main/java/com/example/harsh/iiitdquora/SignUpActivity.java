@@ -42,6 +42,7 @@ public class SignUpActivity extends AppCompatActivity {
 
     public void userRegistration(View view)
     {
+        //get user details
         String outEmail = registerEmail.getText().toString();
         String outPassword = registerPassword.getText().toString();
         String outUsername = registerUsername.getText().toString();
@@ -50,6 +51,7 @@ public class SignUpActivity extends AppCompatActivity {
         String outPasswordAgain = registerPasswordagain.getText().toString();
 
 
+        //Verify email
         String emailregex = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@iiitd.ac.in";
         Boolean value = outEmail.matches(emailregex);
 
@@ -60,6 +62,7 @@ public class SignUpActivity extends AppCompatActivity {
         }
 
 
+        //Basic checks
         if(outPassword.equals("") || outEmail.equals("") || outUsername.equals(""))
         {
             Toast.makeText(SignUpActivity.this,"Fields cannot be left blank",Toast.LENGTH_SHORT).show();
@@ -79,6 +82,7 @@ public class SignUpActivity extends AppCompatActivity {
         }
 
         else {
+            //Register the user
             DatabaseBackgroundTask dbt = new DatabaseBackgroundTask(this);
             dbt.execute("register", outUsername, outEmail, outPassword, outContact, outAboutme);
         }
