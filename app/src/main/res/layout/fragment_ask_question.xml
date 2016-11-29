@@ -54,7 +54,7 @@
                 android:adjustViewBounds="true"
                 android:scaleType="centerInside" />
 
-            <Button
+            <!--<Button
                 android:text="Upload Image"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -63,7 +63,7 @@
                 android:background="@color/colorPrimary"
                 android:textColor="@android:color/background_light"
                 android:layout_gravity="center_horizontal" />
-
+            -->
 
             <Button
                 android:text="@string/ask"

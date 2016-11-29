@@ -88,16 +88,16 @@ public class AskQuestionFragment extends Fragment implements Updatable {
         // Inflate the layout for this fragment
         final View view =  inflater.inflate(R.layout.fragment_ask_question, container, false);
 
-        Button uploadImageButton = (Button)view.findViewById(R.id.UploadImageButton);
+        //Button uploadImageButton = (Button)view.findViewById(R.id.UploadImageButton);
         final Button askQuestionButton = (Button)view.findViewById(R.id.AskButton);
-        uploadImageButton.setOnClickListener(new View.OnClickListener() {
+        /*uploadImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(intent, RESULT_GET_IMAGE);
             }
         });
-
+        */
         askQuestionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
