@@ -7,6 +7,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.harsh.iiitdquora.Helpers.InternetConnectivity;
+import com.example.harsh.iiitdquora.tasks.DatabaseBackgroundTask;
+
 //Sign up activity
 public class SignUpActivity extends AppCompatActivity {
 

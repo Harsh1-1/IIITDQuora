@@ -1,12 +1,8 @@
-package com.example.harsh.iiitdquora;
+package com.example.harsh.iiitdquora.tasks;
 
 import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.Toast;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -19,14 +15,13 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.util.ArrayList;
 
-//Task for retrieving upvotes on answers
-public class UpvoteAnswersTask extends AsyncTask<String,String,String> {
+//Task for upvoting an answer
+public class UpvoteTask extends AsyncTask<String,String,String> {
 
     Context ctx;
 
-    UpvoteAnswersTask(Context ctx)
+    public UpvoteTask(Context ctx)
     {
         this.ctx = ctx;
     }
@@ -38,8 +33,10 @@ public class UpvoteAnswersTask extends AsyncTask<String,String,String> {
 
     @Override
     protected String doInBackground(String... params) {
-        String retrieving_url = "http://onlyforgeeks.net16.net/iiitdquora/upvoteonanswers.php";
-        String quesid = params[0];
+        String retrieving_url = "http://onlyforgeeks.net16.net/iiitdquora/upvote.php";
+        String email = params[0];
+        String answerid = params[1];
+        String votecount = params[2];
         try {
             URL url = new URL(retrieving_url);
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
@@ -48,7 +45,9 @@ public class UpvoteAnswersTask extends AsyncTask<String,String,String> {
             httpURLConnection.setDoOutput(true);
             OutputStream OS = httpURLConnection.getOutputStream();
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(OS,"UTF-8"));
-            String data = URLEncoder.encode("ques_id","UTF-8") + "=" + URLEncoder.encode(quesid,"UTF-8");
+            String data = URLEncoder.encode("user_email","UTF-8") + "=" + URLEncoder.encode(email,"UTF-8")+ "&"
+                    +URLEncoder.encode("answer_id","UTF-8") + "=" + URLEncoder.encode(answerid,"UTF-8")+ "&"
+                    +URLEncoder.encode("vote_count","UTF-8") + "=" + URLEncoder.encode(votecount,"UTF-8");
 
             writer.write(data);
             writer.flush();
@@ -88,42 +87,15 @@ public class UpvoteAnswersTask extends AsyncTask<String,String,String> {
         String[] server_response = result.split("@@@");
         result=server_response[1];
 
-        if(result.equals("No Answer upvoted"))
+        if(result.equals("Failed to upvote"))
         {
-            Toast.makeText(ctx,"please upvote answer you like most",Toast.LENGTH_LONG).show();
-        }
-        else if(result.equals("Failed to fetch upvotes"))
-        {
-            Toast.makeText(ctx,"Failed to fetch upvotes",Toast.LENGTH_SHORT).show();
+            Toast.makeText(ctx,"Failed to upvote!!",Toast.LENGTH_LONG).show();
         }
         else
         {
-            try {
-                JSONObject jsonObject = new JSONObject(result);
-                JSONArray jsonArray = jsonObject.getJSONArray("server_response");
-                int count = 0;
-                Integer answerid,rating;
-                String interest;
-                ArrayList<Integer> answeridArrayList = new ArrayList<>();
-                ArrayList<Integer> ratings = new ArrayList<>();
-                while (count < jsonArray.length()) {
-                    JSONObject JO = jsonArray.getJSONObject(count);
-                    answerid = JO.getInt("answer_id");
-                    rating = JO.getInt("rating");
-                    answeridArrayList.add(answerid);
-                    ratings.add(rating);
-                    count++;
-                }
-
-                ((AnswerListActivity)ctx).updateRating(answeridArrayList,ratings);
-
-
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
+            Toast.makeText(ctx,"answer upvoted",Toast.LENGTH_SHORT).show();
         }
 
-
     }
+
 }

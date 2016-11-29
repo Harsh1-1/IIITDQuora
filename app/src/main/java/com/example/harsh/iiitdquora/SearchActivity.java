@@ -13,6 +13,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.harsh.iiitdquora.Helpers.InternetConnectivity;
+import com.example.harsh.iiitdquora.Helpers.QuestionListAdapter;
+import com.example.harsh.iiitdquora.beans.Question;
+import com.example.harsh.iiitdquora.tasks.SearchQuestionsTask;
+
 import java.util.ArrayList;
 //Activity for implementing search
 public class SearchActivity extends AppCompatActivity {

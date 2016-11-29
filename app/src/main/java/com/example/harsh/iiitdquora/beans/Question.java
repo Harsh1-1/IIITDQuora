@@ -1,10 +1,9 @@
-package com.example.harsh.iiitdquora;
+package com.example.harsh.iiitdquora.beans;
 
 import android.graphics.Bitmap;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
 
 //Class for question
 

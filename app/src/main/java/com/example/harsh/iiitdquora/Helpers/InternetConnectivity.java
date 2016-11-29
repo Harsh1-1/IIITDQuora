@@ -1,4 +1,4 @@
-package com.example.harsh.iiitdquora;
+package com.example.harsh.iiitdquora.Helpers;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

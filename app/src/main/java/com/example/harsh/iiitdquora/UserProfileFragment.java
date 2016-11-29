@@ -14,6 +14,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.harsh.iiitdquora.Helpers.CategoriesDialog;
+import com.example.harsh.iiitdquora.Helpers.InternetConnectivity;
+import com.example.harsh.iiitdquora.beans.Categories;
+import com.example.harsh.iiitdquora.tasks.ImageResizerTask;
+import com.example.harsh.iiitdquora.tasks.RetrieveInterestTask;
+
 import java.util.ArrayList;
 
 

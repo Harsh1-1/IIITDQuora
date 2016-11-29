@@ -1,8 +1,11 @@
-package com.example.harsh.iiitdquora;
+package com.example.harsh.iiitdquora.tasks;
 
 import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.Toast;
+
+import com.example.harsh.iiitdquora.beans.Question;
+import com.example.harsh.iiitdquora.SearchActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -26,7 +29,7 @@ public class SearchQuestionsTask extends AsyncTask<String,String,String> {
 
     Context ctx;
 
-    SearchQuestionsTask(Context ctx) {
+    public SearchQuestionsTask(Context ctx) {
         this.ctx = ctx;
     }
 

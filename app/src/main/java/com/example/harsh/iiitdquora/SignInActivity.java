@@ -1,8 +1,6 @@
 package com.example.harsh.iiitdquora;
 
 import android.content.Intent;
-import android.os.AsyncTask;
-import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +12,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.harsh.iiitdquora.Helpers.InternetConnectivity;
+import com.example.harsh.iiitdquora.Helpers.MyApplication;
+import com.example.harsh.iiitdquora.beans.User;
+import com.example.harsh.iiitdquora.tasks.AuthenticateWithToken;
+import com.example.harsh.iiitdquora.tasks.DatabaseBackgroundTask;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;

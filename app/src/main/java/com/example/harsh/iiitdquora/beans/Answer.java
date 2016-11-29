@@ -1,7 +1,6 @@
-package com.example.harsh.iiitdquora;
+package com.example.harsh.iiitdquora.beans;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 //Class for a Answer
 

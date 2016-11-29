@@ -1,8 +1,11 @@
-package com.example.harsh.iiitdquora;
+package com.example.harsh.iiitdquora.tasks;
 
 import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.Toast;
+
+import com.example.harsh.iiitdquora.beans.Answer;
+import com.example.harsh.iiitdquora.AnswerListActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -21,25 +24,19 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
-//Retrieving user feed
+//Async Task for getting all the user Questions
 
-public class FeedTask extends AsyncTask<String,String,String> {
+public class AllAnswersTask extends AsyncTask<String,String,String> {
+
     Context ctx;
 
-    FeedTask(Context ctx) {
-        this.ctx = ctx;
-    }
-
-    @Override
-    protected void onPreExecute() {
-        super.onPreExecute();
-    }
+    public AllAnswersTask(Context context){this.ctx = context;}
 
     @Override
     protected String doInBackground(String... params) {
-        String retrieving_url = "http://onlyforgeeks.net16.net/iiitdquora/retrievefeed.php";
-        String result_count = params[0];
-        String email = SignInActivity.user.getEmailId();
+
+        String retrieving_url = "http://onlyforgeeks.net16.net/iiitdquora/retrieveanswers.php";
+        String quesid = params[0];
         try {
             URL url = new URL(retrieving_url);
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
@@ -47,9 +44,8 @@ public class FeedTask extends AsyncTask<String,String,String> {
             httpURLConnection.setDoInput(true);
             httpURLConnection.setDoOutput(true);
             OutputStream OS = httpURLConnection.getOutputStream();
-            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(OS, "UTF-8"));
-            String data = URLEncoder.encode("result_count", "UTF-8") + "=" + URLEncoder.encode(result_count, "UTF-8")+ "&"
-                    +URLEncoder.encode("user_email","UTF-8") + "=" + URLEncoder.encode(email,"UTF-8");
+            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(OS,"UTF-8"));
+            String data = URLEncoder.encode("ques_id","UTF-8") + "=" + URLEncoder.encode(quesid,"UTF-8");
 
             writer.write(data);
             writer.flush();
@@ -57,10 +53,11 @@ public class FeedTask extends AsyncTask<String,String,String> {
             OS.close();
 
             InputStream inputStream = httpURLConnection.getInputStream();
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
             String response = "";
             String line = "";
-            while ((line = bufferedReader.readLine()) != null) {
+            while ((line = bufferedReader.readLine())!=null)
+            {
                 response = response + line;
             }
             bufferedReader.close();
@@ -85,41 +82,45 @@ public class FeedTask extends AsyncTask<String,String,String> {
 
     @Override
     protected void onPostExecute(String result) {
-        String[] server_response = result.split("@@@");
-        result = server_response[1];
-        ArrayList<Question> questionArrayList = new ArrayList<>();
 
-        if (result.equals("Nothing to show in feed")) {
-            ((HomeActivity) ctx).updateFeed(questionArrayList);
-            Toast.makeText(ctx, "please select an interest for getting feed", Toast.LENGTH_LONG).show();
-        } else if (result.equals("Failed to fetch feed")) {
-            Toast.makeText(ctx, "Failed to fetch feed", Toast.LENGTH_SHORT).show();
-        } else {
+        String[] server_response = result.split("@@@");
+        result=server_response[1];
+
+        if(result.equals("No one Answered this question yet"))
+        {
+            Toast.makeText(ctx,result,Toast.LENGTH_LONG).show();
+        }
+        else if(result.equals("Failed to fetch answers"))
+        {
+            Toast.makeText(ctx,"Failed to fetch answers",Toast.LENGTH_SHORT).show();
+        }
+        else
+        {
             try {
                 JSONObject jsonObject = new JSONObject(result);
                 JSONArray jsonArray = jsonObject.getJSONArray("server_response");
                 int count = 0;
-                int questionid,categoryid;
-                String description, createdby, createdon, questiontext,categoryname;
-                while (count < jsonArray.length()) {
+                int answerid,questionid;
+                String createdby,createdon,answertext;
+                ArrayList<Answer> answerArrayList = new ArrayList<>();
+                while (count<jsonArray.length())
+                {
                     JSONObject JO = jsonArray.getJSONObject(count);
-                    questionid = JO.getInt("QuestionID");
-                    description = JO.getString("Description");
+                    questionid = JO.getInt("QuesID");
+                    answerid = JO.getInt("AnswerID");
                     createdby = JO.getString("Createdby");
                     createdon = JO.getString("Createdon");
-                    questiontext = JO.getString("Questiontext");
-                    categoryid = JO.getInt("Categoryid");
-                    categoryname = JO.getString("Categoryname");
-                    Question question = new Question(questionid,description,createdby,createdon,questiontext,categoryid,categoryname);
-                    questionArrayList.add(question);
+                    answertext = JO.getString("Answertext");
+                    Answer answer = new Answer(createdby,createdon,answertext,questionid,answerid);
+                    answerArrayList.add(answer);
                     count++;
                 }
-                //Need to put appropriate method
-                ((HomeActivity) ctx).updateFeed(questionArrayList);
-            } catch (JSONException e) {
+                ((AnswerListActivity)ctx).update(answerArrayList);
+            }
+
+            catch (JSONException e) {
                 e.printStackTrace();
             }
         }
-
     }
 }

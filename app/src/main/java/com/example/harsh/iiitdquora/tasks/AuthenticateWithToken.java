@@ -1,10 +1,14 @@
-package com.example.harsh.iiitdquora;
+package com.example.harsh.iiitdquora.tasks;
 
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
+
+import com.example.harsh.iiitdquora.IIITDQuoraActivity;
+import com.example.harsh.iiitdquora.SignInActivity;
+import com.example.harsh.iiitdquora.beans.User;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,7 +34,7 @@ public class AuthenticateWithToken extends AsyncTask<String, Void, ArrayList<Str
     Context ctx;
     ProgressDialog loading;
 
-    AuthenticateWithToken(Context ctx)
+    public AuthenticateWithToken(Context ctx)
     {
         this.ctx = ctx;
     }

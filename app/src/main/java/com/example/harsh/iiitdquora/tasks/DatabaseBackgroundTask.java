@@ -1,10 +1,13 @@
-package com.example.harsh.iiitdquora;
+package com.example.harsh.iiitdquora.tasks;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.Toast;
+
+import com.example.harsh.iiitdquora.SignInActivity;
+import com.example.harsh.iiitdquora.beans.User;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -24,7 +27,7 @@ public class DatabaseBackgroundTask extends AsyncTask<String,String,String> {
     AlertDialog alertDialog;
     ProgressDialog loading;
 
-    DatabaseBackgroundTask(Context ctx)
+    public DatabaseBackgroundTask(Context ctx)
     {
         this.ctx = ctx;
     }

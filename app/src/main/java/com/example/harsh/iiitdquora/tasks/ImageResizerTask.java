@@ -1,9 +1,11 @@
-package com.example.harsh.iiitdquora;
+package com.example.harsh.iiitdquora.tasks;
 
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
-import android.widget.Button;
 import android.widget.ImageView;
+
+import com.example.harsh.iiitdquora.Helpers.CustomImageLoader;
+import com.example.harsh.iiitdquora.Updatable;
 
 import java.lang.ref.WeakReference;
 import java.net.URL;

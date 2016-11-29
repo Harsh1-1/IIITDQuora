@@ -1,16 +1,14 @@
-package com.example.harsh.iiitdquora;
+package com.example.harsh.iiitdquora.tasks;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
-import android.os.StrictMode;
 import android.widget.Toast;
 
-import java.io.BufferedReader;
+import com.example.harsh.iiitdquora.SignInActivity;
+
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
@@ -18,33 +16,23 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 
-//Task for posting a question
-public class QuestionBackgroundTask extends AsyncTask<String,String,String> {
+//Aysnc Task for posting answers
+
+public class AnswerBackgroundTask extends AsyncTask<String,String,String> {
 
     Context ctx;
-    ProgressDialog loading;
 
-    QuestionBackgroundTask(Context ctx)
-    {
-        this.ctx = ctx;
-
-    }
+    public AnswerBackgroundTask(Context context){this.ctx = context;}
 
     @Override
-    protected void onPreExecute() {
-        super.onPreExecute();
-        loading = ProgressDialog.show(ctx, "Posting Question...", null,true,true);
-    }
+    protected String doInBackground(String... strings) {
 
-    @Override
-    protected String doInBackground(String... params) {
+        String askurl = "http://onlyforgeeks.net16.net/iiitdquora/saveanswer.php";
 
-        String askurl = "http://onlyforgeeks.net16.net/iiitdquora/askquestion.php";
-        String email = params[0];
-        String question = params[1];
-        String questiondescription = params[2];
-        String categoryid = params[3];
-        String categoryname = params[4];
+        String answer = strings[0];
+        String questionID = strings[1];
+        String email = SignInActivity.user.getEmailId();
+
 
 
         try {
@@ -55,10 +43,8 @@ public class QuestionBackgroundTask extends AsyncTask<String,String,String> {
             OutputStream OS = httpURLConnection.getOutputStream();
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(OS,"UTF-8"));
             String data =  URLEncoder.encode("user_email","UTF-8") + "=" + URLEncoder.encode(email,"UTF-8") + "&"
-                    + URLEncoder.encode("user_question","UTF-8") + "=" + URLEncoder.encode(question,"UTF-8") + "&"
-                    +URLEncoder.encode("question_description","UTF-8") + "=" + URLEncoder.encode(questiondescription,"UTF-8")+ "&"
-                    +URLEncoder.encode("category_id","UTF-8") + "=" + URLEncoder.encode(categoryid,"UTF-8")+ "&"
-                    +URLEncoder.encode("category_name","UTF-8") + "=" + URLEncoder.encode(categoryname,"UTF-8");
+                    + URLEncoder.encode("ques_id","UTF-8") + "=" + URLEncoder.encode(questionID,"UTF-8") + "&"
+                    +URLEncoder.encode("user_answer","UTF-8") + "=" + URLEncoder.encode(answer,"UTF-8");
 
             writer.write(data);
             writer.flush();
@@ -69,7 +55,7 @@ public class QuestionBackgroundTask extends AsyncTask<String,String,String> {
             httpURLConnection.disconnect();
             inputStream.close();
 
-            return "question saved successfully";
+            return "Answer saved successfully";
 
 
 
@@ -78,6 +64,7 @@ public class QuestionBackgroundTask extends AsyncTask<String,String,String> {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
 
         return null;
     }
@@ -89,8 +76,7 @@ public class QuestionBackgroundTask extends AsyncTask<String,String,String> {
 
     @Override
     protected void onPostExecute(String result) {
-            loading.dismiss();
-            Toast.makeText(ctx,"Question posted successfully!!",Toast.LENGTH_LONG).show();
 
+        Toast.makeText(ctx,result,Toast.LENGTH_LONG).show();
     }
 }

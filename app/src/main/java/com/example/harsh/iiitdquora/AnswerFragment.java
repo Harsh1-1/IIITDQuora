@@ -10,6 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.harsh.iiitdquora.Helpers.QuestionListAdapter;
+import com.example.harsh.iiitdquora.beans.Question;
+
 import java.util.ArrayList;
 
 

@@ -1,4 +1,4 @@
-package com.example.harsh.iiitdquora;
+package com.example.harsh.iiitdquora.beans;
 
 //Class for up votes
 

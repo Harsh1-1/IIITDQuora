@@ -1,4 +1,4 @@
-package com.example.harsh.iiitdquora;
+package com.example.harsh.iiitdquora.Helpers;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -9,6 +9,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.harsh.iiitdquora.beans.Answer;
+import com.example.harsh.iiitdquora.R;
+import com.example.harsh.iiitdquora.SignInActivity;
+import com.example.harsh.iiitdquora.tasks.UpvoteTask;
 
 import java.util.ArrayList;
 

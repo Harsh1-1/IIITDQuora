@@ -1,34 +1,31 @@
-package com.example.harsh.iiitdquora;
+package com.example.harsh.iiitdquora.tasks;
 
 import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.Toast;
+
+import com.example.harsh.iiitdquora.HomeActivity;
+import com.example.harsh.iiitdquora.beans.Question;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLEncoder;
 import java.util.ArrayList;
-import java.util.Date;
 
-//Task for Retrieving Questions Asked by user
-
-public class UserQuestionsTask extends AsyncTask <String,String,String>{
+//Task for retrieving all un answered questions
+public class UnAnsweredQuestionsTask extends AsyncTask <String,String,String>{
 
     Context ctx;
 
-    UserQuestionsTask(Context ctx)
+    public UnAnsweredQuestionsTask(Context ctx)
     {
         this.ctx = ctx;
     }
@@ -40,22 +37,12 @@ public class UserQuestionsTask extends AsyncTask <String,String,String>{
 
     @Override
     protected String doInBackground(String... params) {
-        String retrieving_url = "http://onlyforgeeks.net16.net/iiitdquora/retrieveuserquestions.php";
-        String email = params[0];
+        String retrieving_url = "http://onlyforgeeks.net16.net/iiitdquora/unansweredquestion.php";
         try {
             URL url = new URL(retrieving_url);
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setRequestMethod("POST");
             httpURLConnection.setDoInput(true);
-            httpURLConnection.setDoOutput(true);
-            OutputStream OS = httpURLConnection.getOutputStream();
-            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(OS,"UTF-8"));
-            String data = URLEncoder.encode("user_email","UTF-8") + "=" + URLEncoder.encode(email,"UTF-8");
-
-            writer.write(data);
-            writer.flush();
-            writer.close();
-            OS.close();
 
             InputStream inputStream = httpURLConnection.getInputStream();
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
@@ -90,24 +77,26 @@ public class UserQuestionsTask extends AsyncTask <String,String,String>{
         String[] server_response = result.split("@@@");
         result=server_response[1];
         ArrayList<Question> questionArrayList = new ArrayList<>();
-        if(result.equals("No Questions Asked"))
+        if(result.equals("No unanswered Questions :D"))
         {
-            ((HomeActivity)ctx).updateAsked(questionArrayList);
-            Toast.makeText(ctx,"You did not ask any questions yet!!",Toast.LENGTH_LONG).show();
+            ((HomeActivity)ctx).updateAnswer(questionArrayList);
+            Toast.makeText(ctx,"No unanswered Questions :D",Toast.LENGTH_LONG).show();
 
         }
-        else if(result.equals("Failed to fetch user questions"))
+        else if(result.equals("Failed to fetch questions"))
         {
-            Toast.makeText(ctx,"Failed to fetch your questions",Toast.LENGTH_SHORT).show();
+            Toast.makeText(ctx,"Failed to fetch questions",Toast.LENGTH_SHORT).show();
         }
         else
         {
             try {
+
                 JSONObject jsonObject = new JSONObject(result);
                 JSONArray jsonArray = jsonObject.getJSONArray("server_response");
                 int count = 0;
                 int questionid,categoryid;
                 String description,createdby,createdon,questiontext,categoryname;
+
                 while (count<jsonArray.length())
                 {
                     JSONObject JO = jsonArray.getJSONObject(count);
@@ -122,7 +111,11 @@ public class UserQuestionsTask extends AsyncTask <String,String,String>{
                     questionArrayList.add(question);
                     count++;
                 }
-                ((HomeActivity)ctx).updateAsked(questionArrayList);
+                for(int i=0; i<count; i++)
+                {
+                    System.out.println(questionArrayList.get(i));
+                }
+                ((HomeActivity)ctx).updateAnswer(questionArrayList);
             }
 
             catch (JSONException e) {

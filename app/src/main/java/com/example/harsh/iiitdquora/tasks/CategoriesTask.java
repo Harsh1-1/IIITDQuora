@@ -1,9 +1,12 @@
-package com.example.harsh.iiitdquora;
+package com.example.harsh.iiitdquora.tasks;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.support.v4.app.Fragment;
 import android.widget.Toast;
+
+import com.example.harsh.iiitdquora.beans.Categories;
+import com.example.harsh.iiitdquora.HomeActivity;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -21,7 +24,7 @@ public class CategoriesTask extends AsyncTask<String,String,String>{
 
     Context ctx;
 
-    CategoriesTask(Context ctx) {
+    public CategoriesTask(Context ctx) {
         this.ctx = ctx;
     }
 

@@ -1,4 +1,4 @@
-package com.example.harsh.iiitdquora;
+package com.example.harsh.iiitdquora.Helpers;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -9,6 +9,11 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.widget.Toast;
+
+import com.example.harsh.iiitdquora.beans.Categories;
+import com.example.harsh.iiitdquora.SignInActivity;
+import com.example.harsh.iiitdquora.UserProfileFragment;
+import com.example.harsh.iiitdquora.tasks.UpdateInterestTask;
 
 import java.util.ArrayList;
 

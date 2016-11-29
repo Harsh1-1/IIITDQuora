@@ -1,6 +1,5 @@
 package com.example.harsh.iiitdquora;
 
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -9,6 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.harsh.iiitdquora.Helpers.InternetConnectivity;
+import com.example.harsh.iiitdquora.tasks.AnswerBackgroundTask;
 
 //Activity Class for answer Related to Activity
 public class AnswerActivity extends AppCompatActivity {
@@ -43,7 +45,7 @@ public class AnswerActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "No internet connectivity ", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                AnswerBackgroundTask  task = new AnswerBackgroundTask(getApplicationContext());
+                AnswerBackgroundTask task = new AnswerBackgroundTask(getApplicationContext());
                 task.execute(answer,Integer.toString(questionID));
                 mAnswer.setText("");
             }

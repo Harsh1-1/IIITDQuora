@@ -1,8 +1,12 @@
-package com.example.harsh.iiitdquora;
+package com.example.harsh.iiitdquora.tasks;
 
 import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.Toast;
+
+import com.example.harsh.iiitdquora.HomeActivity;
+import com.example.harsh.iiitdquora.beans.Question;
+import com.example.harsh.iiitdquora.SignInActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -21,13 +25,12 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
-//Task for retrieving Answers where user upvoted
-public class UserUpvotesTask extends AsyncTask<String,String,String> {
+//Retrieving user feed
 
+public class FeedTask extends AsyncTask<String,String,String> {
     Context ctx;
 
-    UserUpvotesTask(Context ctx)
-    {
+    public FeedTask(Context ctx) {
         this.ctx = ctx;
     }
 
@@ -38,9 +41,9 @@ public class UserUpvotesTask extends AsyncTask<String,String,String> {
 
     @Override
     protected String doInBackground(String... params) {
-        String retrieving_url = "http://onlyforgeeks.net16.net/iiitdquora/userupvotesonanswers.php";
-        String quesid = params[0];
-        String email = params[1];
+        String retrieving_url = "http://onlyforgeeks.net16.net/iiitdquora/retrievefeed.php";
+        String result_count = params[0];
+        String email = SignInActivity.user.getEmailId();
         try {
             URL url = new URL(retrieving_url);
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
@@ -48,8 +51,8 @@ public class UserUpvotesTask extends AsyncTask<String,String,String> {
             httpURLConnection.setDoInput(true);
             httpURLConnection.setDoOutput(true);
             OutputStream OS = httpURLConnection.getOutputStream();
-            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(OS,"UTF-8"));
-            String data = URLEncoder.encode("ques_id","UTF-8") + "=" + URLEncoder.encode(quesid,"UTF-8")+ "&"
+            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(OS, "UTF-8"));
+            String data = URLEncoder.encode("result_count", "UTF-8") + "=" + URLEncoder.encode(result_count, "UTF-8")+ "&"
                     +URLEncoder.encode("user_email","UTF-8") + "=" + URLEncoder.encode(email,"UTF-8");
 
             writer.write(data);
@@ -58,11 +61,10 @@ public class UserUpvotesTask extends AsyncTask<String,String,String> {
             OS.close();
 
             InputStream inputStream = httpURLConnection.getInputStream();
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
             String response = "";
             String line = "";
-            while ((line = bufferedReader.readLine())!=null)
-            {
+            while ((line = bufferedReader.readLine()) != null) {
                 response = response + line;
             }
             bufferedReader.close();
@@ -88,41 +90,40 @@ public class UserUpvotesTask extends AsyncTask<String,String,String> {
     @Override
     protected void onPostExecute(String result) {
         String[] server_response = result.split("@@@");
-        result=server_response[1];
+        result = server_response[1];
+        ArrayList<Question> questionArrayList = new ArrayList<>();
 
-        if(result.equals("No Answer upvoted"))
-        {
-            Toast.makeText(ctx,"please upvote answer you like most",Toast.LENGTH_LONG).show();
-        }
-        else if(result.equals("Failed to fetch upvotes"))
-        {
-            Toast.makeText(ctx,"Failed to fetch user upvotes",Toast.LENGTH_SHORT).show();
-        }
-        else
-        {
+        if (result.equals("Nothing to show in feed")) {
+            ((HomeActivity) ctx).updateFeed(questionArrayList);
+            Toast.makeText(ctx, "please select an interest for getting feed", Toast.LENGTH_LONG).show();
+        } else if (result.equals("Failed to fetch feed")) {
+            Toast.makeText(ctx, "Failed to fetch feed", Toast.LENGTH_SHORT).show();
+        } else {
             try {
                 JSONObject jsonObject = new JSONObject(result);
                 JSONArray jsonArray = jsonObject.getJSONArray("server_response");
                 int count = 0;
-                Integer answerid,rating;
-                String interest;
-                ArrayList<Integer> answeridArrayList = new ArrayList<>();
+                int questionid,categoryid;
+                String description, createdby, createdon, questiontext,categoryname;
                 while (count < jsonArray.length()) {
                     JSONObject JO = jsonArray.getJSONObject(count);
-                    answerid = JO.getInt("answer_id");
-                    answeridArrayList.add(answerid);
+                    questionid = JO.getInt("QuestionID");
+                    description = JO.getString("Description");
+                    createdby = JO.getString("Createdby");
+                    createdon = JO.getString("Createdon");
+                    questiontext = JO.getString("Questiontext");
+                    categoryid = JO.getInt("Categoryid");
+                    categoryname = JO.getString("Categoryname");
+                    Question question = new Question(questionid,description,createdby,createdon,questiontext,categoryid,categoryname);
+                    questionArrayList.add(question);
                     count++;
                 }
-
-                ((AnswerListActivity)ctx).updateAnswered(answeridArrayList);
-                //put appropriate method here to get arraylist of answerids
-
-
+                //Need to put appropriate method
+                ((HomeActivity) ctx).updateFeed(questionArrayList);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         }
-
 
     }
 }

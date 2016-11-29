@@ -1,8 +1,11 @@
-package com.example.harsh.iiitdquora;
+package com.example.harsh.iiitdquora.tasks;
 
-import android.content.Context;
 import android.os.AsyncTask;
+import android.support.v4.app.Fragment;
 import android.widget.Toast;
+
+import com.example.harsh.iiitdquora.beans.Categories;
+import com.example.harsh.iiitdquora.UserProfileFragment;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -21,19 +24,25 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
-//Async Task for getting all the user Questions
+//Task for retrieving user interests
+public class RetrieveInterestTask extends AsyncTask<String,String,String> {
 
-public class AllAnswersTask extends AsyncTask<String,String,String> {
+    Fragment ctx;
 
-    Context ctx;
+    public RetrieveInterestTask(Fragment ctx)
+    {
+        this.ctx = ctx;
+    }
 
-    public AllAnswersTask(Context context){this.ctx = context;}
+    @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
+    }
 
     @Override
     protected String doInBackground(String... params) {
-
-        String retrieving_url = "http://onlyforgeeks.net16.net/iiitdquora/retrieveanswers.php";
-        String quesid = params[0];
+        String retrieving_url = "http://onlyforgeeks.net16.net/iiitdquora/retrieveuserinterests.php";
+        String email = params[0];
         try {
             URL url = new URL(retrieving_url);
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
@@ -42,7 +51,7 @@ public class AllAnswersTask extends AsyncTask<String,String,String> {
             httpURLConnection.setDoOutput(true);
             OutputStream OS = httpURLConnection.getOutputStream();
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(OS,"UTF-8"));
-            String data = URLEncoder.encode("ques_id","UTF-8") + "=" + URLEncoder.encode(quesid,"UTF-8");
+            String data = URLEncoder.encode("user_email","UTF-8") + "=" + URLEncoder.encode(email,"UTF-8");
 
             writer.write(data);
             writer.flush();
@@ -79,45 +88,46 @@ public class AllAnswersTask extends AsyncTask<String,String,String> {
 
     @Override
     protected void onPostExecute(String result) {
-
         String[] server_response = result.split("@@@");
         result=server_response[1];
-
-        if(result.equals("No one Answered this question yet"))
+        ArrayList<Categories> categoriesArrayList = new ArrayList<>();
+        if(result.equals("No Interests exist"))
         {
-            Toast.makeText(ctx,result,Toast.LENGTH_LONG).show();
+            Toast.makeText(ctx.getContext(),"You do not have any interests",Toast.LENGTH_LONG).show();
+            ((UserProfileFragment)ctx).setUserInterests(categoriesArrayList);
         }
-        else if(result.equals("Failed to fetch answers"))
+        else if(result.equals("Failed to fetch interest Category"))
         {
-            Toast.makeText(ctx,"Failed to fetch answers",Toast.LENGTH_SHORT).show();
+            Toast.makeText(ctx.getContext(),"Failed to fetch interest Category",Toast.LENGTH_SHORT).show();
         }
         else
         {
             try {
+
                 JSONObject jsonObject = new JSONObject(result);
                 JSONArray jsonArray = jsonObject.getJSONArray("server_response");
                 int count = 0;
-                int answerid,questionid;
-                String createdby,createdon,answertext;
-                ArrayList<Answer> answerArrayList = new ArrayList<>();
-                while (count<jsonArray.length())
-                {
+                int interestid;
+                String interest;
+
+                while (count < jsonArray.length()) {
                     JSONObject JO = jsonArray.getJSONObject(count);
-                    questionid = JO.getInt("QuesID");
-                    answerid = JO.getInt("AnswerID");
-                    createdby = JO.getString("Createdby");
-                    createdon = JO.getString("Createdon");
-                    answertext = JO.getString("Answertext");
-                    Answer answer = new Answer(createdby,createdon,answertext,questionid,answerid);
-                    answerArrayList.add(answer);
+                    interestid = JO.getInt("interest_id");
+                    interest = JO.getString("interest");
+                    Categories category = new Categories(interestid,interest);
+                    categoriesArrayList.add(category);
                     count++;
                 }
-                ((AnswerListActivity)ctx).update(answerArrayList);
-            }
 
-            catch (JSONException e) {
+                //put appropriate method here
+                ((UserProfileFragment)ctx).setUserInterests(categoriesArrayList);
+
+            } catch (JSONException e) {
                 e.printStackTrace();
             }
         }
+
+
     }
+
 }
