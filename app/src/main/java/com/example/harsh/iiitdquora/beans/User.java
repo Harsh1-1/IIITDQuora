@@ -1,6 +1,10 @@
 package com.example.harsh.iiitdquora.beans;
 
-//User Class
+/*
+CLASS NAME : USER
+PURPOSE : DATA MEMBERS AND GETTERS AND SETTER FOR USER
+ */
+
 public class User {
 
     private String EmailId;

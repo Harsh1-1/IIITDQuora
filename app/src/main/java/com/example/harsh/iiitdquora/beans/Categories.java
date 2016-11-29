@@ -3,7 +3,11 @@ package com.example.harsh.iiitdquora.beans;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-//Class for Categories/Interests
+/*
+CLASS NAME : CATEGORIES
+PURPOSE : DATA MEMBERS AND GETTERS AND SETTER FOR CATEGORIES
+ */
+
 
 public class Categories implements Serializable{
 

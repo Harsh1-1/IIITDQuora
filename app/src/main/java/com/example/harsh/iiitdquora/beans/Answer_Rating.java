@@ -1,6 +1,10 @@
 package com.example.harsh.iiitdquora.beans;
 
-//Class for up votes
+/*
+CLASS NAME : ANSWER_RATING
+PURPOSE : DATA MEMBERS AND GETTERS AND SETTER FOR ANSWER_RATING
+ */
+
 
 public class Answer_Rating {
 

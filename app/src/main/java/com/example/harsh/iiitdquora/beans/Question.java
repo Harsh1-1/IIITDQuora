@@ -5,7 +5,11 @@ import android.graphics.Bitmap;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-//Class for question
+/*
+CLASS NAME : QUESTION
+PURPOSE : DATA MEMBERS AND GETTERS AND SETTER FOR QUESTION
+ */
+
 
 public class Question implements Serializable {
 

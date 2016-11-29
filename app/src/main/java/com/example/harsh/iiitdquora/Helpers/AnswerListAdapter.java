@@ -17,7 +17,11 @@ import com.example.harsh.iiitdquora.tasks.UpvoteTask;
 
 import java.util.ArrayList;
 
-//Adapter for AnswerList
+/*
+CLASS NAME : AnswerListAdapter
+PURPOSE : Provides interface for all answer
+ */
+
 
 public class AnswerListAdapter  extends RecyclerView.Adapter<AnswerListAdapter.MyViewHolder> {
 
