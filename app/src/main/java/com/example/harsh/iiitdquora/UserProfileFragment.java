@@ -131,7 +131,7 @@ public class UserProfileFragment extends Fragment implements Updatable{
                     return;
                 }
                 ImageResizerTask imageResizerTask = new ImageResizerTask(imageView, this);
-                imageResizerTask.execute(SignInActivity.user.getPicurl(), "128", "128", "url");
+                imageResizerTask.execute(SignInActivity.user.getPicurl(), "256", "256", "url");
             }else imageView.setImageDrawable(null);
         }
     }
