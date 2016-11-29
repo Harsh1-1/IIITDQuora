@@ -22,7 +22,7 @@ import com.example.harsh.iiitdquora.tasks.UserUpvotesTask;
 
 import java.util.ArrayList;
 
-//Activity Class for listing all the Answers
+//Activity Class for listing all the Answers for a particular question
 public class AnswerListActivity extends AppCompatActivity {
 
     AnswerListAdapter answerListAdapter;
@@ -64,7 +64,7 @@ public class AnswerListActivity extends AppCompatActivity {
         QuestionDesc.setText(getIntent().getStringExtra("questionDesc"));
         QuestionCreatedby.setText(getIntent().getStringExtra("questionuser"));
 
-
+        //get questionID for the question
         final int id = getIntent().getIntExtra("questionID",0);
         id_st = Integer.toString(id);
         Log.d("Android :","Inside Answer ListActivity");
@@ -87,12 +87,14 @@ public class AnswerListActivity extends AppCompatActivity {
     public void onResume(){
         super.onResume();
 
+        //Check internet connectivity
         if(InternetConnectivity.isConnected() == false)
         {
             Toast.makeText(this,"No Internet Connectivity",Toast.LENGTH_SHORT).show();
             return;
         }
 
+        //Update the data in database
         AllAnswersTask allAnswersTask = new AllAnswersTask(this);
         allAnswersTask.execute(id_st);
         UpvoteAnswersTask upvoteAnswersTask = new UpvoteAnswersTask(this);
@@ -100,11 +102,13 @@ public class AnswerListActivity extends AppCompatActivity {
         UserUpvotesTask userUpvotesTask = new UserUpvotesTask(this);
         userUpvotesTask.execute(id_st, SignInActivity.user.getEmailId());
 
+        //Update datasets
         answerListAdapter.setDataset(dataset);
         answerListAdapter.setRating(answerid,rating);
         answerListAdapter.setAnswered(answered_answer);
     }
 
+    //Update the views
     public void update(ArrayList<Answer> dataset){
         this.dataset = dataset;
         answerListAdapter.setDataset(dataset);

@@ -32,6 +32,8 @@ import com.example.harsh.iiitdquora.tasks.QuestionBackgroundTask;
  * Use the {@link AskQuestionFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
+
+//Class for asking questions
 public class AskQuestionFragment extends Fragment implements Updatable {
     /*private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -101,18 +103,23 @@ public class AskQuestionFragment extends Fragment implements Updatable {
                 EditText questionText = (EditText) view.findViewById(R.id.QuestionAskEditText);
                 EditText descText = (EditText) view.findViewById(R.id.QuestionDescEditText);
                 Log.d("f", "Question Asked is " + questionText.getText().toString());
+
+                //Get category from spinner
                 Spinner spinner = (Spinner)getView().findViewById(R.id.categorySpinner);
                 String s = (String)spinner.getSelectedItem();
                 if(s.equalsIgnoreCase("Please Select a Category")){
                     Toast.makeText(getContext(), "Please select a Category", Toast.LENGTH_SHORT).show();
                     return;
                 }
+
+                //Check if category is valid
                 int pos = -1;
                 for(Categories c : HomeActivity.categoriesArrayList){
                     if(s.equalsIgnoreCase(c.getInterest())){
                         pos = c.getInterest_id();
                     }
                 }
+
                 if(questionText.getText().toString() == null || questionText.getText().toString().isEmpty()){
                     Toast.makeText(getContext(), "Question Text cannot be null", Toast.LENGTH_SHORT).show();
                 }else{
@@ -123,10 +130,14 @@ public class AskQuestionFragment extends Fragment implements Updatable {
                         Toast.makeText(getContext(),"No Internet Connectivity",Toast.LENGTH_SHORT).show();
                         return;
                     }
+
+                    //Update question asked in database
                     QuestionBackgroundTask questionBackgroundTask = new QuestionBackgroundTask(getContext());
                     questionBackgroundTask.execute(SignInActivity.user.getEmailId(),
                             questionText.getText().toString(), descText.getText().toString(), String.valueOf(pos), s);
                     ((HomeActivity)getActivity()).updateAskedDataset();
+
+                    //Reset fields
                     questionText.setText("");
                     descText.setText("");
                     spinner.setSelection(HomeActivity.categoriesArrayList.size());
@@ -153,12 +164,14 @@ public class AskQuestionFragment extends Fragment implements Updatable {
         }else {
             imageView.setImageDrawable(null);
         }
+
+        //Populate spinner
         Spinner spinner = (Spinner) getView().findViewById(R.id.categorySpinner);
         String choices[] = new String[HomeActivity.categoriesArrayList.size() + 1];
         for(int i = 0; i < HomeActivity.categoriesArrayList.size(); i++){
             choices[i] = HomeActivity.categoriesArrayList.get(i).getInterest();
         }
-        choices[choices.length - 1] = "Please Select a Category";
+        choices[choices.length - 1] = "Please Select a Category"; //default item
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, choices);
         spinner.setAdapter(spinnerAdapter);
         spinner.setSelection(choices.length-1);

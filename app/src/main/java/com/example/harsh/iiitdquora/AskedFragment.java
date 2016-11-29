@@ -22,6 +22,8 @@ import java.util.ArrayList;
  * Use the {@link AskedFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
+
+//Class for showing the questions asked by user
 public class AskedFragment extends Fragment {
     /*private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";

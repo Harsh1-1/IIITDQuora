@@ -21,7 +21,7 @@ import java.util.ArrayList;
  * Use the {@link AnswerFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class AnswerFragment extends Fragment {          //Fragment for showing unansweres questions
+public class AnswerFragment extends Fragment {          //Fragment for showing unanswered questions
     /*private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -65,6 +65,7 @@ public class AnswerFragment extends Fragment {          //Fragment for showing u
         return inflater.inflate(R.layout.fragment_answer, container, false);
     }
 
+    //Objects for recycler view
     QuestionListAdapter answerAdapter;
     RecyclerView answerRecyclerView;
     RecyclerView.LayoutManager answerRecyclerViewLayoutManager;
@@ -85,6 +86,7 @@ public class AnswerFragment extends Fragment {          //Fragment for showing u
 
     }
 
+    //Update dataset
     public void update(ArrayList<Question> dataset){
         this.dataset = dataset;
         answerAdapter.setDataset(dataset);

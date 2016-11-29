@@ -60,22 +60,25 @@ public class HomeActivity extends AppCompatActivity implements GoogleApiClient.O
     public static ArrayList<Categories> categoriesArrayList;
     private int refresh = 0;
 
+    //Method for retreiving categories
     public static void updateCategories(ArrayList<Categories> categories){
         categoriesArrayList = categories;
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.e("f", "Problem occured after this point");
+        //Log.e("f", "Problem occured after this point");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        //Check internet connectivity
         if(InternetConnectivity.isConnected() == false)
         {
             Toast.makeText(this,"No Internet Connectivity",Toast.LENGTH_SHORT).show();
             return;
         }
 
+        //get available categories
         CategoriesTask categoriesTask = new CategoriesTask(this);
         categoriesTask.execute();
 
@@ -83,6 +86,7 @@ public class HomeActivity extends AppCompatActivity implements GoogleApiClient.O
         setSupportActionBar(myToolbar);
         fragmentManager=getSupportFragmentManager();
 
+        //Handle google sign in
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail().setHostedDomain("iiitd.ac.in").requestId().requestIdToken(getString(R.string.server_client_id))
                 .build();
@@ -93,6 +97,7 @@ public class HomeActivity extends AppCompatActivity implements GoogleApiClient.O
                 .build();
 
 
+        //Set settings for view pager
         viewPager = (ViewPager) findViewById(R.id.pager);
         pagerAdapter = new ScreenSlidePagerAdapter(fragmentManager);
         viewPager.setAdapter(pagerAdapter);
@@ -100,6 +105,7 @@ public class HomeActivity extends AppCompatActivity implements GoogleApiClient.O
         //fragmentManager.beginTransaction().add(askedFragment, null).add(feedFragment, null).add(answerFragment,null).commit();
 
 
+        //Handle page change event
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
             @Override
@@ -146,6 +152,7 @@ public class HomeActivity extends AppCompatActivity implements GoogleApiClient.O
             }
         });
 
+        //For refreshing the list of questions
         mySwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.myRefreshLayout);
         mySwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -187,6 +194,7 @@ public class HomeActivity extends AppCompatActivity implements GoogleApiClient.O
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+                //Handle the search query
                 if(query != null) {
                     Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
                     intent.putExtra("QUERY", query);
@@ -214,7 +222,7 @@ public class HomeActivity extends AppCompatActivity implements GoogleApiClient.O
                 //TODO
                 return true;
 
-            case R.id.UserProfile:
+            case R.id.UserProfile: //Start user profile fragment
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.mainLayout, UserProfileFragment.newInstance());
                 if(fragmentManager.getBackStackEntryCount() > 0)
@@ -223,7 +231,7 @@ public class HomeActivity extends AppCompatActivity implements GoogleApiClient.O
                 fragmentTransaction.commit();
                 return true;
 
-            case R.id.AskQuestion:
+            case R.id.AskQuestion: //Start ask question fragment
                 fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.mainLayout, AskQuestionFragment.newInstance());
                 if(fragmentManager.getBackStackEntryCount() > 0)
@@ -235,6 +243,7 @@ public class HomeActivity extends AppCompatActivity implements GoogleApiClient.O
             case R.id.Logout:
                 SignInActivity.user = null;
 
+                //Logout User and redirect him to login page
                 if(googleApiClient.isConnected() && googleApiClient != null)
                 {
                     Auth.GoogleSignInApi.signOut(googleApiClient).setResultCallback(new ResultCallback<Status>() {
@@ -269,6 +278,7 @@ public class HomeActivity extends AppCompatActivity implements GoogleApiClient.O
     }
 
 
+    //Handle focus of buttons in response to viewpager
     public void setFocusOfButtons(int buttonID){
         int id[] = new int[3];
         id[0] = R.id.feedButton;
@@ -327,6 +337,9 @@ public class HomeActivity extends AppCompatActivity implements GoogleApiClient.O
 
     }
 
+
+    //Update methods for updating the data of various fragments
+
     public void updateAskedDataset(){
         UserQuestionsTask task = new UserQuestionsTask(context);
 
@@ -362,6 +375,7 @@ public class HomeActivity extends AppCompatActivity implements GoogleApiClient.O
         task.execute();
     }
 
+    //Check if updation through refresh is complete
     private void updateRefreshCount(){
         if(refresh >= 1){
             refresh += 1;
@@ -391,6 +405,7 @@ public class HomeActivity extends AppCompatActivity implements GoogleApiClient.O
         updateRefreshCount();
     }
 
+    //Save the fragments to reduce cost and improve performance
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);

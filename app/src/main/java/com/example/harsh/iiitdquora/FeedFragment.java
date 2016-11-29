@@ -21,6 +21,8 @@ import java.util.ArrayList;
  * Use the {@link FeedFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
+
+//Fragment for showing the feed to the user
 public class FeedFragment extends Fragment {
     /*private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -84,6 +86,7 @@ public class FeedFragment extends Fragment {
 
     }
 
+    //Update dataset and views
     public void update(ArrayList<Question> dataset){
         this.dataset = dataset;
         feedAdapter.setDataset(dataset);
