@@ -42,7 +42,7 @@ public class CategoriesTask extends AsyncTask<String,String,String>{
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setRequestMethod("POST");
             httpURLConnection.setDoInput(true);
-
+            //retrieve the categories
             InputStream inputStream = httpURLConnection.getInputStream();
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
             String response = "";
@@ -81,6 +81,7 @@ public class CategoriesTask extends AsyncTask<String,String,String>{
             Toast.makeText(ctx, "Failed to fetch Categories", Toast.LENGTH_SHORT).show();
         } else {
             try {
+                //parse json array to categories object
                 JSONObject jsonObject = new JSONObject(result);
                 JSONArray jsonArray = jsonObject.getJSONArray("server_response");
                 int count = 0;

@@ -21,7 +21,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 
-//Async Task for register and login
+//Async Task for register and login(normal login)
 public class DatabaseBackgroundTask extends AsyncTask<String,String,String> {
     Context ctx;
     AlertDialog alertDialog;

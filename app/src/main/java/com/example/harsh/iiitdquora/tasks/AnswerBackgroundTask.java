@@ -16,7 +16,11 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 
-//Aysnc Task for posting answers
+/*
+CLASS NAME: AnswerBAckgroundTask
+Purpose : Aysnc Task for posting answers
+ */
+
 
 public class AnswerBackgroundTask extends AsyncTask<String,String,String> {
 

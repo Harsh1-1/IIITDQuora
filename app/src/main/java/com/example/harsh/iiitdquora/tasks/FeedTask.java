@@ -25,7 +25,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
-//Retrieving user feed
+//Retrieve user feed based on its interest
 
 public class FeedTask extends AsyncTask<String,String,String> {
     Context ctx;

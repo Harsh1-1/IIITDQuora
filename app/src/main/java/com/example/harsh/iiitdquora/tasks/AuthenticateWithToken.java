@@ -27,7 +27,13 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
-//Async Task for authenticating user with Google Sign in
+/*
+CLASS NAME: AuthenticationWithToken
+Purpose : Async Task for authenticating user with Google Sign in
+ */
+
+
+
 
 public class AuthenticateWithToken extends AsyncTask<String, Void, ArrayList<String>> {
 
@@ -59,6 +65,7 @@ public class AuthenticateWithToken extends AsyncTask<String, Void, ArrayList<Str
 
             httpURLConnection.setDoInput(true);
             httpURLConnection.setDoOutput(true);
+            //sends the generated tokeniD to the server for authentication
             OutputStream OS = httpURLConnection.getOutputStream();
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(OS, "UTF-8"));
             String data = URLEncoder.encode("id_token", "UTF-8") + "=" + URLEncoder.encode(tokenID, "UTF-8");
@@ -111,6 +118,7 @@ public class AuthenticateWithToken extends AsyncTask<String, Void, ArrayList<Str
             Toast.makeText(ctx, "Failed to sign in", Toast.LENGTH_SHORT).show();
         } else {
             try {
+                //retrieve the data in jsonArray and parse it in user
                 JSONObject jsonObject = new JSONObject(result);
                 JSONArray jsonArray = jsonObject.getJSONArray("server_response");
                 int count = 0;
