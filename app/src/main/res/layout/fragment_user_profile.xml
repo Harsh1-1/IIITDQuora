@@ -13,11 +13,13 @@
         android:id="@+id/userProfileLinearLayout">
 
         <ImageView
-            android:layout_width="128dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/profileImageView"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="12dp" />
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="64dp"
+            android:layout_marginRight="64dp" />
 
         <TableLayout
             android:layout_width="match_parent"
